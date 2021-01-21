@@ -1,0 +1,1649 @@
+.bookme-header {
+    text-align: center;
+}
+.bookme-header h1 {
+    font-size: 35px;
+    color: #555;
+    text-align: center;
+    line-height: 25px;
+    text-transform: none;
+    letter-spacing: 1px;
+}
+.clear {
+    clear: both;
+}
+:before, :after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.bookme-container {
+    margin-right: auto;
+    max-width: 100%;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    line-height: 1.75;
+}
+@media (min-width: 1200px) {
+    .bookme-container {
+        width: 1170px;
+    }
+}
+@media (min-width: 992px) {
+    .bookme-container {
+        width: 970px;
+    }
+}
+@media (min-width: 768px) {
+    .bookme-container {
+        width: 750px;
+    }
+        .bookme-col-sm-6 {
+            width: 50%;
+        }
+}
+.bookme-row {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+.bookme-col-xs-12 {
+    width: 100%;
+}
+@media (min-width: 1200px) {
+    .col-lg-push-4 {
+        left: 33.33333333333333%;
+    }
+
+    .col-lg-12 {
+        width: 100%;
+    }
+
+    .col-lg-8 {
+        width: 66.66666666666666%;
+    }
+
+    .col-lg-6 {
+        width: 50%;
+    }
+
+    .col-lg-4 {
+        width: 33.33333333333333%;
+    }
+
+    .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11 {
+        float: left;
+    }
+}
+
+@media (min-width: 992px) {
+    .bookme-col-sm-12 {
+        width: 100%;
+    }
+    .col-md-push-4 {
+        left: 33.33333333333333%;
+    }
+    .col-md-12 {
+        width: 100%;
+    }
+    .col-md-8 {
+        width: 66.66666666666666%;
+    }
+    .col-md-6 {
+        width: 50%;
+    }
+
+    .col-lg-4 {
+        width: 33.33333333333333%;
+    }
+    .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11 {
+        float: left;
+    }
+}
+
+@media (min-width: 1200px) {
+    .bookme-col-lg-push-4 {
+        left: 33.33333333333333%;
+    }
+    .bookme-col-lg-8 {
+        width: 66.66666666666666%;
+    }
+    .bookme-col-lg-6 {
+        width: 50%;
+    }
+    .bookme-col-lg-1, .bookme-col-lg-2, .bookme-col-lg-3, .bookme-col-lg-4, .bookme-col-lg-5, .bookme-col-lg-6, .bookme-col-lg-7, .bookme-col-lg-8, .bookme-col-lg-9, .bookme-col-lg-10, .bookme-col-lg-11 {
+        float: left;
+    }
+}
+
+@media (min-width: 992px) {
+    .bookme-col-md-push-4 {
+        left: 33.33333333333333%;
+    }
+
+    .bookme-col-md-8 {
+        width: 66.66666666666666%;
+    }
+
+    .bookme-col-md-6 {
+        width: 50%;
+    }
+
+    .bookme-col-md-1, .bookme-col-md-2, .bookme-col-md-3, .bookme-col-md-4, .bookme-col-md-5, .bookme-col-md-6, .bookme-col-md-7, .bookme-col-md-8, .bookme-col-md-9, .bookme-col-md-10, .bookme-col-md-11 {
+        float: left;
+    }
+}
+
+
+
+.bookme-col-xs-2 {
+    width: 20%;
+}
+
+.bookme-col-xs-3 {
+    width: 25%;
+}
+
+.bookme-col-xs-6 {
+    width: 50%;
+}
+
+.bookme-col-xs-1, .bookme-col-xs-2, .bookme-col-xs-3, .bookme-col-xs-4, .bookme-col-xs-5, .bookme-col-xs-6, .bookme-col-xs-7, .bookme-col-xs-8, .bookme-col-xs-9, .bookme-col-xs-10, .bookme-col-xs-11, .bookme-col-xs-12 {
+    float: left;
+}
+
+.bookme-clearfix:after, .bookme-calender:after, .bookme-container:after, .bookme-container-fluid:after, .bookme-row:after, .bookme-form-horizontal .bookme-form-group:after, .bookme-btn-toolbar:after, .bookme-btn-group-vertical > .bookme-btn-group:after, .bookme-nav:after, .bookme-navbar:after, .bookme-navbar-header:after, .bookme-navbar-collapse:after, .bookme-pager:after, .bookme-panel-body:after, .bookme-modal-footer:after {
+    clear: both;
+}
+
+.bookme-clearfix:before, .bookme-calender:after, .bookme-clearfix:after, .bookme-container:before, .bookme-container:after, .bookme-container-fluid:before, .bookme-container-fluid:after, .bookme-row:before, .bookme-row:after, .bookme-form-horizontal .bookme-form-group:before, .bookme-form-horizontal .bookme-form-group:after, .bookme-btn-toolbar:before, .bookme-btn-toolbar:after, .bookme-btn-group-vertical > .bookme-btn-group:before, .bookme-btn-group-vertical > .bookme-btn-group:after, .bookme-nav:before, .bookme-nav:after, .bookme-navbar:before, .bookme-navbar:after, .bookme-navbar-header:before, .bookme-navbar-header:after, .bookme-navbar-collapse:before, .bookme-navbar-collapse:after, .bookme-pager:before, .bookme-pager:after, .bookme-panel-body:before, .bookme-panel-body:after, .bookme-modal-footer:before, .bookme-modal-footer:after {
+    content: " ";
+    display: table;
+}
+
+.bookme-progress {
+    overflow: hidden;
+    height: 20px;
+    margin-bottom: 20px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
+}
+
+.bookme-progress-bar {
+    float: left;
+    width: 0;
+    height: 100%;
+    font-size: 12px;
+    line-height: 20px;
+    color: #fff;
+    text-align: center;
+    background-color: #428bca;
+    -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .15);
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .15);
+    -webkit-transition: width .6s ease;
+    transition: width .6s ease;
+}
+
+.bookme-bs-wizard {
+    margin-top: 10px;
+}
+
+/*Form Wizard*/
+.bookme-bs-wizard {
+    border-bottom: solid 1px #e0e0e0;
+    padding: 0 0 10px 0;
+}
+
+.bookme-bs-wizard > .bookme-bs-wizard-step {
+    padding: 0;
+    position: relative;
+}
+
+.bookme-bs-wizard > .bookme-bs-wizard-step + .bookme-bs-wizard-step {
+}
+
+.bookme-bs-wizard > .bookme-bs-wizard-step .bookme-bs-wizard-stepnum {
+    color: #595959;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.bookme-bs-wizard > .bookme-bs-wizard-step .bookme-bs-wizard-info {
+    color: #999;
+    font-size: 14px;
+}
+
+.bookme-bs-wizard > .bookme-bs-wizard-step > .bookme-bs-wizard-dot {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    display: block;
+    background: #4bffdb;
+    top: 42px;
+    left: 50%;
+    margin-top: -12px;
+    margin-left: -12px;
+    border-radius: 50%;
+}
+
+.bookme-bs-wizard > .bookme-bs-wizard-step > .bookme-bs-wizard-dot:after {
+    content: ' ';
+    width: 10px;
+    height: 10px;
+    background: #1abc9c;
+    border-radius: 50px;
+    position: absolute;
+    top: 7px;
+    left: 7px;
+}
+
+.bookme-bs-wizard > .bookme-bs-wizard-step > .bookme-progress {
+    position: relative;
+    border-radius: 0px;
+    height: 8px;
+    box-shadow: none;
+    margin: 14px 0;
+}
+
+.bookme-bs-wizard > .bookme-bs-wizard-step > .bookme-progress > .bookme-progress-bar {
+    width: 0px;
+    box-shadow: none;
+    background: #4bffdb;
+}
+
+.bookme-bs-wizard > .bookme-bs-wizard-step.bookme-complete > .bookme-progress > .bookme-progress-bar {
+    width: 100%;
+}
+
+.bookme-bs-wizard > .bookme-bs-wizard-step.bookme-active > .bookme-progress > .bookme-progress-bar {
+    width: 50%;
+}
+
+.bookme-bs-wizard > .bookme-bs-wizard-step:first-child.bookme-active > .bookme-progress > .bookme-progress-bar {
+    width: 0%;
+}
+
+.bookme-bs-wizard > .bookme-bs-wizard-step:last-child.bookme-active > .bookme-progress > .bookme-progress-bar {
+    width: 100%;
+}
+
+.bookme-bs-wizard > .bookme-bs-wizard-step.bookme-disabled > .bookme-bs-wizard-dot {
+    background-color: #f5f5f5;
+}
+
+.bookme-bs-wizard > .bookme-bs-wizard-step.bookme-disabled > .bookme-bs-wizard-dot:after {
+    opacity: 0;
+}
+
+.bookme-bs-wizard > .bookme-bs-wizard-step:first-child > .bookme-progress {
+    left: 50%;
+    width: 50%;
+}
+
+.bookme-bs-wizard > .bookme-bs-wizard-step:last-child > .bookme-progress {
+    width: 50%;
+}
+
+.bookme-bs-wizard > .bookme-bs-wizard-step.bookme-disabled a.bookme-bs-wizard-dot {
+    pointer-events: none;
+}
+
+/*END Form Wizard*/
+
+.noselect {
+    -webkit-user-select: none;
+    /* Chrome/Safari */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* IE10+ */
+}
+
+.bookme-pad-left-20 {
+    padding: 0px 0 0px 20px !important;
+}
+
+.bookme-pad-20 {
+    padding: 20px !important;
+}
+
+.bookme-pad-5 {
+    padding: 5px !important;
+}
+
+.bookme-mar-bot-none {
+    margin-bottom: 0 !important;
+}
+
+.bookme-mar-pad {
+    margin: 0;
+    padding: 0 10px !important;
+}
+
+.bookme-mar-bot-10 {
+    margin-bottom: 10px !important;
+}
+
+.bookme-text-center {
+    text-align: center !important;
+}
+
+.bookme-text-left {
+    text-align: left !important;
+}
+
+.bookme-floatr {
+    float: right !important;
+}
+
+.bookme-floatl {
+    float: left !important;
+}
+
+.bookme p {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+.bookme .bookme-controls {
+    position: relative;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    padding: 10px 0;
+    text-align: center;
+    background-color: #1abc9c;
+    width: 100%;
+}
+
+.bookme .bookme-controls .month {
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+.bookme .bookme-controls .bookme-control-button .bookme-next-button {
+    position: absolute;
+    right: 12%;
+    top: 50%;
+    width: 8px;
+    height: 15px;
+    text-indent: -4000px;
+    background: url(../images/bookme-calender-arw.png) no-repeat -12px 0px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    transform: translateY(-50%)
+}
+
+.bookme .bookme-controls .bookme-control-button .bookme-next-button.inbookme-active:hover, .bookme .bookme-controls .bookme-control-button .bookme-previous-button.inbookme-active:hover {
+    cursor: default;
+}
+
+.bookme .bookme-controls .bookme-control-button .bookme-previous-button {
+    position: absolute;
+    left: 12%;
+    top: 50%;
+    width: 8px;
+    height: 15px;
+    text-indent: -4000px;
+    background: url(../images/bookme-calender-arw.png) no-repeat 1px 0px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    transform: translateY(-50%);
+}
+
+.bookme .bookme-controls .bookme-control-button .bookme-previous-button.inbookme-active, .bookme .bookme-controls .bookme-control-button .bookme-next-button.inbookme-active{
+    opacity:0.5;
+    pointer-events: none;
+    cursor:not-allowed !important;
+}
+
+.bookme td.day.inbookme-active {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor:not-allowed !important;
+}
+
+
+.bookme td.day.inbookme-active .day-contents {
+    cursor:not-allowed !important;
+}
+
+.cal1 .bookme .bookme-table {
+    table-layout: fixed;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.cal1 .bookme .bookme-table .header-days {
+    font-size: 16px;
+    background: none;
+    margin-bottom: 1em;
+}
+
+.cal1 .bookme .bookme-table .header-days .header-day {
+    vertical-align: middle;
+    text-align: center;
+    color: #333;
+    font-weight: 500;
+}
+
+.cal1 .bookme .bookme-table tr {
+    height: 40px;
+}
+
+.cal1 .bookme .bookme-table tr td {
+    vertical-align: top;
+}
+
+.cal1 .bookme .bookme-table tr .day {
+    background: #fff;
+    width: 100%;
+    height: inherit;
+    color: #555;
+    vertical-align: middle;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.dat-c {
+    color: #c5996c;
+}
+
+.cal1 .bookme .bookme-table tr .day:hover {
+    background-color: #1abc9c;
+    color: #fff;
+    transition: 0.3s;
+}
+
+.cal1 .bookme .bookme-table tr .day.today:hover {
+    color: #FFF;
+}
+
+.cal1 .bookme .bookme-table tr .day.today.event {
+    background: #1abc9c;
+    color: #FFF;
+    border-radius: 4px;
+}
+
+.day.today.event:hover {
+    color: #FFF;
+}
+
+/* .cal1 .bookme .bookme-table tr .day .day-contents:hover {
+    color: #fff;
+	background-color:#1abc9c;
+} */
+.cal1 .bookme .bookme-table tr .day .day-contents {
+    box-sizing: border-box;
+    font-size: 0.875em;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 500;
+    letter-spacing: 2px;
+}
+
+.cal1 .bookme .bookme-table tr .empty,
+.cal1 .bookme .bookme-table tr .adjacent-month {
+    width: 100%;
+    height: inherit;
+    color: #999;
+}
+
+.cal1 .bookme .bookme-table tr .past .day-contents {
+    cursor: not-allowed;
+}
+
+.cal1 .bookme .bookme-table tr .past {
+    cursor: not-allowed;
+    background: #f5f5f5 !important;
+    color: #ccc !important;
+}
+
+.cal1 .bookme .bookme-table tr .next-month {
+    background: #f5f5f5 !important;
+    color: #ccc !important;
+}
+
+/*,
+.cal1 .bookme .bookme-table tr .next-month .day-contents:hover */
+.cal1 .bookme .bookme-table tr .next-month:hover {
+    color: #fff;
+    background-color: #1abc9c;
+}
+
+.cal1 .bookme .bookme-table tr .day.booked {
+    background: #FFE4DF;
+    color: #F15934;
+    transition: 0.3s;
+}
+
+/* ,.cal1 .bookme .bookme-table tr .day.booked .day-contents:hover */
+.cal1 .bookme .bookme-table tr .day.booked:hover {
+    background: #E35656 !important;
+    color: #fff !important;
+    transition: 0.3s;
+}
+
+.cal1 .bookme .bookme-table tr .day.today {
+    background: #1abc9c;
+    color: #FFF;
+}
+
+/*---- responsive-design -----*/
+
+/*-- calendar --*/
+.bookme-calender p {
+    color: #666666;
+    font-size: 14px;
+    margin: 0;
+}
+
+@media (max-width: 992px) {
+    .bookme-calender {
+        padding: 0px;
+    }
+}
+
+.bookme-calender .cal1 {
+    margin-bottom: 20px;
+}
+
+.cal1 .bookme .bookme-table tr .day .today .event .day-contents {
+    color: #fff !important;
+}
+
+.column_right_grid.bookme-calender {
+    background-color: #f6f7f9;
+}
+
+.cal1 .bookme .bookme-table .header-days .header-day {
+    /*border-left:1px solid #D8D8D8;*/
+}
+
+.bookme .bookme-table {
+    border-bottom: 1px solid #d8d8d8;
+    border-right: 1px solid #d8d8d8;
+    border-left: 1px solid #d8d8d8;
+}
+
+.bookme .bookme-table th, .bookme .bookme-table td {
+    border: 0;
+    padding: 0;
+}
+
+.bookme .day {
+    display: table-cell;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+/* .cal1 .bookme .bookme-table tr .day :hover{
+    background-color:#f6f7f9;
+} */
+/*-- calendar ends here --*/
+@media (max-width: 1920px) {
+    .cal1 .bookme .bookme-table .header-days .header-day {
+        height: 64px;
+    }
+
+    .cal1 .bookme .bookme-table tr .day {
+        height: 64px;
+    }
+
+    .cal1 .bookme .bookme-table tr .day .day-contents {
+        line-height: 64px;
+    }
+}
+
+@media (max-width: 1600px) {
+    .cal1 .bookme .bookme-table .header-days .header-day {
+        height: 60px;
+    }
+
+    .cal1 .bookme .bookme-table tr .day {
+        height: 60px;
+    }
+
+    .cal1 .bookme .bookme-table tr .day .day-contents {
+        line-height: 60px;
+    }
+}
+
+@media (max-width: 1440px) {
+    .cal1 .bookme .bookme-table .header-days .header-day {
+        height: 52px;
+    }
+
+    .cal1 .bookme .bookme-table tr .day {
+        height: 40px;
+    }
+
+    .cal1 .bookme .bookme-table tr .day .day-contents {
+        line-height: 40px;
+    }
+}
+
+@media (max-width: 1366px) {
+    .cal1 .bookme .bookme-table .header-days .header-day {
+        height: 40px;
+    }
+
+    .cal1 .bookme .bookme-table tr .day {
+        height: 40px;
+    }
+
+    .cal1 .bookme .bookme-table tr .day .day-contents {
+        line-height: 40px;
+    }
+}
+
+@media (max-width: 667px) {
+    .bookme .bookme-controls .month {
+        font-size: 1.1em;
+    }
+}
+
+@media (max-width: 640px) {
+    .cal1 .bookme .bookme-table .header-days .header-day {
+        height: 40px;
+    }
+
+    .cal1 .bookme .bookme-table tr .day {
+        height: 40px;
+    }
+
+    .cal1 .bookme .bookme-table tr .day:hover {
+        height: 40px;
+    }
+
+    .cal1 .bookme .bookme-table tr .day .day-contents {
+        line-height: 40px;
+    }
+}
+
+@media (max-width: 600px) {
+    .bookme .bookme-controls .bookme-control-button .bookme-previous-button {
+        left: 8%;
+    }
+
+    .bookme .bookme-controls .bookme-control-button .bookme-next-button {
+        right: 8%;
+    }
+}
+
+@media (max-width: 414px) {
+    .bookme .bookme-controls .month {
+        font-size: 1.1em;
+    }
+
+    .column_right_grid.bookme-calender {
+        padding: 1.7em;
+    }
+
+    .bookme .bookme-controls .bookme-control-button .bookme-previous-button {
+        left: 4%;
+    }
+
+    .bookme .bookme-controls .bookme-control-button .bookme-next-button {
+        right: 4%;
+    }
+}
+
+@media (max-width: 384px) {
+    .bookme .bookme-controls {
+        font-size: 1em;
+        padding: 1.5em 0;
+    }
+
+    .column_right_grid.bookme-calender {
+        padding: 1.5em;
+    }
+
+    .bookme .bookme-controls .month {
+        font-size: 1.1em;
+    }
+
+    .bookme .bookme-controls .bookme-control-button .bookme-previous-button {
+        top: 39%;
+    }
+
+    .bookme .bookme-controls .bookme-control-button .bookme-next-button {
+        top: 39%;
+    }
+}
+
+@media (max-width: 375px) {
+    .bookme .bookme-controls {
+        font-size: 0.9em;
+    }
+
+    .cal1 .bookme .bookme-table tr .day .day-contents {
+        letter-spacing: 1px;
+    }
+}
+
+@media (max-width: 320px) {
+    .column_right_grid.bookme-calender {
+        padding: 12px;
+    }
+
+    .bookme .bookme-controls {
+        font-size: 14px;
+        padding: 1em 0;
+    }
+
+    .bookme .bookme-controls .bookme-control-button .bookme-previous-button {
+        top: 34%;
+    }
+
+    .bookme .bookme-controls .bookme-control-button .bookme-next-button {
+        top: 34%;
+    }
+
+    .cal1 .bookme .bookme-table tr .day:hover {
+        height: 45px;
+    }
+
+    .cal1 .bookme .bookme-table tr .day {
+        height: 45px;
+    }
+
+    .cal1 .bookme .bookme-table tr .day .day-contents {
+        letter-spacing: 0px;
+        line-height: 45px;
+    }
+}
+
+/*--//responsive-design---*/
+
+/*--------------Form Elements---------*/
+.bookme-form-style-5 {
+    margin: 20px auto;
+    padding: 0;
+    text-align: left;
+}
+
+.bookme-form-style-5 fieldset {
+    border: none;
+    margin-bottom: 10px !important;
+    -webkit-padding-before: 0.35em;
+    -webkit-padding-start: 0.75em;
+    -webkit-padding-end: 0.75em;
+    -webkit-padding-after: 0.625em;
+}
+
+.bookme-form-style-5 legend {
+    font-size: 1em;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.bookme-form-style-5 legend.small {
+    font-size: 14px;
+    margin-bottom: 0px;
+}
+
+.bookme-form-style-5 label {
+    margin-bottom: 8px;
+}
+
+.bookme-form-style-5 input[type="text"],
+.bookme-form-style-5 input[type="date"],
+.bookme-form-style-5 input[type="datetime"],
+.bookme-form-style-5 input[type="email"],
+.bookme-form-style-5 input[type="number"],
+.bookme-form-style-5 input[type="search"],
+.bookme-form-style-5 input[type="time"],
+.bookme-form-style-5 input[type="tel"],
+.bookme-form-style-5 input[type="url"],
+.bookme-form-style-5 textarea,
+.bookme-form-style-5 select {
+    border: 0;
+    border-radius: 2px;
+    font-size: 16px;
+    margin: 0;
+    outline: 0;
+    padding: 7px;
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    background-color: #fafafa;
+    color: #8a97a0;
+    transition: 0.3s;
+}
+
+.intl-tel-input {
+    width: 100%;
+}
+
+.bookme-form-style-5 input[type="text"]:focus,
+.bookme-form-style-5 input[type="date"]:focus,
+.bookme-form-style-5 input[type="datetime"]:focus,
+.bookme-form-style-5 input[type="email"]:focus,
+.bookme-form-style-5 input[type="number"]:focus,
+.bookme-form-style-5 input[type="search"]:focus,
+.bookme-form-style-5 input[type="time"]:focus,
+.bookme-form-style-5 input[type="tel"]:focus,
+.bookme-form-style-5 input[type="url"]:focus,
+.bookme-form-style-5 textarea:focus,
+.bookme-form-style-5 select:focus {
+    background: #f3f3f3;
+    transition: 0.3s;
+}
+
+.bookme-form-style-5 select {
+    -webkit-appearance: menulist-button;
+}
+
+.bookme-form-style-5 input {
+    height: 50px;
+}
+
+.bookme-form-style-5 input[type="radio"] {
+    height: auto;
+}
+
+.bookme-form-style-5 textarea {
+    height: 100px;
+}
+
+.bookme-form-style-5 .number {
+    background: #1abc9c;
+    color: #fff;
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    font-size: 0.8em;
+    margin-right: 4px;
+    line-height: 30px;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+    border-radius: 15px 15px 15px 0px;
+}
+
+.bookme-form-style-5 legend.small .number {
+    background: #1abc9c;
+    color: #fff;
+    height: 20px;
+    width: 20px;
+    display: inline-block;
+    font-size: 0.8em;
+    margin-right: 4px;
+    line-height: 20px;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+    border-radius: 15px 15px 15px 0px;
+}
+
+.bookme-form-style-5 input[type="submit"],
+.bookme-form-style-5 input[type="button"] {
+    position: relative;
+    display: block;
+    color: #FFF;
+    margin: 0 auto;
+    background: #1abc9c;
+    font-size: 18px;
+    text-align: center;
+    font-style: normal;
+    width: 100%;
+    border: 1px solid #16a085;
+    border-width: 1px 1px 3px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.bookme-form-style-5 input[type="submit"]:hover,
+.bookme-form-style-5 input[type="button"]:hover {
+    background: #109177;
+    transition: 0.3s;
+}
+
+.bookme-form-style-5 .width-100{
+    width: 100% !important;
+}
+
+.bookme-form-style-5 select.bookme-has-error {
+    border: 2px solid #de1300;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+}
+
+.bookme-form-style-5 .bookme-label-error {
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 5px;
+    color: #de1300 !important;
+}
+
+/* bookme-tooltip container */
+
+.bookme-tooltip {
+    position: relative;
+}
+
+.bookme-tooltip .day-contents {
+
+}
+
+.bookme-tooltip .bookme-tooltiptext {
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s;
+    width: 100px;
+    background-color: #fff;
+    color: #555;
+    text-align: center;
+    border-radius: 4px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 102%;
+    left: 50%;
+    margin-left: -51px;
+    font-size: 13px;
+    transform: translateY(5px) scale(0.8);
+    box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.2);
+}
+
+.bookme-tooltip .bookme-tooltiptext:hover {
+    background-color: #555555 !important;
+}
+
+.bookme-tooltip .bookme-tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border: 5px solid transparent;
+    border-top-color: #fff;
+}
+
+.day-contents:hover + .bookme-tooltiptext {
+    visibility: visible;
+    opacity: 1;
+    transition: 0.3s;
+    transform: translateY(0) scale(1);
+}
+
+/*--------------Form Elements---------*/
+
+/*--------------Time / Book appointment ---------*/
+.bookmeClearFix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.bookme-aval-time p {
+    margin: 0;
+}
+
+.bookme-aval-time h2 {
+    text-align: center;
+    color: #555;
+    font-size: 20px;
+    line-height: 1.4;
+    padding: 0;
+}
+
+.bookme-aval-time .ts {
+    box-sizing: border-box;
+    line-height: 1.8;
+    color: #888;
+    border-top: 1px solid #ddd;
+    transition: 0.3s;
+}
+
+.bookme-aval-time .ts:hover {
+    background: #f9f9f9;
+    transition: 0.3s;
+}
+
+.bookme-aval-time .ts .ts-time {
+    padding-left: 15px;
+}
+
+.bookme-aval-time .ts .ts-time {
+    line-height: 2;
+    width: 70%;
+    font-weight: 600;
+    color: #555;
+    font-size: 18px;
+}
+
+.bookme-aval-time .ts .ts-time {
+    height: 71px;
+    padding: 17px 0 0 0;
+    box-sizing: border-box;
+    float: left;
+}
+
+.bookme-aval-time .ts .ts-time .ts-available {
+    font-size: 12px;
+    color: #888;
+    display: none;
+}
+
+.bookme-aval-time .ts .ts-bookappo {
+    padding-right: 16px;
+}
+
+.bookme-aval-time .ts .ts-bookappo {
+    width: 30%;
+}
+
+.bookme-aval-time .ts .ts-bookappo {
+    height: 71px;
+    padding: 18px 0 0 0;
+    box-sizing: border-box;
+    float: right;
+}
+
+#bookme_container a {
+    /* color: rgba(0, 122, 204, 0) !important; */
+    text-decoration: none;
+}
+
+.bookme-aval-time .ts .ts-bookappo button .button-ts {
+    display: none;
+}
+
+#bookme_container .coffe.button {
+    background: #1abc9c;
+}
+
+#bookme_container .coffe.button:hover {
+    background: #109177;
+}
+
+#bookme_container .button {
+    width: auto;
+    min-width: 100px;
+    font-weight: 600;
+    font-size: 12px;
+    font-family: 'Ubuntu', sans-serif;
+    color: #fff;
+    text-transform: uppercase;
+    line-height: 35px !important;
+    border: none;
+    border-radius: 2px;
+    -webkit-transition: background .3s;
+    transition: background .3s;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 13px;
+    padding: 0px 20px !important;
+}
+
+#bookme_container .button:disabled:hover{
+    font-family: 'Ubuntu', sans-serif;
+    letter-spacing: initial;
+    font-weight: 600;
+}
+
+@media screen and (max-width: 720px) {
+    .bookme-aval-time .ts {
+        border-top: 0;
+        margin: 0 0 10px;
+    }
+
+    .bookme-aval-time .ts .ts-time, .bookme-aval-time .ts .ts-count {
+        display: none;
+    }
+
+    .bookme-aval-time .ts .ts-bookappo button {
+        float: none;
+        margin: 0;
+        width: 100%;
+        text-align: center;
+        padding: 7px 0;
+        line-height: 1.5;
+        font-size: 14px !important;
+        padding: 5px !important;
+    }
+
+    .bookme-aval-time .ts .ts-bookappo, .bookme-aval-time .ts .ts-bookappo:hover {
+        width: 100%;
+        padding: 0;
+        height: auto;
+    }
+
+    .bookme-aval-time .ts .ts-bookappo button .button-ts {
+        display: block;
+        font-weight: 600;
+        font-size: 13px;
+    }
+}
+
+.bookme-back-steps {
+    padding-top: 20px !important;
+    border-top: 1px solid silver !important;
+    overflow: hidden;
+}
+
+/*--------------Time / Book appointment / Step2 ---------*/
+
+/*--------------Details / Step3 ---------*/
+.bm-row {
+    margin: 0 0 20px;
+    overflow: hidden;
+}
+
+.bm-list {
+    margin-left: 10px !important;
+}
+
+.bm-row label {
+    float: none;
+    width: auto;
+    font-size: 14px;
+}
+
+.bm-row > label > * {
+    vertical-align: middle;
+}
+
+.bm-row > label > img {
+    margin-left: 10px;
+}
+
+.bm-formGroup > label {
+    display: inline-block;
+    font-weight: bold;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.bm-formGroup > div {
+    margin-right: 14px;
+    margin-top: 5px;
+}
+
+/* === Credit Card === */
+.bookme-credit-card {
+    display: block;
+    position: relative;
+    width: 93.75%; /* This is 300px on 320px wide screen */
+    max-width: 500px; /* Just to make sure that it doesnt get crazy on bg screens */
+    min-width: 300px; /* And make sure that it contains at least some size */
+    margin: 30px auto;
+    padding: 20px;
+    overflow: hidden;
+    border-radius: 6px;
+    z-index: 1;
+}
+
+.bookme-credit-card .inputs {
+    list-style: none;
+    margin-top: 30px;
+    padding-left: 0px;
+}
+
+.bookme-credit-card .inputs li {
+    margin-bottom: 30px;
+}
+
+.bookme-credit-card .inputs li.last {
+    margin-bottom: 10px;
+}
+
+.bookme-credit-card .inputs li.expire {
+    float: left;
+    width: 70%;
+    margin-right: 5%;
+}
+
+.bookme-credit-card .inputs li.expire input {
+    float: left;
+    width: 35%;
+}
+
+.bookme-credit-card .inputs li.expire input.month {
+    width: 60%;
+    margin-right: 5%;
+}
+
+.bookme-credit-card .inputs li.cvc-code {
+    float: left;
+    width: 25%;
+}
+
+.bookme-credit-card .inputs li.cvc-code input {
+    width: 100%;
+}
+
+.bookme-credit-card .watermark {
+    position: absolute;
+    z-index: -1;
+}
+
+.bookme-credit-card form {
+    position: relative;
+    z-index: 50;
+}
+
+.bookme-credit-card .logo {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/* === bookme-visa === */
+.bookme-visa {
+    color: #fff;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.8), inset 0px 1px 3px rgba(255, 255, 255, 0.3), inset 0px 0px 2px rgba(255, 255, 255, 0.2);
+}
+
+.bookme-visa h2 {
+    text-shadow: 1px 1px 2px rgba(17, 121, 173, 0.8);
+    text-align: left;
+    color: #fff;
+}
+
+.bookme-visa .logo {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 2em;
+    font-style: italic;
+    text-shadow: 0px 0px 3px rgba(17, 123, 173, 0.9);
+}
+
+.bookme-visa .logo:after {
+    content: ' ';
+    position: absolute;
+    left: 0px;
+    top: 5px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid orange;
+    border-left: 10px solid transparent;
+}
+
+.bookme-visa .watermark {
+    bottom: -100px;
+    left: -50px;
+    color: rgba(255, 255, 255, 0.06);
+    font-size: 20em;
+    font-weight: bold;
+    font-style: italic;
+}
+
+/* === Forms === */
+.bookme-credit-card label {
+    display: block;
+    margin-bottom: 8px;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-shadow: 0px 1px 2px rgba(17, 123, 173, 0.6);
+}
+
+.bookme-credit-card input {
+    display: block;
+    padding: 12px 10px;
+    color: #999;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px #fff;
+    border: 1px solid rgba(16, 103, 133, 0.6);
+    box-shadow: 0px 0px 3px rgba(255, 255, 255, 0.5), inset 0px 1px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+}
+
+.bookme-credit-card input.full {
+    width: 100%;
+}
+
+.gr-bookme-visa {
+    background: #1db1cf;
+    background: -moz-linear-gradient(top, #1db1cf 0%, #1078ab 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1db1cf), color-stop(100%, #1078ab)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #1db1cf 0%, #1078ab 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #1db1cf 0%, #1078ab 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #1db1cf 0%, #1078ab 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #1db1cf 0%, #1078ab 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1db1cf', endColorstr='#1078ab', GradientType=0); /* IE6-9 */
+}
+
+.bookme-gr-input {
+    background: #d3d3d3;
+    background: -moz-linear-gradient(top, #d3d3d3 0%, #d9d9d9 38%, #e5e5e5 82%, #e7e7e7 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #d3d3d3), color-stop(38%, #d9d9d9), color-stop(82%, #e5e5e5), color-stop(100%, #e7e7e7)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #d3d3d3 0%, #d9d9d9 38%, #e5e5e5 82%, #e7e7e7 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #d3d3d3 0%, #d9d9d9 38%, #e5e5e5 82%, #e7e7e7 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #d3d3d3 0%, #d9d9d9 38%, #e5e5e5 82%, #e7e7e7 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #d3d3d3 0%, #d9d9d9 38%, #e5e5e5 82%, #e7e7e7 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d3d3d3', endColorstr='#e7e7e7', GradientType=0); /* IE6-9 */
+}
+
+.calnotfound {
+    background: red;
+}
+
+.calfound {
+    background: green;
+}
+
+.tiphide {
+    display: none !important;
+}
+
+.tipshow {
+    display: block !important;
+}
+
+.column_right_grid_loading {
+    padding-top: 140px;
+    padding-bottom: 130px;
+}
+
+h2.payment-heading {
+    padding-bottom: 14px;
+}
+
+.order-review table{
+    background-color: #fafafa;
+    overflow: hidden;
+    border: none;
+    width:100%;
+}
+.order-review table th {
+    border-bottom: 1px solid #e6e6e6;
+    color: #8a8a8a;
+    font-weight: normal;
+    text-transform: none;
+    width: 40%;
+}
+.order-review td {
+    font-size: 14px;
+}
+.order-review table th, .order-review table td {
+    width: 40%;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 1px solid #e6e6e6;
+    display: table-cell !important;
+    text-align: left !important;
+    padding: 10px;
+}
+.order-review table th:first-child, .order-review table td:first-child{
+    width: 60%;
+}
+.order-review td:last-child {
+    text-align: right !important;
+}
+.order-review .order-total th, .order-review .order-total td {
+    color: #1e1e1e;
+    font-weight: bold;
+}
+.order-review ul, .order-review ol {
+    list-style: none;
+}
+.order-review label {
+    display: inline-block !important;
+    margin-left: 0.36em;
+    margin-bottom: 0;
+    font-weight: normal;
+    color: #313131;
+}
+.order-review input[type="radio"] {
+    display: inline-block;
+    margin-right: 4px;
+}
+.order-review .service-sapertor {
+    color: #aaa;
+}
+
+.order-review .payment_box {
+    margin-left: 32px;
+}
+
+.order-review .payment_box {
+    color: #555;
+}
+
+.ghgh {
+    min-height: 130px;
+}
+
+input.checkMe {
+    height: 15px !important;
+}
+
+/* button loading */
+@-webkit-keyframes ld {
+    0%   { transform: rotate(0deg) }
+    50%  { transform: rotate(180deg) }
+    100% { transform: rotate(360deg) }
+}
+@-moz-keyframes ld {
+    0%   { transform: rotate(0deg)}
+    50%  { transform: rotate(180deg) }
+    100% { transform: rotate(360deg) }
+}
+@-o-keyframes ld {
+    0%   { transform: rotate(0deg)  }
+    50%  { transform: rotate(180deg)  }
+    100% { transform: rotate(360deg) }
+}
+@keyframes ld {
+    0%   { transform: rotate(0deg)  }
+    50%  { transform: rotate(180deg)}
+    100% { transform: rotate(360deg)  }
+}
+
+.bookme-loader {
+    position: relative;
+    opacity: .8;
+    color: transparent !important;
+    text-shadow: none !important;
+}
+
+.bookme-loader:hover,
+.bookme-loader:active,
+.bookme-loader:focus {
+    cursor: default;
+    color: transparent;
+    outline: none !important;
+    box-shadow: none;
+}
+
+.bookme-loader:before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    background: transparent;
+    box-sizing: border-box;
+    -webkit-background-clip: padding-box;
+    border-radius: 50%;
+    border: .15em solid #fff;
+    border-left-color: transparent;
+    top: 50%;
+    left: 50%;
+    margin-top: -10px;
+    margin-left: -10px;
+    width: 20px;
+    height: 20px;
+    -webkit-animation: ld 1s linear infinite;
+    -moz-animation:    ld 1s linear infinite;
+    -o-animation:      ld 1s linear infinite;
+    animation:         ld 1s linear infinite;
+}
+
+.loader-color.bookme-loader:before {
+    border-left-color: #1abc9c;
+    border-right-color: #1abc9c;
+    border-top-color: #1abc9c;
+}
+
+.btn-default.bookme-loader:before {
+    border-left-color: #333333;
+    border-right-color: #333333;
+}
+
+.btn-lg.bookme-loader:before {
+    margin-top: -16px;
+    margin-left: -16px;
+    width: 32px;
+    height: 32px;
+}
+
+.btn-sm.bookme-loader:before {
+    margin-top: -9px;
+    margin-left: -9px;
+    width: 18px;
+    height: 18px;
+}
+
+.btn-xs.bookme-loader:before {
+    margin-top: -7px;
+    margin-left: -7px;
+    width: 14px;
+    height: 14px;
+}
+
+.select-loader {
+    display: inline-block;
+    height: 12px;
+    width: 30px;
+}
+
+.select-loader:before{
+    border-left-color: #8a97a0;
+    border-right-color: #8a97a0;
+    border-top-color: #8a97a0;
+}
+
+.bookme-error, .bookme-js-error {
+    color:#e57373; display:none;
+}
+
+.bookme-success-msg {
+    margin: 20px !important;
+    text-align: center;
+}
+
+.bookme-aval-time label {
+    cursor: pointer;
+}
+
+/* Stripe card form */
+
+.bookme_card_number {
+    margin-top: 10px;
+}
+
+.bookme_card_number input {
+    height: 40px;
+}
+
+.bookme_card_cvc {
+    width: 28%;
+    float: left;
+    margin-top: 10px;
+}
+
+.bookme_card_cvc label {
+    width: 100%;
+}
+
+#card_cvc_stripe {
+    width: auto;
+    height: 36px;
+}
+
+.bookme_card_dates {
+    width: 70%;
+    float: left;
+    margin-top: 10px;
+}
+
+.bookme_card_dates select {
+    width: auto;
+}
+
+.bookme_card_dates label {
+    width: 100%;
+}
+
+table.bookme_cart_table {
+    width: 100%;
+    font-size: 14px;
+}
+
+table.bookme_cart_table, .bookme_cart_table td, .bookme_cart_table th {
+    border: 0 !important;
+    border-spacing: 0;
+    padding: 5px 0;
+}
+
+table.bookme_cart_table tr {
+    background-color: transparent;
+}
+
+table.bookme_cart_table td {
+    border-bottom: 1px solid #ccc !important;
+}
+
+table.bookme_cart_table th, table.bookme_cart_table tr:nth-last-child(2) td {
+    border-bottom: 2px solid #ccc !important;
+}
+
+.bookme_cart_btn, .bookme_cart_btn:disabled {
+    float: left;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    padding: 10px;
+    background: #1abc9c;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.bookme-back-steps .bookme_cart_btn, .bookme-back-steps .bookme_cart_btn:disabled {
+    float: none;
+}
+
+.bookme_cart_btn:hover, .bookme_cart_btn:disabled:hover{
+    opacity: 0.8;
+    background: #1abc9c;
+    border-radius: 50%;
+    transition: 0.4s;
+}
+
+.bookme_cart_btn.bookme-loader img {
+    display: none;
+}
+
+.bookme_cart_btn img {
+    height: 100%;
+    width: 100%;
+}
+
+#bookme_book_more {
+    margin-bottom: 20px;
+}
+
+/*.bookme .bookme-controls .bookme-control-button .bookme-next-button {
+	    background: url(../images/arrows.png) no-repeat -12px 0px!important;
+}*/

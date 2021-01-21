@@ -1,0 +1,2149 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: Bookme\n"
+"POT-Creation-Date: 2020-02-01 22:05+0530\n"
+"PO-Revision-Date: 2020-02-01 22:04+0530\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.5\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: bookme.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: admin/18q30t6wfj.php:250
+msgid "No services found."
+msgstr ""
+
+#: admin/18q30t6wfj.php:1638
+msgid "Service:"
+msgstr ""
+
+#: admin/18q30t6wfj.php:1640
+msgid "Customer Name:"
+msgstr ""
+
+#: admin/18q30t6wfj.php:1640
+msgid "Email:"
+msgstr ""
+
+#: admin/18q30t6wfj.php:1640
+msgid "Phone:"
+msgstr ""
+
+#: admin/18q30t6wfj.php:1640 admin/payment-panel.php:53
+msgid "Status:"
+msgstr ""
+
+#: admin/18q30t6wfj.php:1640
+msgid "Notes:"
+msgstr ""
+
+#: admin/18q30t6wfj.php:1642
+msgid "No of booking:"
+msgstr ""
+
+#: admin/18q30t6wfj.php:1642
+msgid "Capacity:"
+msgstr ""
+
+#: admin/all_bookingdtl.php:30
+msgid "All Booking List"
+msgstr ""
+
+#: admin/all_bookingdtl.php:37 admin/setting.php:136 admin/setting.php:710
+msgid "No"
+msgstr ""
+
+#: admin/all_bookingdtl.php:38
+msgid "Appointment Date"
+msgstr ""
+
+#: admin/all_bookingdtl.php:39 includes/func.php:158 includes/user-ajax.php:248
+#: includes/user-ajax.php:1865
+msgid "Employee"
+msgstr ""
+
+#: admin/all_bookingdtl.php:40
+msgid "Customer Name"
+msgstr ""
+
+#: admin/all_bookingdtl.php:41
+msgid "Customer Phone"
+msgstr ""
+
+#: admin/all_bookingdtl.php:42
+msgid "Customer Email"
+msgstr ""
+
+#: admin/all_bookingdtl.php:43 admin/payment-panel.php:63 admin/payments.php:31
+#: includes/func.php:145 includes/google.php:66 includes/user-ajax.php:89
+#: includes/user-ajax.php:217 includes/user-ajax.php:699
+#: includes/user-ajax.php:1220 includes/user-ajax.php:1782
+#: includes/user-ajax.php:1867 includes/user-ajax.php:3123
+msgid "Service"
+msgstr ""
+
+#: admin/all_bookingdtl.php:44 admin/service-panel.php:160
+#: admin/services.php:131
+msgid "Duration"
+msgstr ""
+
+#: admin/all_bookingdtl.php:45 admin/payments.php:34
+msgid "Status"
+msgstr ""
+
+#: admin/all_bookingdtl.php:46 admin/payment-panel.php:44
+msgid "Payment"
+msgstr ""
+
+#: admin/all_bookingdtl.php:47 admin/customers.php:27
+#: includes/user-ajax.php:1378
+msgid "Notes"
+msgstr ""
+
+#: admin/all_bookingdtl.php:57 admin/coupons.php:28 admin/coupons.php:68
+#: admin/customers.php:30 admin/staff.php:181
+msgid "Edit"
+msgstr ""
+
+#: admin/appearance.php:10 admin/menu.php:13
+msgid "Appearance"
+msgstr ""
+
+#: admin/appearance.php:24
+msgid "Appearance Bullets"
+msgstr ""
+
+#: admin/appearance.php:29
+msgid "Appearance Labels"
+msgstr ""
+
+#: admin/appearance.php:34
+msgid "Appearance Colour"
+msgstr ""
+
+#: admin/appearance.php:39 admin/appearance.php:187
+msgid "Booking Message"
+msgstr ""
+
+#: admin/appearance.php:54 admin/appearance.php:108 admin/appearance.php:155
+#: admin/appearance.php:182
+msgid "Appearance settings"
+msgstr ""
+
+#: admin/appearance.php:59 admin/appearance.php:120
+msgid "Change 'Service' Label"
+msgstr ""
+
+#: admin/appearance.php:66
+msgid "Change 'Time' Label"
+msgstr ""
+
+#: admin/appearance.php:73
+msgid "Change 'Cart' Label"
+msgstr ""
+
+#: admin/appearance.php:80
+msgid "Change 'Detail' Label"
+msgstr ""
+
+#: admin/appearance.php:87
+msgid "Change 'Payment' Label"
+msgstr ""
+
+#: admin/appearance.php:94
+msgid "Change 'Done' Label"
+msgstr ""
+
+#: admin/appearance.php:102 admin/appearance.php:149 admin/appearance.php:176
+#: admin/appearance.php:195 admin/custom_fields.php:298
+#: admin/email_notification.php:490 admin/services.php:182
+#: admin/setting.php:152 admin/setting.php:186 admin/setting.php:334
+#: admin/setting.php:472 admin/setting.php:497 admin/setting.php:746
+#: admin/sms_notification.php:451
+msgid "Save"
+msgstr ""
+
+#: admin/appearance.php:113
+msgid "Change 'Category' Label"
+msgstr ""
+
+#: admin/appearance.php:127
+msgid "Change 'Employee' Label"
+msgstr ""
+
+#: admin/appearance.php:134
+msgid "Change 'Number of person' Label"
+msgstr ""
+
+#: admin/appearance.php:141
+msgid "Change 'Availability' Label"
+msgstr ""
+
+#: admin/appearance.php:160
+msgid "BackGround Colour"
+msgstr ""
+
+#: admin/appearance.php:169
+msgid "Text Colour"
+msgstr ""
+
+#: admin/booking-panel.php:59
+msgid "Edit booking"
+msgstr ""
+
+#: admin/booking-panel.php:59
+msgid "Add new booking"
+msgstr ""
+
+#: admin/booking-panel.php:85 admin/payment-panel.php:65 admin/payments.php:30
+msgid "Provider"
+msgstr ""
+
+#: admin/booking-panel.php:99 admin/coupon-panel.php:87 admin/coupons.php:26
+#: admin/member-panel.php:149 admin/member-panel.php:154 admin/menu.php:10
+#: admin/staff.php:83
+msgid "Services"
+msgstr ""
+
+#: admin/booking-panel.php:102
+msgid "Select service"
+msgstr ""
+
+#: admin/booking-panel.php:135 admin/payment-panel.php:64 admin/payments.php:27
+#: includes/user-ajax.php:1863
+msgid "Date"
+msgstr ""
+
+#: admin/booking-panel.php:141
+msgid "Period"
+msgstr ""
+
+#: admin/booking-panel.php:166 includes/js-lang.php:10
+msgid "to"
+msgstr ""
+
+#: admin/booking-panel.php:195 admin/menu.php:15
+msgid "Customers"
+msgstr ""
+
+#: admin/booking-panel.php:239
+msgid "Add Customer"
+msgstr ""
+
+#: admin/booking-panel.php:251
+msgid "Send notifications"
+msgstr ""
+
+#: admin/booking-panel.php:255
+msgid "Don't send"
+msgstr ""
+
+#: admin/booking-panel.php:256
+msgid "Send"
+msgstr ""
+
+#: admin/calendar.php:9 admin/member-panel.php:305 admin/menu.php:16
+msgid "Calendar"
+msgstr ""
+
+#: admin/calendar.php:18
+msgid "All"
+msgstr ""
+
+#: admin/coupon-panel.php:31
+msgid "Edit coupen"
+msgstr ""
+
+#: admin/coupon-panel.php:31
+msgid "Create coupen"
+msgstr ""
+
+#: admin/coupon-panel.php:57 admin/coupons.php:23
+msgid "Code"
+msgstr ""
+
+#: admin/coupon-panel.php:64
+msgid "Discount (%)"
+msgstr ""
+
+#: admin/coupon-panel.php:70 admin/coupons.php:25
+msgid "Deduction"
+msgstr ""
+
+#: admin/coupon-panel.php:79 admin/coupons.php:27
+msgid "Usage limit"
+msgstr ""
+
+#: admin/coupons.php:13 admin/menu.php:20
+msgid "Coupons"
+msgstr ""
+
+#: admin/coupons.php:22
+msgid "Sr. No"
+msgstr ""
+
+#: admin/coupons.php:24 admin/payment-panel.php:108 includes/js-lang.php:130
+#: includes/user-ajax.php:1581
+msgid "Discount"
+msgstr ""
+
+#: admin/coupons.php:61 admin/staff.php:132
+msgid "No services."
+msgstr ""
+
+#: admin/custom_fields.php:6 admin/menu.php:14
+msgid "Custom Fields"
+msgstr ""
+
+#: admin/custom_fields.php:13 admin/custom_fields.php:46
+#: admin/custom_fields.php:343
+msgid "Text Field"
+msgstr ""
+
+#: admin/custom_fields.php:16 admin/custom_fields.php:73
+#: admin/custom_fields.php:349
+msgid "Text Area"
+msgstr ""
+
+#: admin/custom_fields.php:19 admin/custom_fields.php:100
+#: admin/custom_fields.php:354
+msgid "Text Content"
+msgstr ""
+
+#: admin/custom_fields.php:23 admin/custom_fields.php:128
+#: admin/custom_fields.php:359
+msgid "Checkbox Group"
+msgstr ""
+
+#: admin/custom_fields.php:26 admin/custom_fields.php:180
+#: admin/custom_fields.php:369
+msgid "Radio Button Group"
+msgstr ""
+
+#: admin/custom_fields.php:29 admin/custom_fields.php:237
+#: admin/custom_fields.php:380
+msgid "Drop Down"
+msgstr ""
+
+#: admin/custom_fields.php:57 admin/custom_fields.php:84
+#: admin/custom_fields.php:112 admin/custom_fields.php:140
+#: admin/custom_fields.php:192 admin/custom_fields.php:249
+#: admin/custom_fields.php:343 admin/custom_fields.php:349
+#: admin/custom_fields.php:354 admin/custom_fields.php:359
+#: admin/custom_fields.php:369 admin/custom_fields.php:380
+msgid "Required Field"
+msgstr ""
+
+#: admin/custom_fields.php:62 admin/custom_fields.php:89
+#: admin/custom_fields.php:117 admin/custom_fields.php:145
+#: admin/custom_fields.php:160 admin/custom_fields.php:197
+#: admin/custom_fields.php:216 admin/custom_fields.php:254
+#: admin/custom_fields.php:272 admin/custom_fields.php:343
+#: admin/custom_fields.php:349 admin/custom_fields.php:354
+#: admin/custom_fields.php:359 admin/custom_fields.php:365
+#: admin/custom_fields.php:369 admin/custom_fields.php:375
+#: admin/custom_fields.php:380 admin/custom_fields.php:386
+msgid "Enter a label"
+msgstr ""
+
+#: admin/custom_fields.php:170 admin/custom_fields.php:226
+#: admin/custom_fields.php:282 admin/custom_fields.php:359
+#: admin/custom_fields.php:369 admin/custom_fields.php:380
+msgid "Option"
+msgstr ""
+
+#: admin/custom_fields.php:300
+msgid "HTML allowed in all texts and labels."
+msgstr ""
+
+#: admin/customer-panel.php:25
+msgid "Edit customer"
+msgstr ""
+
+#: admin/customer-panel.php:25
+msgid "Add new Customer"
+msgstr ""
+
+#: admin/customer-panel.php:53 admin/customer-panel.php:54
+#: admin/customers.php:24 admin/services.php:128 includes/google.php:70
+#: includes/user-ajax.php:1339
+msgid "Name"
+msgstr ""
+
+#: admin/customer-panel.php:58 admin/customers.php:25
+#: admin/member-panel.php:132 admin/setting.php:173 includes/google.php:72
+#: includes/user-ajax.php:1365
+msgid "Phone"
+msgstr ""
+
+#: admin/customer-panel.php:63 admin/customer-panel.php:65
+#: admin/customers.php:26 admin/member-panel.php:125 includes/google.php:71
+#: includes/user-ajax.php:1352
+msgid "Email"
+msgstr ""
+
+#: admin/customer-panel.php:69 admin/customer-panel.php:71
+msgid "Note"
+msgstr ""
+
+#: admin/customers.php:15
+msgid "Customers List"
+msgstr ""
+
+#: admin/customers.php:23
+msgid "No."
+msgstr ""
+
+#: admin/customers.php:28
+msgid "Last Appointment"
+msgstr ""
+
+#: admin/customers.php:29
+msgid "Total Appointments"
+msgstr ""
+
+#: admin/dayoff-panel.php:12
+msgid "Days off"
+msgstr ""
+
+#: admin/email_notification.php:9 admin/menu.php:18
+msgid "Email Notification"
+msgstr ""
+
+#: admin/email_notification.php:14
+msgid "Sender name"
+msgstr ""
+
+#: admin/email_notification.php:22
+msgid "Sender email"
+msgstr ""
+
+#: admin/email_notification.php:35
+msgid "Notification to customer about approved appointment"
+msgstr ""
+
+#: admin/email_notification.php:42 admin/email_notification.php:194
+#: admin/email_notification.php:346
+msgid "Subject"
+msgstr ""
+
+#: admin/email_notification.php:53 admin/email_notification.php:205
+#: admin/email_notification.php:357 admin/sms_notification.php:87
+#: admin/sms_notification.php:211 admin/sms_notification.php:335
+msgid "Message"
+msgstr ""
+
+#: admin/email_notification.php:78 admin/email_notification.php:230
+#: admin/email_notification.php:382 admin/sms_notification.php:101
+#: admin/sms_notification.php:225 admin/sms_notification.php:349
+msgid "time of appointment"
+msgstr ""
+
+#: admin/email_notification.php:84 admin/email_notification.php:236
+#: admin/email_notification.php:388 admin/sms_notification.php:107
+#: admin/sms_notification.php:231 admin/sms_notification.php:355
+msgid "end time of appointment"
+msgstr ""
+
+#: admin/email_notification.php:90 admin/email_notification.php:242
+#: admin/email_notification.php:394 admin/setting.php:285
+#: admin/sms_notification.php:113 admin/sms_notification.php:237
+#: admin/sms_notification.php:361
+msgid "booking date"
+msgstr ""
+
+#: admin/email_notification.php:96 admin/email_notification.php:248
+#: admin/email_notification.php:400 admin/setting.php:299
+#: admin/sms_notification.php:119 admin/sms_notification.php:243
+#: admin/sms_notification.php:367
+msgid "number of persons"
+msgstr ""
+
+#: admin/email_notification.php:102 admin/email_notification.php:254
+#: admin/email_notification.php:406 admin/setting.php:326 admin/setting.php:464
+#: admin/sms_notification.php:125 admin/sms_notification.php:249
+#: admin/sms_notification.php:373
+msgid "customer name"
+msgstr ""
+
+#: admin/email_notification.php:108 admin/email_notification.php:260
+#: admin/email_notification.php:412 admin/sms_notification.php:131
+#: admin/sms_notification.php:255 admin/sms_notification.php:379
+msgid "customer email"
+msgstr ""
+
+#: admin/email_notification.php:114 admin/email_notification.php:266
+#: admin/email_notification.php:418 admin/sms_notification.php:137
+#: admin/sms_notification.php:261 admin/sms_notification.php:385
+msgid "customer phone"
+msgstr ""
+
+#: admin/email_notification.php:120 admin/email_notification.php:272
+#: admin/email_notification.php:424 admin/sms_notification.php:143
+#: admin/sms_notification.php:267 admin/sms_notification.php:391
+msgid "customer note"
+msgstr ""
+
+#: admin/email_notification.php:126 admin/email_notification.php:278
+#: admin/email_notification.php:430 admin/sms_notification.php:149
+#: admin/sms_notification.php:273 admin/sms_notification.php:397
+msgid "company name"
+msgstr ""
+
+#: admin/email_notification.php:132 admin/email_notification.php:284
+#: admin/email_notification.php:436 admin/sms_notification.php:155
+#: admin/sms_notification.php:279 admin/sms_notification.php:403
+msgid "company address"
+msgstr ""
+
+#: admin/email_notification.php:138 admin/email_notification.php:290
+#: admin/email_notification.php:442 admin/sms_notification.php:161
+#: admin/sms_notification.php:285 admin/sms_notification.php:409
+msgid "company phone"
+msgstr ""
+
+#: admin/email_notification.php:144 admin/email_notification.php:296
+#: admin/email_notification.php:448 admin/sms_notification.php:167
+#: admin/sms_notification.php:291 admin/sms_notification.php:415
+msgid "company website"
+msgstr ""
+
+#: admin/email_notification.php:150 admin/email_notification.php:302
+#: admin/email_notification.php:454 admin/setting.php:319 admin/setting.php:457
+#: admin/sms_notification.php:173 admin/sms_notification.php:297
+#: admin/sms_notification.php:421
+msgid "employee name"
+msgstr ""
+
+#: admin/email_notification.php:156 admin/email_notification.php:308
+#: admin/email_notification.php:460 admin/setting.php:292 admin/setting.php:444
+#: admin/sms_notification.php:179 admin/sms_notification.php:303
+#: admin/sms_notification.php:427
+msgid "category name"
+msgstr ""
+
+#: admin/email_notification.php:162 admin/email_notification.php:314
+#: admin/email_notification.php:466 admin/setting.php:305 admin/setting.php:450
+#: admin/sms_notification.php:185 admin/sms_notification.php:309
+#: admin/sms_notification.php:433
+msgid "service name"
+msgstr ""
+
+#: admin/email_notification.php:168 admin/email_notification.php:320
+#: admin/email_notification.php:472 admin/sms_notification.php:191
+#: admin/sms_notification.php:315 admin/sms_notification.php:439
+msgid "combined values of all custom fields"
+msgstr ""
+
+#: admin/email_notification.php:174 admin/email_notification.php:326
+#: admin/email_notification.php:478
+msgid "combined values of all custom fields (formatted in 2 columns)"
+msgstr ""
+
+#: admin/email_notification.php:187
+msgid "Notification to employee about approved appointment"
+msgstr ""
+
+#: admin/email_notification.php:339
+msgid "Notification to admin about approved appointment"
+msgstr ""
+
+#: admin/header.php:7
+msgid "Bookme Control Panel"
+msgstr ""
+
+#: admin/header.php:11
+msgid "Version"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+#: admin/header.php:18
+msgid "Bookme"
+msgstr ""
+
+#: admin/header.php:19
+#, php-format
+msgid ""
+"Please verify your purchase code for using Bookme plugin. <a href=\"%s\" "
+"class=\"alert-link\">Click here to verify.</a>"
+msgstr ""
+
+#: admin/member-panel.php:55
+msgid "Add new employee"
+msgstr ""
+
+#: admin/member-panel.php:91
+msgid "Details"
+msgstr ""
+
+#: admin/member-panel.php:98
+msgid "Full name"
+msgstr ""
+
+#: admin/member-panel.php:105 admin/service-panel.php:129
+msgid "Visibility"
+msgstr ""
+
+#: admin/member-panel.php:111 admin/service-panel.php:133 admin/staff.php:113
+msgid "Public"
+msgstr ""
+
+#: admin/member-panel.php:115 admin/service-panel.php:135 admin/staff.php:115
+msgid "Private"
+msgstr ""
+
+#: admin/member-panel.php:141 admin/service-panel.php:257
+msgid "Info"
+msgstr ""
+
+#: admin/member-panel.php:176 admin/staff.php:84
+msgid "Schedule"
+msgstr ""
+
+#: admin/member-panel.php:179 admin/staff.php:185
+msgid "Day off"
+msgstr ""
+
+#: admin/member-panel.php:181
+msgid "Time (Start - End)"
+msgstr ""
+
+#: admin/member-panel.php:182 admin/staff.php:163
+msgid "Break"
+msgstr ""
+
+#: admin/member-panel.php:238 admin/member-panel.php:240
+#: includes/js-lang.php:46
+msgid "Add break"
+msgstr ""
+
+#: admin/member-panel.php:249 includes/js-lang.php:47
+msgid "Start"
+msgstr ""
+
+#: admin/member-panel.php:256 includes/js-lang.php:48
+msgid "End"
+msgstr ""
+
+#: admin/member-panel.php:278
+msgid "Google Calendar integration"
+msgstr ""
+
+#: admin/member-panel.php:289
+msgid "Click here to connect"
+msgstr ""
+
+#: admin/member-panel.php:292
+msgid "Connected"
+msgstr ""
+
+#: admin/member-panel.php:293
+msgid "Disconnect"
+msgstr ""
+
+#: admin/member-panel.php:320
+#, php-format
+msgid "Please configure Google Calendar <a href=\"%s\">settings</a> first"
+msgstr ""
+
+#: admin/menu.php:9
+msgid "Book Me"
+msgstr ""
+
+#: admin/menu.php:11
+msgid "Staff Members"
+msgstr ""
+
+#: admin/menu.php:12
+msgid "Booking Details"
+msgstr ""
+
+#: admin/menu.php:12
+msgid "All Booking"
+msgstr ""
+
+#: admin/menu.php:13
+msgid "Appearance Details"
+msgstr ""
+
+#: admin/menu.php:14
+msgid "Custom Details"
+msgstr ""
+
+#: admin/menu.php:15
+msgid "Customers Details"
+msgstr ""
+
+#: admin/menu.php:16
+msgid "Calendar Details"
+msgstr ""
+
+#: admin/menu.php:17
+msgid "Payments Details"
+msgstr ""
+
+#: admin/menu.php:17 admin/payments.php:18 admin/setting.php:109
+msgid "Payments"
+msgstr ""
+
+#: admin/menu.php:19 admin/sms_notification.php:9
+msgid "SMS Notification"
+msgstr ""
+
+#: admin/menu.php:21 admin/setting.php:72
+msgid "Settings"
+msgstr ""
+
+#: admin/payment-panel.php:21 admin/payments.php:35 admin/payments.php:66
+msgid "Invoice"
+msgstr ""
+
+#: admin/payment-panel.php:43 admin/payments.php:29
+msgid "Customer"
+msgstr ""
+
+#: admin/payment-panel.php:51
+msgid "Created:"
+msgstr ""
+
+#: admin/payment-panel.php:52
+msgid "Type:"
+msgstr ""
+
+#: admin/payment-panel.php:66 admin/service-panel.php:141
+#: admin/services.php:134 includes/user-ajax.php:1866
+msgid "Price"
+msgstr ""
+
+#: admin/payment-panel.php:92 admin/tinymce_popup.php:77
+msgid "No of person"
+msgstr ""
+
+#: admin/payment-panel.php:103 includes/user-ajax.php:1554
+#: includes/user-ajax.php:1569
+msgid "Subtotal"
+msgstr ""
+
+#: admin/payment-panel.php:115 includes/user-ajax.php:1618
+msgid "Total"
+msgstr ""
+
+#: admin/payment-panel.php:124
+msgid "Complete payment"
+msgstr ""
+
+#: admin/payments.php:26
+msgid "S No."
+msgstr ""
+
+#: admin/payments.php:28
+msgid "Type"
+msgstr ""
+
+#: admin/payments.php:32
+msgid "Appoinment Date"
+msgstr ""
+
+#: admin/payments.php:33
+msgid "Amount"
+msgstr ""
+
+#: admin/service-panel.php:27 admin/service-panel.php:63
+msgid "All Staff"
+msgstr ""
+
+#: admin/service-panel.php:34
+msgid "Select a category"
+msgstr ""
+
+#: admin/service-panel.php:81
+msgid "Add new Service"
+msgstr ""
+
+#: admin/service-panel.php:109
+msgid "Title"
+msgstr ""
+
+#: admin/service-panel.php:148
+msgid "Capacity"
+msgstr ""
+
+#: admin/service-panel.php:189
+msgid "All day"
+msgstr ""
+
+#: admin/service-panel.php:197
+msgid "Padding time"
+msgstr ""
+
+#: admin/service-panel.php:240 includes/user-ajax.php:183
+msgid "Category"
+msgstr ""
+
+#: admin/service-panel.php:248 admin/staff.php:60
+msgid "Staff members"
+msgstr ""
+
+#: admin/services.php:32
+msgid "All Services"
+msgstr ""
+
+#: admin/services.php:36
+msgid "CATEGORIES"
+msgstr ""
+
+#: admin/services.php:63 includes/js-lang.php:33
+msgid "Valid"
+msgstr ""
+
+#: admin/services.php:67 includes/js-lang.php:34
+msgid "Invalid"
+msgstr ""
+
+#: admin/services.php:85 admin/services.php:171
+msgid "Add New Category"
+msgstr ""
+
+#: admin/services.php:99
+msgid "Service List"
+msgstr ""
+
+#: admin/services.php:106
+msgid "Search..."
+msgstr ""
+
+#: admin/services.php:177
+msgid "Category Name"
+msgstr ""
+
+#: admin/services.php:184 includes/js-lang.php:8
+msgid "Cancel"
+msgstr ""
+
+#: admin/setting.php:39
+msgid "Invalid purchase code."
+msgstr ""
+
+#: admin/setting.php:42
+msgid "Some error occurred, Please try again."
+msgstr ""
+
+#: admin/setting.php:65 includes/js-lang.php:95
+msgid "Your purchase code is verified successfully"
+msgstr ""
+
+#: admin/setting.php:81
+msgid "General"
+msgstr ""
+
+#: admin/setting.php:87
+msgid "Company"
+msgstr ""
+
+#: admin/setting.php:94 admin/setting.php:226
+msgid "WooCommerce"
+msgstr ""
+
+#: admin/setting.php:99
+msgid "Google Calendar"
+msgstr ""
+
+#: admin/setting.php:104 admin/setting.php:480 includes/user-ajax.php:115
+#: includes/user-ajax.php:724 includes/user-ajax.php:1245
+#: includes/user-ajax.php:1805 includes/user-ajax.php:3148
+msgid "Cart"
+msgstr ""
+
+#: admin/setting.php:114 admin/setting.php:769
+msgid "Purchase Code"
+msgstr ""
+
+#: admin/setting.php:127
+msgid "Enable Coupan Code"
+msgstr ""
+
+#: admin/setting.php:133 admin/setting.php:708
+msgid "Yes"
+msgstr ""
+
+#: admin/setting.php:141 admin/setting.php:146
+msgid "Day limit"
+msgstr ""
+
+#: admin/setting.php:160
+msgid "Company name"
+msgstr ""
+
+#: admin/setting.php:167
+msgid "Address"
+msgstr ""
+
+#: admin/setting.php:179
+msgid "Website"
+msgstr ""
+
+#: admin/setting.php:201
+#, php-format
+msgid ""
+"WooCommerce cart page is not created. Follow this <a href=\"%s\" class="
+"\"alert-link\">link</a> to create WooCommerce pages."
+msgstr ""
+
+#: admin/setting.php:210 admin/setting.php:342
+msgid "Instructions"
+msgstr ""
+
+#: admin/setting.php:212
+msgid ""
+"You need to install and activate WooCommerce plugin before using the options "
+"below.<br/><br/>Once the plugin is activated do the following steps:"
+msgstr ""
+
+#: admin/setting.php:215
+msgid "Create a product in WooCommerce that can be placed in cart."
+msgstr ""
+
+#: admin/setting.php:216
+msgid "In the form below enable WooCommerce option."
+msgstr ""
+
+#: admin/setting.php:217
+msgid ""
+"Select the product that you created at step 1 in the drop down list of "
+"products."
+msgstr ""
+
+#: admin/setting.php:218
+msgid "Cart item data will be displayed in the cart."
+msgstr ""
+
+#: admin/setting.php:221
+msgid ""
+"Note that once you have enabled WooCommerce option, the built-in payment "
+"methods will no longer work. All your customers will be redirected to "
+"WooCommerce cart."
+msgstr ""
+
+#: admin/setting.php:232 admin/setting.php:393 admin/setting.php:487
+msgid "Disable"
+msgstr ""
+
+#: admin/setting.php:235 admin/setting.php:396 admin/setting.php:490
+msgid "Enable"
+msgstr ""
+
+#: admin/setting.php:241
+msgid "Bookme product"
+msgstr ""
+
+#: admin/setting.php:244
+msgid "Select product"
+msgstr ""
+
+#: admin/setting.php:263
+msgid "Cart item data"
+msgstr ""
+
+#: admin/setting.php:279
+msgid "booking time"
+msgstr ""
+
+#: admin/setting.php:312
+msgid "service price"
+msgstr ""
+
+#: admin/setting.php:343
+msgid "To find your client ID and client secret, do the following:"
+msgstr ""
+
+#: admin/setting.php:345
+msgid ""
+"Go to the <a href=\"https://console.developers.google.com/\" target=\"_blank"
+"\">Google Developers Console</a>."
+msgstr ""
+
+#: admin/setting.php:346
+msgid "Select a project, or create a new one."
+msgstr ""
+
+#: admin/setting.php:347
+msgid ""
+"Click in the upper left part to see a sliding sidebar. Next, click <b>APIs & "
+"Services</b> -> <b>Library</b>. In the list of APIs look for <b>Calendar "
+"API</b> and make sure it is enabled."
+msgstr ""
+
+#: admin/setting.php:348
+msgid ""
+"In the sidebar on the left, select <b>APIs & Services</b> -> <b>Credentials</"
+"b>."
+msgstr ""
+
+#: admin/setting.php:349
+msgid ""
+"Go to <b>OAuth consent screen</b> tab and give a name to the product, then "
+"click <b>Save</b>."
+msgstr ""
+
+#: admin/setting.php:350
+msgid ""
+"Go to <b>Credentials</b> tab and in <b>New credentials</b> drop-down menu "
+"select <b>OAuth client ID</b>."
+msgstr ""
+
+#: admin/setting.php:351
+msgid ""
+"Select <b>Web application</b> and create your project's OAuth 2.0 "
+"credentials by providing the necessary information. For <b>Authorized "
+"redirect URIs</b> enter the <b>Redirect URI</b> found below on this page. "
+"Click <b>Create</b>."
+msgstr ""
+
+#: admin/setting.php:352
+msgid ""
+"In the popup window look for the <b>Client ID</b> and <b>Client secret</b>. "
+"Use them in the form below on this page."
+msgstr ""
+
+#: admin/setting.php:353
+msgid ""
+"Go to Staff Members, edit a staff member and click <b>Connect</b> which is "
+"located at the bottom of sidebar."
+msgstr ""
+
+#: admin/setting.php:358
+msgid "Client ID"
+msgstr ""
+
+#: admin/setting.php:366
+msgid "Client secret"
+msgstr ""
+
+#: admin/setting.php:375
+msgid "Redirect URI"
+msgstr ""
+
+#: admin/setting.php:384
+msgid "2 way sync"
+msgstr ""
+
+#: admin/setting.php:401
+msgid "Limit number of fetched events"
+msgstr ""
+
+#: admin/setting.php:431
+msgid "Event title"
+msgstr ""
+
+#: admin/setting.php:481
+msgid ""
+"Give the facility to your client to book several appointments at once."
+"<br><strong>Note:</strong> If WooCommerce is enable then cart will not work."
+msgstr ""
+
+#: admin/setting.php:512
+msgid "Currency"
+msgstr ""
+
+#: admin/setting.php:650
+msgid "Service paid locally"
+msgstr ""
+
+#: admin/setting.php:655 admin/setting.php:673 admin/setting.php:730
+msgid "Disabled"
+msgstr ""
+
+#: admin/setting.php:657 admin/setting.php:732
+msgid "Enabled"
+msgstr ""
+
+#: admin/setting.php:664
+msgid "PayPal"
+msgstr ""
+
+#: admin/setting.php:674
+msgid "PayPal Express Checkout"
+msgstr ""
+
+#: admin/setting.php:682
+msgid "API Username"
+msgstr ""
+
+#: admin/setting.php:688
+msgid "API Password"
+msgstr ""
+
+#: admin/setting.php:694
+msgid ""
+"API\n"
+"                                                            Signature"
+msgstr ""
+
+#: admin/setting.php:705
+msgid "Sandbox Mode"
+msgstr ""
+
+#: admin/setting.php:719
+msgid "Stripe"
+msgstr ""
+
+#: admin/setting.php:737
+msgid "Secret key"
+msgstr ""
+
+#: admin/setting.php:763
+msgid "Your purchase code is already verified."
+msgstr ""
+
+#: admin/setting.php:773
+msgid "Don't have a purchase code, Buy now."
+msgstr ""
+
+#: admin/setting.php:777
+msgid "Verify"
+msgstr ""
+
+#: admin/sms_notification.php:14
+msgid ""
+"Bookme uses <a href=\"https://www.twilio.com/\" target=\"_blank\" class="
+"\"alert-link\">Twilio SMS API</a> for sending SMS. Just follow the below "
+"steps and enjoy the SMS service."
+msgstr ""
+
+#: admin/sms_notification.php:17
+msgid "Visit to"
+msgstr ""
+
+#: admin/sms_notification.php:17
+msgid "Twilio website"
+msgstr ""
+
+#: admin/sms_notification.php:17
+msgid "and sign up or log in."
+msgstr ""
+
+#: admin/sms_notification.php:18
+msgid "After that go to "
+msgstr ""
+
+#: admin/sms_notification.php:18
+msgid "Console page."
+msgstr ""
+
+#: admin/sms_notification.php:19
+msgid "And now copy ACCOUNT SID and AUTH TOKEN and paste below."
+msgstr ""
+
+#: admin/sms_notification.php:20
+msgid "After that create Twilio phone number and paste below."
+msgstr ""
+
+#: admin/sms_notification.php:21
+msgid "That's it. Now enjoy the SMS service."
+msgstr ""
+
+#: admin/sms_notification.php:27
+msgid "Account SID"
+msgstr ""
+
+#: admin/sms_notification.php:39
+msgid "Auth Token"
+msgstr ""
+
+#: admin/sms_notification.php:51
+msgid "Twilio Phone Number"
+msgstr ""
+
+#: admin/sms_notification.php:63
+msgid "Admin Phone Number"
+msgstr ""
+
+#: admin/sms_notification.php:80
+msgid "SMS to customer about approved appointment"
+msgstr ""
+
+#: admin/sms_notification.php:204
+msgid "SMS to employee about approved appointment"
+msgstr ""
+
+#: admin/sms_notification.php:328
+msgid "SMS to admin about approved appointment"
+msgstr ""
+
+#: admin/staff.php:66
+msgid "Search List"
+msgstr ""
+
+#: admin/staff.php:82
+msgid "Name & Visibility"
+msgstr ""
+
+#: admin/staff.php:85 includes/user-ajax.php:1868
+msgid "Actions"
+msgstr ""
+
+#: admin/staff.php:154
+msgid "Timing"
+msgstr ""
+
+#: admin/staff.php:159 admin/staff.php:168
+msgid "No available"
+msgstr ""
+
+#: admin/staff.php:195
+msgid "No members created."
+msgstr ""
+
+#: admin/tinymce_popup.php:26
+msgid "Default value for category select"
+msgstr ""
+
+#: admin/tinymce_popup.php:34
+msgid "Select Category"
+msgstr ""
+
+#: admin/tinymce_popup.php:41 admin/tinymce_popup.php:54
+#: admin/tinymce_popup.php:66 admin/tinymce_popup.php:81
+msgid "Hide this field"
+msgstr ""
+
+#: admin/tinymce_popup.php:47
+msgid "Default value for service select"
+msgstr ""
+
+#: admin/tinymce_popup.php:51
+msgid "Select Service"
+msgstr ""
+
+#: admin/tinymce_popup.php:59
+msgid "Default value for employee select"
+msgstr ""
+
+#: admin/tinymce_popup.php:63
+msgid "Select Employee"
+msgstr ""
+
+#: admin/tinymce_popup.php:72
+msgid ""
+"Please be aware that a value in above fields is required in the frontend. If "
+"you choose to hide these fields, please be sure to select a default value "
+"for it"
+msgstr ""
+
+#: admin/tinymce_popup.php:87
+msgid "Insert"
+msgstr ""
+
+#: admin/tinymce_popup.php:139 bookme.php:211 bookme.php:215
+msgid "Add Bookme Form"
+msgstr ""
+
+#: admin/tinymce_popup.php:250
+msgid "Bookme Shortcode"
+msgstr ""
+
+#: admin/tinymce_popup.php:269
+msgid "Add Bookme booking form"
+msgstr ""
+
+#: admin/tooltip.php:3
+msgid "Set visibility private to hide from your customer."
+msgstr ""
+
+#: admin/tooltip.php:4
+msgid "How many customer you want in a single time period."
+msgstr ""
+
+#: admin/tooltip.php:5
+msgid ""
+"Set padding time for an appointment. For example, if you want a break "
+"between two appointment for preparation of next appointment then you can use "
+"padding time. Means if your first appointment is on 9:00 - 10:00 and you set "
+"the padding time to 15 min then the next appointment will be on 10:15 - "
+"11:15."
+msgstr ""
+
+#: admin/tooltip.php:6
+msgid "Assign employees to this service."
+msgstr ""
+
+#: admin/tooltip.php:7
+msgid "This is the description of the service."
+msgstr ""
+
+#: admin/tooltip.php:8
+msgid ""
+"To make employee invisible to your customers set the visibility to Private."
+msgstr ""
+
+#: admin/tooltip.php:9
+msgid "This is the description of the employee."
+msgstr ""
+
+#: admin/tooltip.php:10
+msgid "Assign employee to services."
+msgstr ""
+
+#: admin/tooltip.php:11
+msgid "Booking start and end time."
+msgstr ""
+
+#: admin/tooltip.php:12
+msgid "Add customers to the booking."
+msgstr ""
+
+#: admin/tooltip.php:13
+msgid "Send mail to the customer or not."
+msgstr ""
+
+#: admin/tooltip.php:14
+msgid "Code of the coupon."
+msgstr ""
+
+#: admin/tooltip.php:15
+msgid "How many times a coupon can be used."
+msgstr ""
+
+#: admin/tooltip.php:16
+msgid "If coupon discount is assigned then deduction will not work."
+msgstr ""
+
+#: admin/tooltip.php:17
+msgid "Select services for the coupon."
+msgstr ""
+
+#: admin/tooltip.php:18
+msgid "Change frontend bullets text."
+msgstr ""
+
+#: admin/tooltip.php:19
+msgid "Change frontend labels."
+msgstr ""
+
+#: admin/tooltip.php:20
+msgid "Change frontend colors."
+msgstr ""
+
+#: admin/tooltip.php:21
+msgid "Change booking success message."
+msgstr ""
+
+#: admin/tooltip.php:22
+msgid "Company details will use in emails."
+msgstr ""
+
+#: admin/tooltip.php:23
+msgid "Set how far in the future the clients can book appointments."
+msgstr ""
+
+#: admin/tooltip.php:24
+msgid "The client ID obtained from the Developers Console."
+msgstr ""
+
+#: admin/tooltip.php:25
+msgid "The client secret obtained from the Developers Console."
+msgstr ""
+
+#: admin/tooltip.php:26
+msgid "Enter this URL as a redirect URI in the Developers Console."
+msgstr ""
+
+#: admin/tooltip.php:27
+msgid ""
+"By default Bookme pushes new appointments and any further changes to Google "
+"Calendar. If you enable this option then Bookme will fetch events from "
+"Google Calendar and remove corresponding time slots before displaying the "
+"second step of the booking form (this may lead to a delay when users click "
+"Next at the first step)."
+msgstr ""
+
+#: admin/tooltip.php:28
+msgid ""
+"If there is a lot of events in Google Calendar sometimes this leads to a "
+"lack of memory in PHP when Bookme tries to fetch all events. You can limit "
+"the number of fetched events here. This only works when 2 way sync is "
+"enabled."
+msgstr ""
+
+#: admin/tooltip.php:29
+msgid "Configure the title of Google Calendar event."
+msgstr ""
+
+#: admin/tooltip.php:30
+msgid "Get Twilio Account SID from Twilio website"
+msgstr ""
+
+#: admin/tooltip.php:31
+msgid "Get Twilio Auth Token from Twilio website"
+msgstr ""
+
+#: admin/tooltip.php:32
+msgid "Get Twilio Phone number from Twilio website"
+msgstr ""
+
+#: admin/tooltip.php:33
+msgid "Admin phone number for SMS notification."
+msgstr ""
+
+#: includes/db.php:254
+msgid "Your booking information"
+msgstr ""
+
+#: includes/db.php:255 includes/db.php:280
+msgid ""
+"Dear {customer_name}.\n"
+"\n"
+"This is a confirmation that you have booked {service_name}.\n"
+"\n"
+"We are waiting you at {company_address} on {booking_date} at {booking_time} "
+"- {booking_end_time}.\n"
+"\n"
+"Thank you for choosing our company.\n"
+"\n"
+"{company_name}\n"
+"{company_phone}\n"
+"{company_website}"
+msgstr ""
+
+#: includes/db.php:262 includes/db.php:270
+msgid "New booking information"
+msgstr ""
+
+#: includes/db.php:263 includes/db.php:286
+msgid ""
+"Hello {employee_name}.\n"
+"\n"
+"You have new booking.\n"
+"\n"
+"Service: {service_name}\n"
+"Date: {booking_date}\n"
+"Time: {booking_time} - {booking_end_time}\n"
+"Customer name: {customer_name}"
+msgstr ""
+
+#: includes/db.php:271 includes/db.php:292
+msgid ""
+"Hello admin.\n"
+"\n"
+"There is a new booking.\n"
+"\n"
+"Service: {service_name}\n"
+"Date: {booking_date}\n"
+"Time: {booking_time} - {booking_end_time}\n"
+"Customer name: {customer_name}"
+msgstr ""
+
+#: includes/func.php:26
+msgctxt "Encode sans: on or off"
+msgid "on"
+msgstr ""
+
+#: includes/func.php:27
+msgctxt "Roboto: on or off"
+msgid "on"
+msgstr ""
+
+#: includes/func.php:145 includes/func.php:158 includes/user-ajax.php:197
+#: includes/user-ajax.php:230 includes/user-ajax.php:261
+#: includes/user-ajax.php:1496
+msgid "Select"
+msgstr ""
+
+#: includes/js-lang.php:7 includes/user-ajax.php:1609
+msgid "Apply"
+msgstr ""
+
+#: includes/js-lang.php:9
+msgid "from"
+msgstr ""
+
+#: includes/js-lang.php:11
+msgid "Today"
+msgstr ""
+
+#: includes/js-lang.php:12
+msgid "Yesterday"
+msgstr ""
+
+#: includes/js-lang.php:13
+msgid "Tomorrow"
+msgstr ""
+
+#: includes/js-lang.php:14
+msgid "Last 7 Days"
+msgstr ""
+
+#: includes/js-lang.php:15
+msgid "Last 30 Days"
+msgstr ""
+
+#: includes/js-lang.php:16
+msgid "This Month"
+msgstr ""
+
+#: includes/js-lang.php:17
+msgid "Next Month"
+msgstr ""
+
+#: includes/js-lang.php:18
+msgid "Custom Range"
+msgstr ""
+
+#: includes/js-lang.php:20
+msgid "Invalid email address."
+msgstr ""
+
+#: includes/js-lang.php:21
+msgid "Invalid phone number"
+msgstr ""
+
+#: includes/js-lang.php:23
+msgid "Do you want to delete the category?"
+msgstr ""
+
+#: includes/js-lang.php:24
+msgid "Delete"
+msgstr ""
+
+#: includes/js-lang.php:25
+msgid "Category deleted."
+msgstr ""
+
+#: includes/js-lang.php:26
+msgid "Error: Problem in deleting category, Please try again"
+msgstr ""
+
+#: includes/js-lang.php:27
+msgid "Error: Problem in editing category, Please try again"
+msgstr ""
+
+#: includes/js-lang.php:28
+msgid "Error: Problem in saving category, Please try again."
+msgstr ""
+
+#: includes/js-lang.php:29
+msgid "Please give a category name."
+msgstr ""
+
+#: includes/js-lang.php:30
+msgid "Category already exists."
+msgstr ""
+
+#: includes/js-lang.php:31
+msgid "Category Saved."
+msgstr ""
+
+#: includes/js-lang.php:32
+msgid "Category edited successfully."
+msgstr ""
+
+#: includes/js-lang.php:35
+msgid "Error: Problem in fetching services, Please try again"
+msgstr ""
+
+#: includes/js-lang.php:36
+msgid "Please give a service title."
+msgstr ""
+
+#: includes/js-lang.php:37
+msgid "Please select a category."
+msgstr ""
+
+#: includes/js-lang.php:38
+msgid "Error: Problem in saving service, Please try again."
+msgstr ""
+
+#: includes/js-lang.php:39
+msgid "Service saved successfully."
+msgstr ""
+
+#: includes/js-lang.php:40
+msgid "Service edited successfully."
+msgstr ""
+
+#: includes/js-lang.php:41
+msgid "Please select schedule time."
+msgstr ""
+
+#: includes/js-lang.php:42
+msgid "Please select correct break time."
+msgstr ""
+
+#: includes/js-lang.php:43
+msgid "Please select break start time."
+msgstr ""
+
+#: includes/js-lang.php:44
+msgid "Please select break end time."
+msgstr ""
+
+#: includes/js-lang.php:45
+msgid "Delete break"
+msgstr ""
+
+#: includes/js-lang.php:49
+msgid "Upload Image"
+msgstr ""
+
+#: includes/js-lang.php:50
+msgid "Please enter employee email."
+msgstr ""
+
+#: includes/js-lang.php:51
+msgid "Please enter employee name."
+msgstr ""
+
+#: includes/js-lang.php:52
+msgid "Error: Problem in saving employee details, Please try again."
+msgstr ""
+
+#: includes/js-lang.php:53
+msgid "Employee details saved successfully."
+msgstr ""
+
+#: includes/js-lang.php:54
+msgid "Employee details edited successfully."
+msgstr ""
+
+#: includes/js-lang.php:55
+msgid "Service capacity is full."
+msgstr ""
+
+#: includes/js-lang.php:56
+msgid "is booked for selected time period."
+msgstr ""
+
+#: includes/js-lang.php:57
+msgid "Selected period doesn't match service duration"
+msgstr ""
+
+#: includes/js-lang.php:58
+msgid "Please select a service."
+msgstr ""
+
+#: includes/js-lang.php:59
+msgid "Please add a customer."
+msgstr ""
+
+#: includes/js-lang.php:60
+msgid "Please select a date."
+msgstr ""
+
+#: includes/js-lang.php:61
+msgid "Error: Problem in saving booking, Please try again."
+msgstr ""
+
+#: includes/js-lang.php:62
+msgid "Booking saved successfully."
+msgstr ""
+
+#: includes/js-lang.php:63
+msgid "Booking edited successfully."
+msgstr ""
+
+#: includes/js-lang.php:64
+msgid "Please enter customer name."
+msgstr ""
+
+#: includes/js-lang.php:65
+msgid "Please enter customer email."
+msgstr ""
+
+#: includes/js-lang.php:66
+msgid "Please enter customer phone no."
+msgstr ""
+
+#: includes/js-lang.php:67
+msgid "Error: Problem in saving customer details, Please try again."
+msgstr ""
+
+#: includes/js-lang.php:68
+msgid "Customer details saved successfully."
+msgstr ""
+
+#: includes/js-lang.php:69
+msgid "Customer details edited successfully."
+msgstr ""
+
+#: includes/js-lang.php:70
+msgid "Do you want to delete the payment?"
+msgstr ""
+
+#: includes/js-lang.php:71
+msgid "Payments deleted successfully"
+msgstr ""
+
+#: includes/js-lang.php:72
+msgid "Error: Problem in deleting payments, Please try again"
+msgstr ""
+
+#: includes/js-lang.php:73
+msgid "Error: Problem in completing payment, Please try again."
+msgstr ""
+
+#: includes/js-lang.php:74
+msgid "Payment Completed successfully."
+msgstr ""
+
+#: includes/js-lang.php:75
+msgid "Error: Problem in creating coupon, Please try again."
+msgstr ""
+
+#: includes/js-lang.php:76
+msgid "Coupon saved successfully."
+msgstr ""
+
+#: includes/js-lang.php:77
+msgid "Coupon edited successfully."
+msgstr ""
+
+#: includes/js-lang.php:78
+msgid "Custom fields saved successfully."
+msgstr ""
+
+#: includes/js-lang.php:79
+msgid "Labels are required."
+msgstr ""
+
+#: includes/js-lang.php:80
+msgid "Email notification edited successfully"
+msgstr ""
+
+#: includes/js-lang.php:81
+msgid "Email notification saved successfully"
+msgstr ""
+
+#: includes/js-lang.php:82
+msgid "SMS notification saved successfully"
+msgstr ""
+
+#: includes/js-lang.php:83
+msgid "Appearance bullets are edited successfully"
+msgstr ""
+
+#: includes/js-lang.php:84
+msgid "Appearance bullets are saved successfully"
+msgstr ""
+
+#: includes/js-lang.php:85
+msgid "Appearance labels are edited successfully"
+msgstr ""
+
+#: includes/js-lang.php:86
+msgid "Appearance labels are saved successfully"
+msgstr ""
+
+#: includes/js-lang.php:87
+msgid "Booking color saved successfully"
+msgstr ""
+
+#: includes/js-lang.php:88
+msgid "Booking color edited successfully"
+msgstr ""
+
+#: includes/js-lang.php:89
+msgid "Booking message edited successfully"
+msgstr ""
+
+#: includes/js-lang.php:90
+msgid "Booking message saved successfully"
+msgstr ""
+
+#: includes/js-lang.php:91
+msgid "Company details saved successfully"
+msgstr ""
+
+#: includes/js-lang.php:92
+msgid "General setting saved successfully"
+msgstr ""
+
+#: includes/js-lang.php:93
+msgid "Please enter a valid number"
+msgstr ""
+
+#: includes/js-lang.php:94
+msgid "Payment details saved successfully"
+msgstr ""
+
+#: includes/js-lang.php:96
+msgid "Invalid purchase code"
+msgstr ""
+
+#: includes/js-lang.php:97
+msgid "Error: Problem in verifying purchase code, Please try again"
+msgstr ""
+
+#: includes/js-lang.php:98
+msgid "Do you want to delete the services?"
+msgstr ""
+
+#: includes/js-lang.php:99
+msgid "Service deleted successfully"
+msgstr ""
+
+#: includes/js-lang.php:100
+msgid "Error: Problem in deleting services, Please try again"
+msgstr ""
+
+#: includes/js-lang.php:101
+msgid "Do you want to delete the employees?"
+msgstr ""
+
+#: includes/js-lang.php:102
+msgid "Employees deleted successfully"
+msgstr ""
+
+#: includes/js-lang.php:103
+msgid "Error: Problem in deleting employees, Please try again"
+msgstr ""
+
+#: includes/js-lang.php:104
+msgid "Do you want to delete the booking?"
+msgstr ""
+
+#: includes/js-lang.php:105
+msgid "Booking deleted successfully"
+msgstr ""
+
+#: includes/js-lang.php:106
+msgid "Error: Problem in deleting booking, Please try again"
+msgstr ""
+
+#: includes/js-lang.php:107
+msgid "Do you want to delete the customer?"
+msgstr ""
+
+#: includes/js-lang.php:108
+msgid "Customers deleted successfully"
+msgstr ""
+
+#: includes/js-lang.php:109
+msgid "Error: Problem in deleting customers, Please try again"
+msgstr ""
+
+#: includes/js-lang.php:110
+msgid "Do you want to delete the coupon?"
+msgstr ""
+
+#: includes/js-lang.php:111
+msgid "Coupon deleted successfully"
+msgstr ""
+
+#: includes/js-lang.php:112
+msgid "Error: Problem in deleting coupons, Please try again"
+msgstr ""
+
+#: includes/js-lang.php:113
+msgid "Days off saved successfully"
+msgstr ""
+
+#: includes/js-lang.php:114
+msgid "Error: Problem in saving days off, Please try again"
+msgstr ""
+
+#: includes/js-lang.php:115
+msgid "WooCommerce settings saved successfully"
+msgstr ""
+
+#: includes/js-lang.php:116
+msgid "Error: Problem in saving WooCommerce settings, Please try again"
+msgstr ""
+
+#: includes/js-lang.php:117
+msgid "Google Calendar settings saved successfully"
+msgstr ""
+
+#: includes/js-lang.php:118
+msgid "Error: Problem in saving Google Calendar settings, Please try again"
+msgstr ""
+
+#: includes/js-lang.php:120 includes/user-ajax.php:3112
+msgid "Appointment booked."
+msgstr ""
+
+#: includes/js-lang.php:121
+msgid "Appointment not booked."
+msgstr ""
+
+#: includes/js-lang.php:122
+msgid ""
+"Thank you! Your booking is complete. An email with details of your booking "
+"has been sent to you."
+msgstr ""
+
+#: includes/js-lang.php:123
+msgid "There is a problem appointment not fix."
+msgstr ""
+
+#: includes/js-lang.php:124
+msgid "This record already exist."
+msgstr ""
+
+#: includes/js-lang.php:125 includes/payment/woocommerce.php:96
+msgid "Seats not available. Please try again!"
+msgstr ""
+
+#: includes/js-lang.php:126
+msgid "Record already exist in cart."
+msgstr ""
+
+#: includes/js-lang.php:127 includes/payment/woocommerce.php:103
+msgid ""
+"Sorry, this service is not availabe for that day. Please book another date."
+msgstr ""
+
+#: includes/js-lang.php:128
+msgid "Wrong coupon code?"
+msgstr ""
+
+#: includes/js-lang.php:129
+msgid "Coupon Applied."
+msgstr ""
+
+#: includes/js-lang.php:131 includes/user-ajax.php:663
+#: includes/user-ajax.php:666
+msgid "Not Available"
+msgstr ""
+
+#: includes/js-lang.php:132 includes/user-ajax.php:587
+#: includes/user-ajax.php:660
+msgid "Available"
+msgstr ""
+
+#: includes/js-lang.php:133 includes/user-ajax.php:678
+msgid "Holiday"
+msgstr ""
+
+#: includes/payment/paypal/paypal.php:12
+msgid "You cancelled your appointment booking, please try again."
+msgstr ""
+
+#: includes/payment/paypal/paypal.php:247
+#: includes/payment/paypal/paypal.php:770
+msgid "Booking already exist."
+msgstr ""
+
+#: includes/payment/paypal/paypal.php:263
+#: includes/payment/paypal/paypal.php:1238
+msgid "Seats not available for this time period."
+msgstr ""
+
+#: includes/payment/paypal/paypal.php:1235
+msgid "Something went wrong, please try again."
+msgstr ""
+
+#: includes/payment/paypal/paypal.php:1245
+msgid "Invalid token provided"
+msgstr ""
+
+#: includes/payment/woocommerce.php:77
+msgid "This record is already exist."
+msgstr ""
+
+#: includes/user-ajax.php:102 includes/user-ajax.php:712
+#: includes/user-ajax.php:1233 includes/user-ajax.php:1526
+#: includes/user-ajax.php:1794 includes/user-ajax.php:1864
+#: includes/user-ajax.php:3136
+msgid "Time"
+msgstr ""
+
+#: includes/user-ajax.php:129 includes/user-ajax.php:738
+#: includes/user-ajax.php:1259 includes/user-ajax.php:1817
+#: includes/user-ajax.php:3162
+msgid "Detail"
+msgstr ""
+
+#: includes/user-ajax.php:142 includes/user-ajax.php:751
+#: includes/user-ajax.php:1272 includes/user-ajax.php:1829
+#: includes/user-ajax.php:3175
+msgid "Done"
+msgstr ""
+
+#: includes/user-ajax.php:207 includes/user-ajax.php:238
+#: includes/user-ajax.php:269
+msgid "Please select"
+msgstr ""
+
+#: includes/user-ajax.php:283
+msgid "Number of person"
+msgstr ""
+
+#: includes/user-ajax.php:302
+msgid "Please select date"
+msgstr ""
+
+#: includes/user-ajax.php:309
+msgid "Availability"
+msgstr ""
+
+#: includes/user-ajax.php:330 includes/user-ajax.php:1741
+#: includes/user-ajax.php:1910
+msgid "Next"
+msgstr ""
+
+#: includes/user-ajax.php:358
+msgid ""
+"Your product is not verified. Please enter purchase code to verify your "
+"product."
+msgstr ""
+
+#: includes/user-ajax.php:360
+msgid "Verify Purchase Code"
+msgstr ""
+
+#: includes/user-ajax.php:846
+msgid "Availability on"
+msgstr ""
+
+#: includes/user-ajax.php:849
+msgid "Available time slots for "
+msgstr ""
+
+#: includes/user-ajax.php:850
+msgid "by "
+msgstr ""
+
+#: includes/user-ajax.php:954 includes/user-ajax.php:1054
+#: includes/user-ajax.php:1153
+msgid "Seats available"
+msgstr ""
+
+#: includes/user-ajax.php:965 includes/user-ajax.php:1063
+#: includes/user-ajax.php:1163
+msgid "Book Appointment"
+msgstr ""
+
+#: includes/user-ajax.php:1179 includes/user-ajax.php:1182
+msgid "No record found."
+msgstr ""
+
+#: includes/user-ajax.php:1191 includes/user-ajax.php:1738
+#: includes/user-ajax.php:1906
+msgid "Back"
+msgstr ""
+
+#: includes/user-ajax.php:1333
+msgid "Provide your details"
+msgstr ""
+
+#: includes/user-ajax.php:1342
+msgid "Your Name"
+msgstr ""
+
+#: includes/user-ajax.php:1346
+msgid "Please enter your name"
+msgstr ""
+
+#: includes/user-ajax.php:1355
+msgid "Your Email"
+msgstr ""
+
+#: includes/user-ajax.php:1359
+msgid "Please enter your email."
+msgstr ""
+
+#: includes/user-ajax.php:1371
+msgid "Please enter phone no."
+msgstr ""
+
+#: includes/user-ajax.php:1402 includes/user-ajax.php:1418
+#: includes/user-ajax.php:1459 includes/user-ajax.php:1478
+#: includes/user-ajax.php:1505
+msgid "This field is required."
+msgstr ""
+
+#: includes/user-ajax.php:1519
+msgid "Your order"
+msgstr ""
+
+#: includes/user-ajax.php:1533
+msgid "with"
+msgstr ""
+
+#: includes/user-ajax.php:1594
+msgid "Add Coupon"
+msgstr ""
+
+#: includes/user-ajax.php:1645
+msgid "Choose your payment method"
+msgstr ""
+
+#: includes/user-ajax.php:1653
+msgid "Locally"
+msgstr ""
+
+#: includes/user-ajax.php:1657
+msgid "I will pay locally on meeting place."
+msgstr ""
+
+#: includes/user-ajax.php:1666
+msgid "Paypal"
+msgstr ""
+
+#: includes/user-ajax.php:1670
+msgid "Instant payment using paypal"
+msgstr ""
+
+#: includes/user-ajax.php:1689
+msgid "Instant payment"
+msgstr ""
+
+#: includes/user-ajax.php:1697
+msgid "Card Number"
+msgstr ""
+
+#: includes/user-ajax.php:1703
+msgid "CVC"
+msgstr ""
+
+#: includes/user-ajax.php:1708
+msgid "Expiration Date"
+msgstr ""
+
+#: includes/user-ajax.php:1857
+msgid "A list of services selected for booking."
+msgstr ""
+
+#: includes/user-ajax.php:1858
+msgid "Click 'BOOK MORE' if you want to book more services."
+msgstr ""
+
+#: includes/user-ajax.php:1860
+msgid "BOOK MORE"
+msgstr ""
+
+#: includes/user-ajax.php:1897
+msgid "Total:"
+msgstr ""
+
+#: includes/user-ajax.php:3198
+msgid "New Booking"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://bylancer.com/products/bookme-wp-booking-plugin/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Appointment Booking WP Plugin"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Bylancer"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://bylancer.com/"
+msgstr ""
