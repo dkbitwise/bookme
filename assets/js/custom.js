@@ -1,15 +1,13 @@
 jQuery(document).ready(function ($) {
     var calender_date = [];
     var tooltip = [];
-    var auto_fill=false;
-    
-    
-   // jQuery( ".notavailable" ).click(function() {
-    $(document).on('click', '.notavailable', function () {
-		swal("Class is full!!","This class is full. Please choose other available time slots");
-	});
+    var auto_fill = false;
 
-    if(status == 'init'){
+    $(document).on('click', '.notavailable', function () {
+        swal("Class is full!!", "This class is full. Please choose other available time slots");
+    });
+
+    if (status == 'init') {
         cal_sdate = moment(cal_sdate, "YYYY-MM-DD");
         var sdate = cal_sdate.format("YYYY-MM-DD");
         var cal_edate = cal_sdate.add('days', day_limit);
@@ -18,7 +16,7 @@ jQuery(document).ready(function ($) {
             'action': 'bookme_user_action',
             'call': 'get_step_1',
             'get_data': bookme_var,
-            'auto_fill':auto_fill
+            'auto_fill': auto_fill
         };
         $.post(bookme_object.ajax_url, data, function (response) {
             if (response != 0) {
@@ -28,9 +26,9 @@ jQuery(document).ready(function ($) {
                 }
                 $('.cal1').bookme({
                     constraints: {
-                     startDate: sdate,
-                     endDate: edate
-                     },
+                        startDate: sdate,
+                        endDate: edate
+                    },
                     multiDayEvents: {
                         startDate: 'startDate',
                         endDate: 'endDate'
@@ -39,22 +37,22 @@ jQuery(document).ready(function ($) {
                     adjacentDaysChangeMonth: false
                 });
 
-                if( auto_fill==false ){
+                if (auto_fill == false) {
                     var cat = $('#bookme_category').val();
                     var ser = $('#bookme_service').val();
-                    if( cat!='' && ser!='' ){
+                    if (cat != '' && ser != '') {
                         bookme_get_calender();
                     }
-                    auto_fill=true;
+                    auto_fill = true;
                 }
 
             }
         });
-    }else{
-        if(status == 'success'){
+    } else {
+        if (status == 'success') {
             var heading = bookme_object.appointment_booked;
             var message = bookme_object.appointment_booked_msg;
-        }else{
+        } else {
             var heading = bookme_object.appointment_not_booked;
             var message = status;
         }
@@ -161,14 +159,12 @@ jQuery(document).ready(function ($) {
         var emp = $('#bookme_employee').val();
         var emp = $('#bookme_employee').val();
         var date = jQuery("#date").val();
-        
-		if(jQuery("#bookme_student").is("select")) 
-		{
-			var stu = $('#bookme_student :selected').val();
-		}
-		else if(jQuery("#bookme_student").is("input")) {
-			var stu = $('#bookme_student').val();
-		}
+
+        if (jQuery("#bookme_student").is("select")) {
+            var stu = $('#bookme_student :selected').val();
+        } else if (jQuery("#bookme_student").is("input")) {
+            var stu = $('#bookme_student').val();
+        }
 
         var per = jQuery("#bookme_person").val();
 
@@ -217,12 +213,12 @@ jQuery(document).ready(function ($) {
             };
             if (cat != "" && ser != "" && emp != "" && date != "") {
                 var loader = jQuery(this);
-                loader.addClass('bookme-loader').prop('disabled',true);
+                loader.addClass('bookme-loader').prop('disabled', true);
                 jQuery.post(bookme_object.ajax_url, data, function (response) {
                     jQuery("#formDiv").hide();
                     jQuery("#showStep").show();
                     jQuery("#showStep").html(response);
-                    loader.removeClass('bookme-loader').prop('disabled',false);
+                    loader.removeClass('bookme-loader').prop('disabled', false);
                     // Initialize scrollers.
                     $('#time_slot_scroll').TrackpadScrollEmulator();
                     scrollTo($("#bookme_container"));
@@ -232,41 +228,42 @@ jQuery(document).ready(function ($) {
         }
 
     }).on("click", ".bookme_step2", function () {
-        if( $('table.bookme_cart_table').length ){
-          var data = {
+        if ($('table.bookme_cart_table').length) {
+            var data = {
                 'action': 'bookme_user_action',
                 'call': 'get_step_3',
                 'cart': 1
             };
-        }else{
+        } else {
             var id = $(this).data('key');
             var time1 = jQuery(".appoints" + id).val();
             var time2 = jQuery(".appointe" + id).val();
             var token = jQuery("input[name=access_token]").val();
             var faculty = jQuery(".faculty_" + id).val();
-             var serviceid = jQuery("#bookme_service").val();
+            var serviceid = jQuery("#bookme_service").val();
             var data = {
                 'action': 'bookme_user_action',
                 'call': 'get_step_3',
                 'access_token': token,
                 'time1_a': time1,
                 'time2_a': time2,
-                
+
                 'faculty': faculty,
                 'serviceid': serviceid
             };
         }
-        
+
         var loader = jQuery(this);
-        loader.addClass('bookme-loader').prop('disabled',true);
+        loader.addClass('bookme-loader').prop('disabled', true);
         jQuery.post(bookme_object.ajax_url, data, function (response) {
             jQuery("#formDiv").hide();
             jQuery("#showStep").html(response);
             $("#bookme_container #phone").intlTelInput({
                 preferredCountries: ["us", "br", "gb", "in"],
                 initialCountry: "auto",
-                geoIpLookup: function(callback) {
-                    $.get('https://ipinfo.io', function() {}, "jsonp").always(function(resp) {
+                geoIpLookup: function (callback) {
+                    $.get('https://ipinfo.io', function () {
+                    }, "jsonp").always(function (resp) {
                         var countryCode = (resp && resp.country) ? resp.country : "";
                         callback(countryCode);
                     });
@@ -274,21 +271,21 @@ jQuery(document).ready(function ($) {
             });
             scrollTo($("#bookme_container"));
         });
-        
+
     }).on("click", "#bookme_get_cart", function () {
         var data = {
             'action': 'bookme_user_action',
             'call': 'get_step_cart'
         };
         var loader = jQuery(this);
-        loader.addClass('bookme-loader').prop('disabled',true);
+        loader.addClass('bookme-loader').prop('disabled', true);
         jQuery.post(bookme_object.ajax_url, data, function (response) {
             jQuery("#formDiv").hide();
             jQuery("#showStep").html(response).show();
-            loader.removeClass('bookme-loader').prop('disabled',false);
+            loader.removeClass('bookme-loader').prop('disabled', false);
             scrollTo($("#bookme_container"));
         });
-        
+
     }).on("click", "#bookme_delete_cart", function () {
         var key = jQuery(this).data('key');
         var data = {
@@ -297,25 +294,25 @@ jQuery(document).ready(function ($) {
             'key': key
         };
         var loader = jQuery(this);
-        loader.addClass('bookme-loader').prop('disabled',true);
+        loader.addClass('bookme-loader').prop('disabled', true);
         jQuery.post(bookme_object.ajax_url, data, function (response) {
-            loader.removeClass('bookme-loader').prop('disabled',false);
-            if(response!=0){
-                jQuery('#cart_row_'+key).remove();
+            loader.removeClass('bookme-loader').prop('disabled', false);
+            if (response != 0) {
+                jQuery('#cart_row_' + key).remove();
                 jQuery('#bookme_cart_total').html(response);
             }
         });
-        
+
     }).on("click", "#bookme_book_more", function () {
         var data = {
             'action': 'bookme_user_action',
             'call': 'get_step_1',
-            'cart':'1'
+            'cart': '1'
         };
         var loader = jQuery(this);
-        loader.addClass('bookme-loader').prop('disabled',true);
+        loader.addClass('bookme-loader').prop('disabled', true);
         $.post(bookme_object.ajax_url, data, function (response) {
-            loader.removeClass('bookme-loader').prop('disabled',false);
+            loader.removeClass('bookme-loader').prop('disabled', false);
             if (response != 0) {
                 $('#bookme_container').html(response);
                 if ($('#bookme_employee').is('input:hidden')) {
@@ -323,9 +320,9 @@ jQuery(document).ready(function ($) {
                 }
                 $('.cal1').bookme({
                     constraints: {
-                     startDate: sdate,
-                     endDate: edate
-                     },
+                        startDate: sdate,
+                        endDate: edate
+                    },
                     multiDayEvents: {
                         startDate: 'startDate',
                         endDate: 'endDate'
@@ -336,26 +333,26 @@ jQuery(document).ready(function ($) {
                 scrollTo($("#bookme_container"));
             }
         });
-        
+
     }).on("click", "#bookme_step3", function () {
-    	
-    	
+
+
         $('.bookme-error').hide();
 
         var name = jQuery("#pname").val();
-       
+
         var mail = jQuery("#bookme_container #email").val();
         try {
             var phone = jQuery("#phone").intlTelInput("getNumber");
-        }catch(e){
+        } catch (e) {
             var phone = jQuery("#phone").val();
         }
         var note = jQuery("#notes").val();
-        var payment = $( 'input[name=payment]:checked' ).val();
+        var payment = $('input[name=payment]:checked').val();
         var cart = jQuery("input[name=bookme_cart]").val();
-        if(cart == '1'){
+        if (cart == '1') {
             var token = 1;
-        }else{
+        } else {
             var token = jQuery("input[name=access_token]").val();
         }
         var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
@@ -369,7 +366,7 @@ jQuery(document).ready(function ($) {
             error = 1;
             return false;
         }
-       
+
         if (mail == "") {
             jQuery(".error2").show();
             jQuery("#email").addClass("borederColor");
@@ -378,68 +375,67 @@ jQuery(document).ready(function ($) {
             return false;
         }
 
-        if(!regex.test(mail)){
+        if (!regex.test(mail)) {
             jQuery(".error2").html(bookme_object.invalid_email).show();
             jQuery("#email").addClass("borederColor");
             jQuery("#email").focus();
             error = 1;
             return false;
         }
-        
-  
-         
+
+
         var text_a = [];
-    
+
         var area_a = [];
-    
+
         var content = [];
-        jQuery('#bookme_container .content').each(function() {
+        jQuery('#bookme_container .content').each(function () {
             var field = {};
-            field.name=$(this).data('name');
-            field.value=$(this).val().trim();
-            if($(this).data('req') && field.value == ''){
+            field.name = $(this).data('name');
+            field.value = $(this).val().trim();
+            if ($(this).data('req') && field.value == '') {
                 error = 1;
                 $(this).siblings('.bookme-error').show().focus();
                 return false;
             }
             content.push(field);
         });
-      
+
         var check_a = [];
-        jQuery('.bookme-check').each(function() {
+        jQuery('.bookme-check').each(function () {
             var field = {};
-            field.name=$(this).data('name');
-            field.value=jQuery('[data-name="'+field.name+'"]:checked').map(function () {
+            field.name = $(this).data('name');
+            field.value = jQuery('[data-name="' + field.name + '"]:checked').map(function () {
                 return $(this).val().trim();
             }).get();
-            if($(this).data('req') && field.value.length === 0){
+            if ($(this).data('req') && field.value.length === 0) {
                 error = 1;
                 $(this).siblings('.bookme-error').show().focus();
                 return false;
             }
             check_a.push(field);
         });
-        
-         
+
+
         var radio_a = [];
-        jQuery('.bookme-radio:checked').each(function() {
+        jQuery('.bookme-radio:checked').each(function () {
             var field = {};
-            field.name=$(this).data('name');
-            field.value=$(this).val().trim();
-            if($(this).data('req') && field.value == ''){
+            field.name = $(this).data('name');
+            field.value = $(this).val().trim();
+            if ($(this).data('req') && field.value == '') {
                 error = 1;
                 $(this).siblings('.bookme-error').show().focus();
                 return false;
             }
             radio_a.push(field);
         });
-        
+
         var select_a = [];
-        jQuery('.bookme-select').each(function() {
+        jQuery('.bookme-select').each(function () {
             var field = {};
-            field.name=$(this).data('name');
-            field.value=$(this).val().trim();
-            if($(this).data('req') && field.value == ''){
+            field.name = $(this).data('name');
+            field.value = $(this).val().trim();
+            if ($(this).data('req') && field.value == '') {
                 error = 1;
                 $(this).siblings('.bookme-error').show().focus();
                 return false;
@@ -453,7 +449,7 @@ jQuery(document).ready(function ($) {
             'access_token': token,
             'name_a': name,
             'mail_a': mail,
-           
+
             'note_a': note,
             'text_a': JSON.stringify(text_a),
             'area_a': JSON.stringify(area_a),
@@ -463,15 +459,14 @@ jQuery(document).ready(function ($) {
             'selects': JSON.stringify(select_a)
 
         };
-        if (name != ""  && mail != "" && error != 1) {
+        if (name != "" && mail != "" && error != 1) {
             var loader = jQuery(this);
-            loader.addClass('bookme-loader').prop('disabled',true);
+            loader.addClass('bookme-loader').prop('disabled', true);
             jQuery.post(bookme_object.ajax_url, data, function (response) {
-            	
-            	
-            
-                if(response == 1){
-                    if(payment == 'locally' || payment == undefined){
+
+
+                if (response == 1) {
+                    if (payment == 'locally' || payment == undefined) {
                         var data = {
                             'action': 'bookme_user_action',
                             'call': 'book_customer',
@@ -500,29 +495,29 @@ jQuery(document).ready(function ($) {
                             if (response == 0) {
                                 var message = bookme_object.appointment_book_problem;
                                 jQuery(".bookme-js-error").html(message).show().focus();
-                                loader.removeClass('bookme-loader').prop('disabled',false);
+                                loader.removeClass('bookme-loader').prop('disabled', false);
                             }
                             if (response == 2) {
                                 var message = bookme_object.appointment_exist;
                                 jQuery(".bookme-js-error").html(message).show().focus();
-                                loader.removeClass('bookme-loader').prop('disabled',false);
+                                loader.removeClass('bookme-loader').prop('disabled', false);
                             }
                             if (response == 3) {
                                 var message = bookme_object.appointment_full;
                                 jQuery(".bookme-js-error").html(message).show().focus();
-                                loader.removeClass('bookme-loader').prop('disabled',false);
+                                loader.removeClass('bookme-loader').prop('disabled', false);
                             }
                             if (response == 4) {
                                 var message = bookme_object.appointment_holiday;
                                 jQuery(".bookme-js-error").html(message).show().focus();
-                                loader.removeClass('bookme-loader').prop('disabled',false);
+                                loader.removeClass('bookme-loader').prop('disabled', false);
                             }
 
                         });
-                    }else if(payment == 'PayPal'){
+                    } else if (payment == 'PayPal') {
                         $('#paypal_form').submit();
 
-                    }else if(payment == 'Stripe'){
+                    } else if (payment == 'Stripe') {
                         var stripe_card_number = jQuery("#card_number_stripe").val(),
                             stripe_card_cvc = jQuery("#card_cvc_stripe").val(),
                             stripe_card_exp_month = jQuery("#card_date_stripe_month").val(),
@@ -554,29 +549,29 @@ jQuery(document).ready(function ($) {
                                     jQuery("#showStep").html(result);
                                     scrollTo($("#bookme_container"));
                                 });
-                            }else if (response == 0) {
+                            } else if (response == 0) {
                                 var message = bookme_object.appointment_book_problem;
                                 jQuery(".bookme-js-error").html(message).show();
-                                loader.removeClass('bookme-loader').prop('disabled',false);
-                            }else if (response == 2) {
+                                loader.removeClass('bookme-loader').prop('disabled', false);
+                            } else if (response == 2) {
                                 var message = bookme_object.appointment_exist;
                                 jQuery(".bookme-js-error").html(message).show();
-                                loader.removeClass('bookme-loader').prop('disabled',false);
-                            }else if (response == 3) {
+                                loader.removeClass('bookme-loader').prop('disabled', false);
+                            } else if (response == 3) {
                                 var message = bookme_object.appointment_full;
                                 jQuery(".bookme-js-error").html(message).show();
-                                loader.removeClass('bookme-loader').prop('disabled',false);
-                            }else if (response == 4) {
+                                loader.removeClass('bookme-loader').prop('disabled', false);
+                            } else if (response == 4) {
                                 var message = bookme_object.appointment_holiday;
                                 jQuery(".bookme-js-error").html(message).show();
-                                loader.removeClass('bookme-loader').prop('disabled',false);
-                            }else{
+                                loader.removeClass('bookme-loader').prop('disabled', false);
+                            } else {
                                 jQuery(".bookme-js-error").html(response).show();
-                                loader.removeClass('bookme-loader').prop('disabled',false);
+                                loader.removeClass('bookme-loader').prop('disabled', false);
                             }
                         });
                     }
-                }else if(response == 2) {
+                } else if (response == 2) {
                     var data = {
                         'action': 'bookme_user_action',
                         'call': 'woo_add_to_cart',
@@ -586,23 +581,23 @@ jQuery(document).ready(function ($) {
                         if (response == 0) {
                             var message = bookme_object.appointment_book_problem;
                             jQuery(".bookme-js-error").html(message).show();
-                            loader.removeClass('bookme-loader').prop('disabled',false);
+                            loader.removeClass('bookme-loader').prop('disabled', false);
                         } else if (response == 2) {
                             var message = bookme_object.appointment_exist;
                             jQuery(".bookme-js-error").html(message).show();
-                            loader.removeClass('bookme-loader').prop('disabled',false);
+                            loader.removeClass('bookme-loader').prop('disabled', false);
                         } else if (response == 3) {
                             var message = bookme_object.appointment_full;
                             jQuery(".bookme-js-error").html(message).show();
-                            loader.removeClass('bookme-loader').prop('disabled',false);
+                            loader.removeClass('bookme-loader').prop('disabled', false);
                         } else if (response == 4) {
                             var message = bookme_object.appointment_holiday;
                             jQuery(".bookme-js-error").html(message).show();
-                            loader.removeClass('bookme-loader').prop('disabled',false);
+                            loader.removeClass('bookme-loader').prop('disabled', false);
                         } else if (response == 5) {
                             var message = bookme_object.appointment_in_cart;
                             jQuery(".bookme-js-error").html(message).show();
-                            loader.removeClass('bookme-loader').prop('disabled',false);
+                            loader.removeClass('bookme-loader').prop('disabled', false);
                         } else {
                             window.location = response;
                         }
@@ -614,40 +609,40 @@ jQuery(document).ready(function ($) {
     }).on("click", "#check_coupan_code", function () {
         var applied_coupan = jQuery('#apply_coupan_code').val();
         var cart = jQuery("input[name=bookme_cart]").val();
-        if(cart == '1'){
+        if (cart == '1') {
             var data = {
                 'action': 'bookme_user_action',
                 'call': 'check_coupan',
                 'cart': cart,
                 'applied_coupan': applied_coupan
             };
-        }else{
+        } else {
             var token = jQuery("input[name=access_token]").val();
             var data = {
                 'action': 'bookme_user_action',
                 'call': 'check_coupan',
                 'access_token': token,
                 'applied_coupan': applied_coupan
-            };  
+            };
         }
         var loader = jQuery(this);
-        loader.addClass('bookme-loader').prop('disabled',true);
+        loader.addClass('bookme-loader').prop('disabled', true);
         jQuery.post(bookme_object.ajax_url, data, function (result) {
-            loader.removeClass('bookme-loader').prop('disabled',false);
+            loader.removeClass('bookme-loader').prop('disabled', false);
             var trimStr = jQuery.trim(result);
             if (trimStr == 1) {
                 jQuery('.mess').html(bookme_object.wrong_coupon).css('color', '#ef5350').fadeIn();
-            } else if(cart == '1'){
+            } else if (cart == '1') {
                 jQuery('.coupan_codes').val(applied_coupan);
                 jQuery('#bookme_coupon_apply_btn').remove();
-                jQuery('#bookme_coupon_box').html('<td>'+bookme_object.coupon_applied+'</td><td>'+applied_coupan+'</td>');
+                jQuery('#bookme_coupon_box').html('<td>' + bookme_object.coupon_applied + '</td><td>' + applied_coupan + '</td>');
                 jQuery('#bookme_payment_total #bookme_payment_price').html(trimStr);
                 jQuery('.appbtn').fadeOut();
             } else {
                 var prarr = trimStr.split("_");
                 jQuery('.coupan_codes').val(applied_coupan);
                 jQuery('#bookme_coupon_apply_btn').remove();
-                jQuery('#bookme_coupon_box').html('<td>'+bookme_object.discount+'</td><td>'+prarr[2]+'</td>');
+                jQuery('#bookme_coupon_box').html('<td>' + bookme_object.discount + '</td><td>' + prarr[2] + '</td>');
                 jQuery('#bookme_payment_total #bookme_payment_price').html(prarr[0]);
                 jQuery('#desc_price').val(prarr[1]);
                 jQuery('.appbtn').fadeOut();
@@ -661,11 +656,11 @@ jQuery(document).ready(function ($) {
         e.preventDefault();
         id = $(this).data("key");
         var loader = jQuery(this);
-        loader.addClass('bookme-loader').prop('disabled',true);
+        loader.addClass('bookme-loader').prop('disabled', true);
         if (id == 2) {
             jQuery("#formDiv").show();
             jQuery("#showStep").hide();
-            loader.removeClass('bookme-loader').prop('disabled',false);
+            loader.removeClass('bookme-loader').prop('disabled', false);
             scrollTo($("#bookme_container"));
         }
         if (id == 3) {
@@ -677,7 +672,7 @@ jQuery(document).ready(function ($) {
             };
             jQuery.post(bookme_object.ajax_url, data, function (response) {
                 jQuery("#formDiv").hide();
-                loader.removeClass('bookme-loader').prop('disabled',false);
+                loader.removeClass('bookme-loader').prop('disabled', false);
                 jQuery("#showStep").html(response);
                 // Initialize scrollers.
                 $('#time_slot_scroll').TrackpadScrollEmulator();
@@ -690,11 +685,11 @@ jQuery(document).ready(function ($) {
                 'call': 'get_step_cart'
             };
             var loader = jQuery(this);
-            loader.addClass('bookme-loader').prop('disabled',true);
+            loader.addClass('bookme-loader').prop('disabled', true);
             jQuery.post(bookme_object.ajax_url, data, function (response) {
                 jQuery("#formDiv").hide();
                 jQuery("#showStep").html(response).show();
-                loader.removeClass('bookme-loader').prop('disabled',false);
+                loader.removeClass('bookme-loader').prop('disabled', false);
                 scrollTo($("#bookme_container"));
             });
         }
@@ -727,25 +722,24 @@ jQuery(document).ready(function ($) {
             };
             jQuery.post(bookme_object.ajax_url, data, function (response) {
                 jQuery("#formDiv").hide();
-                loader.removeClass('bookme-loader').prop('disabled',false);
+                loader.removeClass('bookme-loader').prop('disabled', false);
                 jQuery("#showStep").html(response);
                 scrollTo($("#bookme_container"));
             });
         }
-    }).on('change','.payment_method',function(){
+    }).on('change', '.payment_method', function () {
         var t = $("div.payment_box." + $(this).attr("ID"));
         $(this).is(":checked") && !t.is(":visible") && ($("div.payment_box").filter(":visible").slideUp(250), $(this).is(":checked") && $("div.payment_box." + $(this).attr("ID")).slideDown(250))
 
-    }).on('click','#bookme_add_coupon',function(e){
+    }).on('click', '#bookme_add_coupon', function (e) {
         e.preventDefault();
-        if($('#bookme_coupon_apply_btn').is(":visible")){
+        if ($('#bookme_coupon_apply_btn').is(":visible")) {
             $('#bookme_coupon_apply_div').slideUp(250).show();
             setTimeout(
-                function()
-                {
+                function () {
                     $('#bookme_coupon_apply_btn').hide()
                 }, 250);
-        }else{
+        } else {
             $('#bookme_coupon_apply_btn').show();
             $('#bookme_coupon_apply_div').hide().slideDown(250);
         }
@@ -802,7 +796,7 @@ jQuery(document).ready(function ($) {
         }
     });
 
-    function bookme_get_calender(){
+    function bookme_get_calender() {
         var month_withoutdate = jQuery('.month').data('month');
         var cat = $('#bookme_category').val();
         var ser = $('#bookme_service').val();

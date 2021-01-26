@@ -41,12 +41,8 @@ function bookme_user_ajax_action() {
 			$resultemployee    = $wpdb->get_results( "SELECT id,name, google_data FROM $table_all_employee WHERE id IN (" . $resultS[0]->staff . ") " );
 
 			if ( isset( $dates ) ) {
-				$date = explode( '-', $dates );
-
+				$date     = explode( '-', $dates );
 				$monthNum = $date[1];
-
-				$dateObj = DateTime::createFromFormat( '!m', $monthNum );
-				//$monthName = $dateObj->format('F');
 				if ( isset( $dates ) ) {
 					$monthName = date_i18n( 'F', strtotime( $dates ) );
 				}
@@ -60,11 +56,11 @@ function bookme_user_ajax_action() {
 			}
 
 			$last_emp = $wpdb->get_var( "SELECT emp_id FROM $table_current_booking ORDER BY id DESC LIMIT 1" );
-			sort($employee);
-			$last_emp_index = array_search($last_emp,$employee);
-			$next_emp_index = (count($employee)>$last_emp_index+1)?$last_emp_index+1:0;
+			sort( $employee );
+			$last_emp_index = array_search( $last_emp, $employee );
+			$next_emp_index = ( count( $employee ) > $last_emp_index + 1 ) ? $last_emp_index + 1 : 0;
 
-			$nextempl  = $employee[ $next_emp_index ];
+			$nextempl = $employee[ $next_emp_index ];
 
 			if ( isset( $_POST['faculty'] ) && isset( $_SESSION['bookme'] ) ) {
 				$_POST['faculty']                                         = $nextempl;
@@ -103,12 +99,25 @@ function bookme_user_ajax_action() {
 function bookme_get_step_1() {
 	if ( get_option( 'bookme_initial' ) ) {
 		global $wpdb;
-		//var_dump($_SESSION);
-		$hide        = $_SESSION['bookme']['hide'];
-		$hide        = explode( ',', $hide );
-		$cat_id      = $_SESSION['bookme']['cat_id'];
-		$ser_id      = $_SESSION['bookme']['ser_id'];
-		$mem_id      = $_SESSION['bookme']['mem_id'];
+		$hide   = $_SESSION['bookme']['hide'];
+		$hide   = explode( ',', $hide );
+		$cat_id = $_SESSION['bookme']['cat_id'];
+		$ser_id = $_SESSION['bookme']['ser_id'];
+		$mem_id = $_SESSION['bookme']['mem_id'];
+		if ( $ser_id > 0 ) {
+			$mem_id = get_next_bookme_emp_for_service_id( $ser_id, $mem_id );
+		}
+
+		if ( empty( $mem_id ) && isset( $_POST['get_data'] ) ) {
+			$service_name = isset( $_POST['get_data']['service'] ) ? $_POST['get_data']['service'] : '';
+			if ( ! empty( $service_name ) ) {
+				$service_id = get_bookme_service_id_service_name( $service_name );
+				if ( $service_id > 0 ) {
+					$mem_id = get_next_bookme_emp_for_service_id( $ser_id, 1 );
+				}
+			}
+		}
+
 		$show_person = $_SESSION['bookme']['show_person'];
 		$i           = 1;
 		$cat_hide    = ( in_array( 'categories', $hide ) && $cat_id != '' );
@@ -116,8 +125,7 @@ function bookme_get_step_1() {
 		$mem_hide    = ( in_array( 'employees', $hide ) && $mem_id != '' );
 		$person_hide = ( $show_person == 0 );
 		$class1      = ( $cat_hide && $ser_hide && $mem_hide && $person_hide ) ? 'hidden' : 'bookme-col-xs-12 bookme-col-sm-6 bookme-col-md-6';
-		$class2      = ( $cat_hide && $ser_hide && $mem_hide && $person_hide ) ? 'bookme-col-xs-12' : 'bookme-col-xs-12 bookme-col-sm-6 bookme-col-md-6';
-		?>
+		$class2      = ( $cat_hide && $ser_hide && $mem_hide && $person_hide ) ? 'bookme-col-xs-12' : 'bookme-col-xs-12 bookme-col-sm-6 bookme-col-md-6'; ?>
         <input type='hidden' id="chk_hd" value='0'/>
         <input type='hidden' id="chk_hd1" value='0'/>
         <div id="formDiv">
@@ -134,10 +142,9 @@ function bookme_get_step_1() {
 							<?php $b     = 1;
 							$cart_enable = bookme_get_settings( 'bookme_enable_cart', 0 ) && ( ! bookme_get_settings( 'enable_woocommerce', 0 ) );
 							?>
-                            <div
-                                class="<?php echo $cart_enable ? 'bookme-col-xs-2' : 'bookme-col-xs-3'; ?> bookme-bs-wizard-step bookme-active">
+                            <div class="<?php echo $cart_enable ? 'bookme-col-xs-2' : 'bookme-col-xs-3'; ?> bookme-bs-wizard-step bookme-active">
                                 <div class="text-center bookme-bs-wizard-stepnum">
-									<?php echo $b; ?>. Start Date<?php /*echo bookme_get_table_appearance('bullet1', 'bullet', __('Start Date', 'bookme'));*/ ?>
+									<?php echo $b; ?>. Start Date
                                 </div>
                                 <div class="bookme-progress">
                                     <div class="bookme-progress-bar"></div>
@@ -146,8 +153,7 @@ function bookme_get_step_1() {
 								<?php $b ++; ?>
                             </div>
 
-                            <div
-                                class="<?php echo $cart_enable ? 'bookme-col-xs-2' : 'bookme-col-xs-3'; ?> bookme-bs-wizard-step bookme-disabled">
+                            <div class="<?php echo $cart_enable ? 'bookme-col-xs-2' : 'bookme-col-xs-3'; ?> bookme-bs-wizard-step bookme-disabled">
                                 <!-- bookme-complete -->
                                 <div class="text-center bookme-bs-wizard-stepnum">
 									<?php echo $b; ?>. <?php echo bookme_get_table_appearance( 'bullet2', 'bullet', __( 'Time', 'bookme' ) ); ?>
@@ -172,8 +178,7 @@ function bookme_get_step_1() {
                                 </div>
 							<?php } ?>
 
-                            <div
-                                class="<?php echo $cart_enable ? 'bookme-col-xs-2' : 'bookme-col-xs-3'; ?> bookme-bs-wizard-step bookme-disabled">
+                            <div class="<?php echo $cart_enable ? 'bookme-col-xs-2' : 'bookme-col-xs-3'; ?> bookme-bs-wizard-step bookme-disabled">
                                 <!-- bookme-complete -->
                                 <div class="text-center bookme-bs-wizard-stepnum">
 									<?php echo $b; ?>. <?php echo bookme_get_table_appearance( 'bullet3', 'bullet', __( 'Sessions', 'bookme' ) ); ?>
@@ -185,8 +190,7 @@ function bookme_get_step_1() {
 								<?php $b ++; ?>
                             </div>
 
-                            <div
-                                class="<?php echo $cart_enable ? 'bookme-col-xs-2' : 'bookme-col-xs-3'; ?> bookme-bs-wizard-step bookme-disabled">
+                            <div class="<?php echo $cart_enable ? 'bookme-col-xs-2' : 'bookme-col-xs-3'; ?> bookme-bs-wizard-step bookme-disabled">
                                 <!-- bookme-active -->
                                 <div class="text-center bookme-bs-wizard-stepnum">
 									<?php echo $b; ?>. <?php echo bookme_get_table_appearance( 'bullet5', 'bullet', __( 'Done', 'bookme' ) ); ?>
@@ -198,8 +202,6 @@ function bookme_get_step_1() {
 								<?php $b ++; ?>
                             </div>
                         </div>
-
-                        <!--<a href="<?php echo site_url(); ?>/live-courses/"><i class="fa fa-chevron-circle-left"></i>Back To Coursess</a>-->
                         <div class="bookme-row">
                             <div class="bookme-col-xs-12 bookme-col-md-12 bookme-col-lg-12 bookme-form-style-5">
                                 <div class="<?php echo $class1; ?>">
@@ -207,42 +209,28 @@ function bookme_get_step_1() {
 										<?php
 										$time_zone = get_user_meta( get_current_user_id(), 'timezone', true );
 										if ( $time_zone ) {
-											//echo get_timezone_list( $time_zone );
 											echo "<b>Your Time Zone : </b>";
 											echo $time_zone;
 										} else {
 											$time_zone = 'US/Central';
-											//echo 'Your Timezone is not set';
 											echo "<b>Your Time Zone : </b>";
 											echo $time_zone;
-										}
-
-										?>
+										} ?>
                                     </fieldset>
-									<?php if ( $mem_hide ) {
-										?>
-                                        <input type="hidden" name="employee" id="bookme_employee"
-                                               value="<?php echo $mem_id; ?>">
-                                        <input type="hidden" name="service" id="bookme_service"
-                                               value="<?php echo $ser_id; ?>">
-                                        <input type="hidden" name="category" id="bookme_category"
-                                               value="<?php echo $cat_id; ?>">
-                                        <input type="hidden" name="category1" id="bookme_category"
-                                               value="<?php echo $cat_id; ?>">                                        <?php
-									} else { ?>
+									<?php if ( $mem_hide ) { ?>
+                                        <input type="hidden" name="employee" id="bookme_employee" value="<?php echo $mem_id; ?>">
+                                        <input type="hidden" name="service" id="bookme_service" value="<?php echo $ser_id; ?>">
+                                        <input type="hidden" name="category" id="bookme_category" value="<?php echo $cat_id; ?>">
+                                        <input type="hidden" name="category1" id="bookme_category" value="<?php echo $cat_id; ?>">
 										<?php
-										if ( $ser_hide ) {
-											?>
-                                            <input type="hidden" name="service" id="bookme_service"
-                                                   value="<?php echo $ser_id; ?>">
-                                            <input type="hidden" name="category" id="bookme_category"
-                                                   value="<?php echo $cat_id; ?>">
+									} else {
+										if ( $ser_hide ) { ?>
+                                            <input type="hidden" name="service" id="bookme_service" value="<?php echo $ser_id; ?>">
+                                            <input type="hidden" name="category" id="bookme_category" value="<?php echo $cat_id; ?>">
 											<?php
 										} else {
-											if ( $cat_hide ) {
-												?>
-                                                <input type="hidden" name="category" id="bookme_category"
-                                                       value="<?php echo $cat_id; ?>">
+											if ( $cat_hide ) { ?>
+                                                <input type="hidden" name="category" id="bookme_category" value="<?php echo $cat_id; ?>">
 												<?php
 											} else { ?>
                                                 <fieldset>
@@ -251,41 +239,29 @@ function bookme_get_step_1() {
 														$table   = $wpdb->prefix . 'bwlive_students';
 														$sql     = "SELECT student_id,student_fname,student_lname FROM $table where parent_id=" . get_current_user_id();
 														$results = $wpdb->get_results( $sql );
-
 														$student = bookme_get_table_appearance( 'student', 'label', __( 'Student', 'bookme' ) );
-														if ( count( $results ) <= 1 ) {
-															?>
+														if ( count( $results ) <= 1 ) { ?>
                                                             <span class="number selectcolor"><?php echo $i; ?></span> <?php echo $student; ?>
 															<?php
-														} else {
-															?>
+														} else { ?>
                                                             <span class="number selectcolor"><?php echo $i; ?></span> Select Student
 															<?php
 														}
 														?>
                                                     </legend>
 													<?php
-
-													if ( count( $results ) == 1 ) {
-														?>
+													if ( count( $results ) == 1 ) { ?>
                                                         <input class="bookme-has-error-none" name="student" type="text" value="<?php echo $results[0]->student_fname . ' ' . $results[0]->student_lname; ?>" readonly>
-
                                                         <input id="bookme_student" class="bookme-has-error-none" type="hidden" value="<?php echo $results[0]->student_id; ?>" readonly>
 														<?php
-
-													} else {
-														?>
-                                                        <select id="bookme_student" class="bookme-has-error-none"
-                                                                name="student"
-                                                                required="required">
-                                                            <!--<option value="">
-                                                            	<?php _e( 'Select', 'bookme' );
-															echo ' ' . $student; ?>
-                                                        	</option>-->
-															<?php
-															foreach ( $results as $result ) {
-																?>
-                                                                <option value="<?php echo $result->student_id; ?>" class="hide-if-no-js"><?php echo $result->student_fname; ?><?php echo $result->student_lname; ?></option>
+													} else { ?>
+                                                        <select id="bookme_student" class="bookme-has-error-none" name="student" required="required">
+															<?php _e( 'Select', 'bookme' );
+															echo ' ' . $student;
+															foreach ( $results as $result ) { ?>
+                                                                <option value="<?php echo $result->student_id; ?>" class="hide-if-no-js">
+																	<?php echo $result->student_fname; ?><?php echo $result->student_lname; ?>
+                                                                </option>
 																<?php
 															}
 															?>
@@ -316,76 +292,33 @@ function bookme_get_step_1() {
 																$cat_id_au = $result->id;
 																?>
                                                                 <input type="text" readonly class="hide-if-no-js" value="<?php echo $result->name; ?>"/>
-
                                                                 <input id="bookme_category" name="category" type="hidden" value="<?php echo $result->id; ?>" class="hide-if-no-js"/>
 																<?php
 															}
 														}
-
-
 													} ?>
-
-													<?php /* <select id="bookme_category" name="category" class="bookme-has-error-none"
-
-                                                            required="required">
-                                                        <option value="">
-                                                            <?php _e('Select', 'bookme');
-                                                            echo ' ' . $cat; ?>
-                                                        </option>
-                                                        <?php
-
-                                                        foreach ($results as $result) {
-                                                            $sel = '';
-                                                            if (isset($_POST['get_data']) && $_POST['auto_fill'] == 'false') {
-                                                                if (isset($_POST['get_data']['category']) && $_POST['get_data']['category'] == $result->name) {
-                                                                    $sel = 'selected';
-                                                                    $cat_id_au = $result->id;
-                                                                }
-                                                            }
-                                                            ?>
-                                                            <option <?= $sel ?> value="<?php echo $result->id; ?>"
-                                                                                class="hide-if-no-js"><?php echo $result->name; ?></option>
-                                                        <?php } ?>
-                                                    </select>
-                                                    <label class="cat_error bookme-error">
-                                                        <?php _e('Please select', 'bookme');
-                                                        echo ' ' . $cat; ?>
-                                                    </label>*/ ?>
                                                 </fieldset>
 												<?php $i ++;
 											} ?>
                                             <fieldset>
                                                 <legend>
                                                     <span class="number selectcolor"><?php echo $i; ?></span> <?php echo "Course"; ?>
-                                                    <span class="select-loader btn-xs bookme-loader"
-                                                          style="display: none"></span>
+                                                    <span class="select-loader btn-xs bookme-loader" style="display: none"></span>
                                                 </legend>
 												<?php
 												$serapp = bookme_get_table_appearance( 'service', 'label', __( 'Service', 'bookme' ) );
-												//echo $serapp;
-
 												if ( $cat_hide ) {
 													bookme_get_services_by_cat_id( $cat_id );
 												} else {
-													?>
-
-
-													<?php
-
 													if ( isset( $_POST['get_data'] ) && $_POST['auto_fill'] == 'false' ) {
 														$sel = '';
 														if ( isset( $cat_id_au ) ) {
-
-
 															$serices = $wpdb->get_results( $wpdb->prepare( " select * from " . $wpdb->prefix . "bookme_service where catId=%s ", $cat_id_au ) );
 															if ( ! empty( $serices ) ) {
 																foreach ( $serices as $serice ) {
 																	$sel = '';
-																	if ( isset( $_POST['get_data']['service'] ) && $_POST['get_data']['service'] == $serice->name ) {
-																		$sel = 'selected';
-																		?>
+																	if ( isset( $_POST['get_data']['service'] ) && $_POST['get_data']['service'] == $serice->name ) { ?>
                                                                         <input type="text" readonly class="hide-if-no-js" value="<?php echo $serice->name; ?>"/>
-
                                                                         <input id="bookme_service" name="service" type="hidden" value="<?php echo $serice->id; ?>" class="hide-if-no-js"/>
 																		<?php
 																	}
@@ -393,42 +326,8 @@ function bookme_get_step_1() {
 															}
 														}
 													}
-
 												}
 												?>
-												<?php /*<select id="bookme_service"  name="service"
-                                                        required="required">
-                                                    <?php
-                                                    if ($cat_hide) {
-                                                        bookme_get_services_by_cat_id($cat_id);
-                                                    } else {
-                                                        ?>
-                                                        <option value=""><?php _e('Select', 'bookme');
-                                                            echo ' ' . $serapp; ?></option>
-                                                        <?php
-
-                                                        if (isset($_POST['get_data']) && $_POST['auto_fill'] == 'false') {
-                                                            $sel = '';
-                                                            if (isset($cat_id_au)) {
-
-
-                                                                $serices = $wpdb->get_results($wpdb->prepare(" select * from " . $wpdb->prefix . "bookme_service where catId=%s ", $cat_id_au));
-                                                                if (!empty($serices)) {
-                                                                    foreach ($serices as $serice) {
-                                                                        $sel = '';
-                                                                        if (isset($_POST['get_data']['service']) && $_POST['get_data']['service'] == $serice->name) {
-                                                                            $sel = 'selected';
-                                                                        }
-                                                                        echo "<option " . $sel . " value='" . $serice->id . "'>" . $serice->name . "</option>";
-                                                                    }
-                                                                }
-                                                            }
-                                                        }
-
-                                                    }
-                                                    ?>
-
-                                                </select> */ ?>
                                                 <label class="ser_error bookme-error">
 													<?php _e( 'Please select', 'bookme' );
 													echo ' ' . $serapp; ?>
@@ -443,29 +342,16 @@ function bookme_get_step_1() {
 												$empapp = bookme_get_table_appearance( 'employee', 'label', __( 'Employee', 'bookme' ) );
 												echo $empapp;
 												?>
-                                                <span class="select-loader btn-xs bookme-loader"
-                                                      style="display: none"></span>
+                                                <span class="select-loader btn-xs bookme-loader" style="display: none"></span>
                                             </legend>
-                                            <select id="bookme_employee" name="employee" class="employee_select"
-                                                    required="required" style="display: none;">
-                                                <option value="1" selected></option>
+                                            <select id="bookme_employee" name="employee" class="employee_select" required="required" style="display: none;">
+                                                <option value="<?php echo $mem_id; ?>" selected></option>
                                             </select>
                                             <label class="emp_error bookme-error">
 												<?php _e( 'Please select', 'bookme' );
 												echo ' ' . $empapp; ?>
                                             </label>
                                         </fieldset>
-                                        <!--<fieldset>
-                                            <p style="    font-size: 15px;
-    line-height: 28px;    text-align: justify;">
-                                                All classes are weekly at the same day and time. Minimum commitment is
-                                                to schedule all remaining classes for that month. Subsequently, if the
-                                                student continues, payment will be monthly for the number of classes the
-                                                course is offered for each month. The number of classes each month could
-                                                vary depending on the month and if any holidays fall on the specific
-                                                date of your class.
-                                            </p>
-                                        </fieldset>-->
 										<?php $i ++;
 									} ?>
 									<?php if ( $person_hide ) {
@@ -478,8 +364,7 @@ function bookme_get_step_1() {
 												<?php
 												echo bookme_get_table_appearance( 'number_of_person', 'label', __( 'Number of person', 'bookme' ) );
 												?>
-                                                <span class="select-loader btn-xs bookme-loader"
-                                                      style="display: none"></span>
+                                                <span class="select-loader btn-xs bookme-loader" style="display: none"></span>
                                             </legend>
                                             <select id="bookme_person" name="">
 												<?php
@@ -494,19 +379,7 @@ function bookme_get_step_1() {
 									} ?>
                                 </div>
                                 <div class="<?php echo $class2; ?>">
-                                    <label
-                                        class="date_error bookme-error"><?php _e( 'Please select date', 'bookme' ); ?> </label>
-									<?php
-									/*$time_zone=get_user_meta(get_current_user_id(),'timezone',true);
-                                    if( $time_zone ){
-                                        //echo get_timezone_list( $time_zone );
-                                        echo "<b>&nbsp;&nbsp;Preferred time zone : </b>";
-                                        echo $time_zone;
-                                    }else{
-                                        echo 'Your Timezone is not set';
-                                    }*/
-
-									?>
+                                    <label class="date_error bookme-error"><?php _e( 'Please select date', 'bookme' ); ?> </label>
 
                                     <fieldset class="bookme-mar-pad">
                                         <div class="bookme-calender">
@@ -588,44 +461,28 @@ function get_usa_date( $us_time ) {
 }
 
 function get_student_zone( $date_time_utc, $stuid ) {
-
-//	echo $date_time_utc;
 	$timezone = get_user_meta( $stuid, 'timezone', true );
 	if ( ! $timezone ) {
 		$timezone = 'UTC';
 	}
 
-
 	if ( $timezone ) {
-
-
 		$student_date_time = ( new DateTime( $date_time_utc, new DateTimeZone( 'UTC' ) ) )->setTimezone( new DateTimeZone( $timezone ) );
-		//$student_date_time=(new DateTime($date_time_utc, new DateTimeZone($timezone)) );
 
-		//print_r($student_date_time);
 		return $student_date_time;
 	} else {
 		throw new Exception( "Bookme registration user has not selected timezone" );
 	}
 }
 
-
 function get_student_timezone( $date_time_utc ) {
-
-//	echo $date_time_utc;
 	$timezone = get_user_meta( get_current_user_id(), 'timezone', true );
 	if ( ! $timezone ) {
 		$timezone = 'UTC';
 	}
-
-
 	if ( $timezone ) {
-
-
 		$student_date_time = ( new DateTime( $date_time_utc, new DateTimeZone( 'UTC' ) ) )->setTimezone( new DateTimeZone( $timezone ) );
-		//$student_date_time=(new DateTime($date_time_utc, new DateTimeZone($timezone)) );
 
-		//print_r($student_date_time);
 		return $student_date_time;
 	} else {
 		throw new Exception( "Bookme registration user has not selected timezone" );
@@ -639,7 +496,6 @@ function get_utc_timezone( $date_time_student, $faculty_id = null ) {
 			$timezone = 'UTC';
 		}
 		if ( $timezone ) {
-
 			$utc_date_time = ( new DateTime( $date_time_student, new DateTimeZone( $timezone ) ) )->setTimezone( new DateTimeZone( 'UTC' ) );
 
 			return $utc_date_time;
@@ -657,7 +513,6 @@ function get_utc_timezone( $date_time_student, $faculty_id = null ) {
 			throw new Exception( "Bookme registration user has not selected timezone" );
 		}
 	}
-
 }
 
 function get_faculty_timezone( $date_time_utc, $faculty_id ) {
@@ -665,7 +520,6 @@ function get_faculty_timezone( $date_time_utc, $faculty_id ) {
 	$timezone      = $wpdb->get_var( $wpdb->prepare( " select country from " . $wpdb->prefix . "bookme_employee where id=%s ", $faculty_id ) );
 	$utc_date_time = ( new DateTime( $date_time_utc, new DateTimeZone( 'UTC' ) ) )->setTimezone( new DateTimeZone( $timezone ) );
 
-	// $utc_date_time=(new DateTime($date_time_utc, new DateTimeZone($timezone)) );
 	return $utc_date_time;
 }
 
@@ -701,7 +555,6 @@ function bookme_get_the_calender() {
 		$year      = date( 'Y', current_time( 'timestamp' ) );
 		$converted = date( 'Y-m', current_time( 'timestamp' ) );
 	}
-	//$day_in_month = cal_days_in_month(CAL_GREGORIAN, date('m', strtotime($converted)), $year);
 	$day_in_month = date( 't', mktime( 0, 0, 0, date( 'm', strtotime( $converted ) ), 1, $year ) );
 
 	for ( $jc = $startdate; $jc <= $day_in_month; $jc ++ ) {
@@ -709,8 +562,6 @@ function bookme_get_the_calender() {
 		$day    = date( 'l', strtotime( $dates ) );
 		$bstart = "";
 		$bend   = "";
-
-
 		if ( ! empty( $emp ) ) {
 
 			$duration    = $resultS[0]->duration;
@@ -718,7 +569,6 @@ function bookme_get_the_calender() {
 			$ttlslots    = 0;
 			$tip         = '';
 			foreach ( $emp as $employee ) {
-
 				/* TODO:ANAND-time_conversion fetch faculty days & convert into student timezone  */
 				$temp_resultTime = $wpdb->get_results( "SELECT * FROM $table_member_schedule WHERE emp_id=$employee  " );
 
@@ -740,13 +590,10 @@ function bookme_get_the_calender() {
 					if ( $day == $s_date->format( 'l' ) || $day == $n_date->format( 'l' ) ) {
 						$resultTime[] = $temp_resultTime[ $r_key ];
 					}
-
 				}
-
 
 				$numR = $wpdb->num_rows;
 				if ( $numR >= 1 ) {
-
 					$gc_events = array();
 					/* Google Calendar integration */
 					if ( bookme_get_settings( 'bookme_gc_2_way_sync', 1 ) ) {
@@ -919,7 +766,6 @@ function bookme_get_the_calender() {
 								}
 
 								if ( $book == 0 ) {
-
 									/* TODO:ANAND-time_conversion convert timezone to student for displaying count appointment  */
 									$utc_date_time = get_utc_timezone( $dates . ' ' . $apptstart );
 									$utc_dates     = $utc_date_time->format( 'Y-m-d' );
@@ -960,8 +806,6 @@ function bookme_get_the_calender() {
 								}
 							}
 							$tip = $ttlslots . " " . __( 'Available', 'bookme' );
-
-
 						} else {
 							for ( $j = $start; $j <= $end - $duration; $j = $j + $duration + $paddingTime ) {
 								$apptstart = date( 'g:i A', $j );
@@ -1008,7 +852,6 @@ function bookme_get_the_calender() {
 								}
 
 								if ( $book == 0 ) {
-
 									/* TODO:ANAND-time_conversion convert timezone to student for displaying count appointment  */
 									$utc_date_time = get_utc_timezone( $dates . ' ' . $apptstart );
 									$utc_dates     = $utc_date_time->format( 'Y-m-d' );
@@ -1052,28 +895,20 @@ function bookme_get_the_calender() {
 							$tip = $ttlslots . " " . __( 'Available', 'bookme' );
 						}
 					}
-
-
 				} else {
 					if ( $tip == 'Not Available' || $tip == '' ) {
 						$tip = __( 'Not Available', 'bookme' );
 					}
-
 				}
-
 			}
-
-
 		} else {
 			$tip = __( 'Not Available', 'bookme' );
 		}
-
 		if ( $tip == '' ) {
 			$tip = __( 'Not Available', 'bookme' );
 		}
 		$cdate[]   = $dates;
 		$tooltip[] = $tip;
-
 	}
 
 	$table_holidays = $wpdb->prefix . 'bookme_holidays';
@@ -1089,8 +924,6 @@ function bookme_get_the_calender() {
 			$available_f   = $faculty - $holiday->total_f;
 			$tooltip[ $i ] = $available_f . ' Available';
 		}
-
-
 	}
 
 	$table_genholidays = $wpdb->prefix . 'custom_holidays';
@@ -1124,8 +957,7 @@ function bookme_get_step_2() {
 				<?php $b     = 1;
 				$cart_enable = bookme_get_settings( 'bookme_enable_cart', 0 ) && ( ! bookme_get_settings( 'enable_woocommerce', 0 ) );
 				?>
-                <div
-                    class="<?php echo $cart_enable ? 'bookme-col-xs-2' : 'bookme-col-xs-3'; ?> bookme-bs-wizard-step bookme-complete">
+                <div class="<?php echo $cart_enable ? 'bookme-col-xs-2' : 'bookme-col-xs-3'; ?> bookme-bs-wizard-step bookme-complete">
                     <div class="text-center bookme-bs-wizard-stepnum">
 						<?php echo $b; ?>. Start Date<?php /*echo bookme_get_table_appearance('bullet1', 'bullet', __('Start Date', 'bookme'));*/ ?>
                     </div>
@@ -1136,8 +968,7 @@ function bookme_get_step_2() {
 					<?php $b ++; ?>
                 </div>
 
-                <div
-                    class="<?php echo $cart_enable ? 'bookme-col-xs-2' : 'bookme-col-xs-3'; ?> bookme-bs-wizard-step bookme-active">
+                <div class="<?php echo $cart_enable ? 'bookme-col-xs-2' : 'bookme-col-xs-3'; ?> bookme-bs-wizard-step bookme-active">
                     <!-- bookme-complete -->
                     <div class="text-center bookme-bs-wizard-stepnum">
 						<?php echo $b; ?>. <?php echo bookme_get_table_appearance( 'bullet2', 'bullet', __( 'Time', 'bookme' ) ); ?>
@@ -1148,7 +979,8 @@ function bookme_get_step_2() {
                     <span class="bookme-bs-wizard-dot selectcolor"></span>
 					<?php $b ++; ?>
                 </div>
-				<?php if ( $cart_enable ) { ?>
+				<?php
+				if ( $cart_enable ) { ?>
                     <div class="bookme-col-xs-2 bookme-bs-wizard-step bookme-disabled"><!-- bookme-complete -->
                         <div class="text-center bookme-bs-wizard-stepnum">
 							<?php echo $b; ?>. <?php echo bookme_get_table_appearance( 'bullet_cart', 'bullet', __( 'Cart', 'bookme' ) ); ?>
@@ -1159,10 +991,10 @@ function bookme_get_step_2() {
                         <a href="#" class="bookme-bs-wizard-dot"></a>
 						<?php $b ++; ?>
                     </div>
-				<?php } ?>
+					<?php
+				} ?>
 
-                <div
-                    class="<?php echo $cart_enable ? 'bookme-col-xs-2' : 'bookme-col-xs-3'; ?> bookme-bs-wizard-step bookme-disabled">
+                <div class="<?php echo $cart_enable ? 'bookme-col-xs-2' : 'bookme-col-xs-3'; ?> bookme-bs-wizard-step bookme-disabled">
                     <!-- bookme-complete -->
                     <div class="text-center bookme-bs-wizard-stepnum">
 						<?php echo $b; ?>. <?php echo bookme_get_table_appearance( 'bullet3', 'bullet', __( 'Sessions', 'bookme' ) ); ?>
@@ -1174,8 +1006,7 @@ function bookme_get_step_2() {
 					<?php $b ++; ?>
                 </div>
 
-                <div
-                    class="<?php echo $cart_enable ? 'bookme-col-xs-2' : 'bookme-col-xs-3'; ?> bookme-bs-wizard-step bookme-disabled">
+                <div class="<?php echo $cart_enable ? 'bookme-col-xs-2' : 'bookme-col-xs-3'; ?> bookme-bs-wizard-step bookme-disabled">
                     <!-- bookme-active -->
                     <div class="text-center bookme-bs-wizard-stepnum">
 						<?php echo $b; ?>. <?php echo bookme_get_table_appearance( 'bullet5', 'bullet', __( 'Done', 'bookme' ) ); ?>
@@ -1216,8 +1047,9 @@ function bookme_get_step_2() {
 						$category                        = $cart['category'];
 						$service                         = $cart['service'];
 						$employee                        = $cart['employee'];
-						$person                          = $cart['person'];
-						$student                         = $cart['student'];
+
+						$person  = $cart['person'];
+						$student = $cart['student'];
 					} else {
 						echo 0;
 						exit;
@@ -1228,8 +1060,8 @@ function bookme_get_step_2() {
 					$category     = $_SESSION['bookme'][ $access_token ]['category'];
 					$service      = $_SESSION['bookme'][ $access_token ]['service'];
 					$employee     = $_SESSION['bookme'][ $access_token ]['employee'];
-					$person       = $_SESSION['bookme'][ $access_token ]['person'];
-					$student      = $_SESSION['bookme'][ $access_token ]['student'];
+					$person  = $_SESSION['bookme'][ $access_token ]['person'];
+					$student = $_SESSION['bookme'][ $access_token ]['student'];
 				}
 
 				$day = date( 'l', strtotime( $dates ) );
@@ -1248,7 +1080,6 @@ function bookme_get_step_2() {
 				$emp               = explode( ',', $resultS[0]->staff );
 
 				foreach ( $emp as $em ) {
-
 					$total_bookings = $wpdb->get_results( "SELECT cbb.payment_id FROM $table_current_booking cb
                     	inner join $table_customer_booking cbb on cbb.booking_id = cb.id 
                     	WHERE cb.emp_id = $em group by cbb.payment_id order by cbb.payment_id desc" );
@@ -1258,9 +1089,7 @@ function bookme_get_step_2() {
 					} else {
 						$payid = 0;
 					}
-
 					$bks [] = array( "emp_id" => $em, "bookings" => count( $total_bookings ), "last_book" => $payid );
-
 				}
 
 				$sort = array();
@@ -1280,17 +1109,13 @@ function bookme_get_step_2() {
 				$tutor_list = implode( ",", $tutors );
 
 				//Added by Vignesh R
-				$resultS_hol = $wpdb->get_results( "SELECT emp_id FROM $table_member_schedule WHERE day='$day' and emp_id IN (" . $resultS[0]->staff . ")" );
-
+				$resultS_hol    = $wpdb->get_results( "SELECT emp_id FROM $table_member_schedule WHERE day='$day' and emp_id IN (" . $resultS[0]->staff . ")" );
 				$resultemployee = $wpdb->get_results( "SELECT id,name, google_data FROM $table_all_employee WHERE id IN (" . $resultS_hol[0]->emp_id . ") " );
-				//$resultemployee = $wpdb->get_results("SELECT id,name, google_data FROM $table_all_employee WHERE id IN (" . $tutor_list . ") ");
 
-				$date     = explode( '-', $dates );
-				$monthNum = $date[1];
-				$dateObj  = DateTime::createFromFormat( '!m', $monthNum );
-				//$monthName = $dateObj->format('F');
+				$date      = explode( '-', $dates );
+				$monthNum  = $date[1];
+				$dateObj   = DateTime::createFromFormat( '!m', $monthNum );
 				$monthName = date_i18n( 'F', strtotime( $dates ) );
-
 				$gc_events = array();
 				/* Google Calendar integration */
 				$resultE = array( 0 => $resultemployee[0] );
@@ -1311,20 +1136,13 @@ function bookme_get_step_2() {
 								}
 								$gc_events = bookme_get_calendar_events( $bookme_gc_client, $dates );
 							} catch ( Exception $e ) {
-
 							}
 						}
 					}
 				}
-				?>
-				<?php
-
-				$service = $_SESSION['bookme'][ $access_token ]['service'];
-
+				$service     = $_SESSION['bookme'][ $access_token ]['service'];
 				$resultavail = $wpdb->get_results( "SELECT price,name,product_id FROM $table_book_service WHERE id=$service" );
 				$product     = wc_get_product( $resultavail[0]->product_id );
-
-
 				?>
                 <div class="packagedetails">
                     <div class="subjectdetails"><strong>Subject: </strong><?php echo $resultS[0]->name; ?></div>
@@ -1334,54 +1152,26 @@ function bookme_get_step_2() {
 
                     <div class="bookme-calender bookme-pad-20">
                         <div class="bookme-aval-time" style="display: block;">
-							<?php if ( $access_token != null ) { ?>
+							<?php
+							if ( $access_token != null ) { ?>
                                 <input type="hidden" name="access_token" value="<?php echo $access_token; ?>">
 							<?php }
-
-							// $location = WC_Geolocation::geolocate_ip();
-							//$cou = $location['country'];
-							?>
-
-							<?php
 							$month_dates   = get_month_date( $dates );
 							$month_dates_f = array();
-							//echo $date[2] . ' ' . $monthName . ' ' . $date[0];
-							$today = $dates;
-							// $today = strtotime("-1 day",strtotime($dates));
-
-
-							$sp = 0;
-							//	echo '<table style="margin-bottom: 0px!important"><tr>';
+							$today         = $dates;
+							$sp            = 0;
 							for ( $i = 1; $i <= $product->get_meta( 'custom_text_field_title' ); $i ++ ) {
 								$sp ++;
-
-								$monthonly = date( 'M', strtotime( $today ) );
-								//$today = date('Y-m-d',$today);
+								$monthonly        = date( 'M', strtotime( $today ) );
 								$month_dates_f[]  = date( 'd M Y', strtotime( $today ) );
 								$month_dates_fd[] = date( 'Y-m-d', strtotime( $today ) );
 
-								// echo '<td style="font-size: 12px">'.date('d M Y', strtotime($today)).'</td>';
 								$repeat = strtotime( "+7 day", strtotime( $today ) );
 								$today  = date( 'Y-m-d', $repeat );
 								if ( $sp == 5 ) {
-									//  echo '</tr><tr>';
 									$sp = 0;
 								}
-
-								//	echo '<br>';
 							}
-							//    foreach ($month_dates as $date) {
-							//	 if(date('Y-m-d',strtotime($date))>=$_SESSION['bookme'][$access_token]['date']){  //Condition to avoid past dates updated by suresh on 5-8-2020
-							//      $month_dates_f[] = date('d M Y', strtotime($date));
-							//	}
-							//  }
-
-
-							//echo implode(' | ', $month_dates_f);
-							?>
-
-
-							<?php
 							$_SESSION['bookme'][ $access_token ]['month_date']    = $month_dates_f;
 							$_SESSION['bookme'][ $access_token ]['month_date_fd'] = $month_dates_fd;
 							$dts                                                  = implode( "','", $month_dates_fd );
@@ -1398,48 +1188,30 @@ function bookme_get_step_2() {
 
 							$ik = 0;
 							foreach ( $resultemployee as $key => $resulte ) {
-
-								$resultE  = array( 0 => $resulte );
-								$employee = $resulte->id;
-								//echo $employee;
-								//echo "<Br>";
+								$resultE    = array( 0 => $resulte );
+								$employee   = $resulte->id;
 								$is_holiday = $wpdb->get_var( $wpdb->prepare( " select count(id) from " . $wpdb->prefix . "bookme_holidays where staff_id=%s and holi_date=%s", $employee, $selected_date ) );
-								if ( $is_holiday != 1 ) {
-
-
-									?>
-
-
+								if ( $is_holiday != 1 ) { ?>
                                     <div id="time_slot_scroll" class="tse-scrollable">
                                         <div class="tse-content">
 											<?php
 											$bstart = "";
 											$bend   = "";
 											if ( in_array( $employee, $emp ) ) {
-												$duration = 4500;
-												//$paddingTime = $resultS[0]->paddingBefore;
-												//$paddingTime =300;
-												/*Modified By Vignesh*/
+												$duration    = 4500;
 												$paddingTime = 900;
-												global $student_country;
-//
+												global $student_country;//
 												/* TODO:ANAND-time_conversion fetch faculty days & convert into student timezone  */
 
 												$temp_resultTime = $wpdb->get_results( "SELECT * FROM $table_member_schedule WHERE emp_id=$employee" );
-												//echo "select $table_current_booking.time from $table_current_booking  inner join $table_customer_booking on $table_customer_booking.booking_id = $table_current_booking.id where $table_current_booking.date in ($dts) and $table_customer_booking.customer_id=$parent_id";
-												$results = array();
+												$results         = array();
 												foreach ( $temp_resultTime as $r_key => $r_data ) {
-													//print_r(date('d-m-Y',strtotime($month_dates_f[0])));
-													//echo date('d-m-Y',strotime($month_dates_f[0]));
-
 													if ( $day == $r_data->day ) {
 														$s_date = get_student_timezone( $selected_date . ' ' . $r_data->schedule_start );
 														$n_date = get_student_timezone( $selected_date . ' ' . $r_data->schedule_end );
 
-
 														$temp_resultTime[ $r_key ]->schedule_start = $s_date->format( 'l g:i a' );
 														$temp_resultTime[ $r_key ]->schedule_end   = $n_date->format( 'l g:i a' );
-
 
 														if ( $r_data->break_start != '' ) {
 															$b_start = get_student_timezone( $selected_date . ' ' . $r_data->break_start );
@@ -1448,15 +1220,11 @@ function bookme_get_step_2() {
 															$temp_resultTime[ $r_key ]->break_start = $b_start->format( 'l g:i a' );
 															$temp_resultTime[ $r_key ]->break_end   = $b_end->format( 'l g:i a' );
 														}
-
 														if ( $day == $s_date->format( 'l' ) || $day == $n_date->format( 'l' ) ) {
-
 															$results[] = $temp_resultTime[ $r_key ];
 														}
 													}
-
 												}
-
 
 												$numR = $wpdb->num_rows;
 												if ( $numR >= 1 ) {
@@ -1472,12 +1240,9 @@ function bookme_get_step_2() {
 														$start         = strtotime( $scheduleTime1 );
 														$end           = strtotime( $scheduleTime2 );
 
-
 														if ( ! empty( $bstart ) and ! empty( $bend ) ) {
 															/* if day has break */
-
 															for ( $j = $start; $j <= $bstart - $duration; $j = $j + $duration + $paddingTime ) {
-
 																$apptstart = date( 'g:i A', $j );
 																$apptend   = date( 'g:i A', $j + $duration );
 																if ( $dates == current_time( 'Y-m-d' ) ) {
@@ -1485,22 +1250,12 @@ function bookme_get_step_2() {
 																		continue;
 																	}
 																}
-																//if( date('l', $j)!=$day ){
-																//     continue;
-																//  }
-
 																/* TODO:ANAND-time_conversion  hide time if same lecture time for other course  */
 																$utc_date_time = get_utc_timezone( $dates . ' ' . $apptstart );
 																$utc_dates     = $utc_date_time->format( 'Y-m-d' );
 
 																$rowcount = $wpdb->get_results( "SELECT time,duration FROM $table_current_booking WHERE ser_id!='$service' and emp_id='$employee' and date='$utc_dates'" );
 																$book     = 0;
-
-
-																//	if (in_array($s_date->format('g:i a'), $temp_resultTime))
-																//	{
-																//	echo "Match found";
-																//			 }
 																foreach ( $rowcount as $sql ) {
 																	/* convert date utc to student for compare */
 																	$student_date_time = get_student_timezone( $dates . ' ' . $sql->time );
@@ -1529,10 +1284,8 @@ function bookme_get_step_2() {
 																}
 
 																if ( $book == 0 ) {
-
 																	/* TODO:ANAND-time_conversion convert timezone to student for displaying count appointment  */
 																	$utc_date_time = get_utc_timezone( $dates . ' ' . $apptstart );
-
 
 																	$utc_dates    = $utc_date_time->format( 'Y-m-d' );
 																	$utc_appstart = $utc_date_time->format( 'g:i a' );
@@ -1576,9 +1329,7 @@ function bookme_get_step_2() {
 																			}
 																		}
 
-
 																		foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
-
 																			if ( '' . $_SESSION['bookme'][ $access_token ]['student'] . '' == '' . $cart_item['bookme']['student'] . '' ) {
 																				foreach ( $month_dates_f as $dt ) {
 																					if ( in_array( $dt, $cart_item['bookme']['month_date'] ) && $cart_item['bookme']['appointstart'] == $apptstart ) {
@@ -1586,40 +1337,27 @@ function bookme_get_step_2() {
 																					}
 																				}
 																			}
-
 																		}
 																		if ( $cart_book == 0 && ! in_array( "" . $utc_appstart . "", $all_booked ) ) {
-
-
 																			?>
                                                                             <div class="ts bookmeClearFix aaa">
                                                                             <span class="ts-time">
-                                                                                <input type="hidden"
-                                                                                       class="appoints<?php echo $k; ?>"
-                                                                                       value="<?php echo $apptstart; ?>">
-                                                                                <input type="hidden"
-                                                                                       class="appointe<?php echo $k; ?>"
-                                                                                       value="<?php echo $apptend; ?>">
-                                                                                <input type="hidden"
-                                                                                       class="faculty_<?php echo $k; ?>"
-                                                                                       value="<?php echo $employee; ?>">
-                                                                                <span><i class="fa fa-clock-o"
-                                                                                         aria-hidden="true"></i>&nbsp;&nbsp;<?php echo date_i18n( get_option( 'time_format' ), $j ); ?>
-                                                                                    – <?php echo date_i18n( get_option( 'time_format' ), $j + $duration ); ?></span>
+                                                                                <input type="hidden" class="appoints<?php echo $k; ?>" value="<?php echo $apptstart; ?>">
+                                                                                <input type="hidden" class="appointe<?php echo $k; ?>" value="<?php echo $apptend; ?>">
+                                                                                <input type="hidden" class="faculty_<?php echo $k; ?>" value="<?php echo $employee; ?>">
+                                                                                <span><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;&nbsp;
+                                                                                    <?php echo date_i18n( get_option( 'time_format' ), $j ); ?>
+                                                                                    – <?php echo date_i18n( get_option( 'time_format' ), $j + $duration ); ?>
+                                                                                </span>
 
                                                                             </span>
                                                                                 <span class="ts-bookappo">
-                                                                                <button class=" coffe button selectcolor bookme_step2"
-                                                                                        type="submit"
-                                                                                        id="book_appointment"
-                                                                                        data-key="<?php echo $k; ?>">
-
-                                                                                    <span class="button-ts"><i
-                                                                                            class="fa fa-clock-o"
-                                                                                            aria-hidden="true"></i>&nbsp;&nbsp;<?php echo date_i18n( get_option( 'time_format' ), $j ) ?>
-                                                                                        – <?php echo date_i18n( get_option( 'time_format' ), $j + $duration ); ?></span>
-                                                                                    <span
-                                                                                        class="button-text loading<?php echo $k; ?>"><?php _e( 'Enroll', 'bookme' ); ?></span>
+                                                                                <button class=" coffe button selectcolor bookme_step2" type="submit" id="book_appointment" data-key="<?php echo $k; ?>">
+                                                                                    <span class="button-ts"><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;&nbsp;
+                                                                                        <?php echo date_i18n( get_option( 'time_format' ), $j ) ?>
+                                                                                        – <?php echo date_i18n( get_option( 'time_format' ), $j + $duration ); ?>
+                                                                                    </span>
+                                                                                    <span class="button-text loading<?php echo $k; ?>"><?php _e( 'Enroll', 'bookme' ); ?></span>
                                                                                 </button>
                                                                             </span>
                                                                             </div>
@@ -1628,11 +1366,7 @@ function bookme_get_step_2() {
 																	}
 																	$k ++;
 																}
-
-
 															}
-
-
 															for ( $l = $bend; $l <= $end - $duration; $l = $l + $duration + $paddingTime ) {
 																$apptstart = date( 'l g:i A', $l );
 																$apptend   = date( 'g:i A', $l + $duration );
@@ -1641,10 +1375,6 @@ function bookme_get_step_2() {
 																		continue;
 																	}
 																}
-																//if( date('l', $l)!=$day ){
-																//      continue;
-																//   }
-
 																/* TODO:ANAND-time_conversion  hide time if same lecture time for other course  */
 																$utc_date_time = get_utc_timezone( $dates . ' ' . $apptstart );
 																$utc_dates     = $utc_date_time->format( 'Y-m-d' );
@@ -1673,30 +1403,24 @@ function bookme_get_step_2() {
 																		}
 																	}
 																}
-
 																if ( $book == 0 ) {
-
 																	/* TODO:ANAND-time_conversion convert timezone to student for displaying count appointment  */
 																	$utc_date_time = get_utc_timezone( $dates . ' ' . $apptstart );
 																	$utc_dates     = $utc_date_time->format( 'Y-m-d' );
 																	$utc_appstart  = $utc_date_time->format( 'g:i a' );
-
-																	$countAppoint = $wpdb->get_results( "SELECT SUM(cb.no_of_person) as sump FROM $table_customer_booking cb LEFT JOIN $table_current_booking b ON b.id = cb.booking_id WHERE  b.ser_id='$service' and b.emp_id='$employee' and b.date='$utc_dates' and b.time = '$utc_appstart' and b.duration = '$duration'" );
-
-																	$all_bk     = $wpdb->get_results( "select $table_current_booking.time from $table_current_booking  inner join $table_customer_booking on $table_customer_booking.booking_id = $table_current_booking.id where $table_current_booking.date in ($dts) and $table_customer_booking.customer_id=$parent_id group by $table_current_booking.time" );
-																	$all_booked = array();
+																	$countAppoint  = $wpdb->get_results( "SELECT SUM(cb.no_of_person) as sump FROM $table_customer_booking cb LEFT JOIN $table_current_booking b ON b.id = cb.booking_id WHERE  b.ser_id='$service' and b.emp_id='$employee' and b.date='$utc_dates' and b.time = '$utc_appstart' and b.duration = '$duration'" );
+																	$all_bk        = $wpdb->get_results( "select $table_current_booking.time from $table_current_booking  inner join $table_customer_booking on $table_customer_booking.booking_id = $table_current_booking.id where $table_current_booking.date in ($dts) and $table_customer_booking.customer_id=$parent_id group by $table_current_booking.time" );
+																	$all_booked    = array();
 																	foreach ( $all_bk as $all_time ) {
 																		$tm = $all_time->time;
 																		array_push( $all_booked, $tm );
 																	}
-
 																	if ( empty( $countAppoint[0]->sump ) ) {
 																		$booked = 0;
 																	} else {
 																		$booked = $countAppoint[0]->sump;
 																	}
 																	$available = $resultS[0]->capacity - $booked;
-																	//if ($available > 0) {
 																	$cart_book = 0;
 																	if ( isset( $_SESSION['bookme']['cart'] ) && count( $_SESSION['bookme']['cart'] ) > 0 ) {
 
@@ -1719,9 +1443,7 @@ function bookme_get_step_2() {
 																		}
 																	}
 
-
 																	foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
-
 																		if ( '' . $_SESSION['bookme'][ $access_token ]['student'] . '' == '' . $cart_item['bookme']['student'] . '' ) {
 																			foreach ( $month_dates_f as $dt ) {
 																				if ( in_array( $dt, $cart_item['bookme']['month_date'] ) && $cart_item['bookme']['appointstart'] == $apptstart ) {
@@ -1729,68 +1451,50 @@ function bookme_get_step_2() {
 																				}
 																			}
 																		}
-
 																	}
 
 																	if ( $cart_book == 0 && ! in_array( $utc_appstart, $all_booked ) ) {
-
-
 																		?>
                                                                         <div class="ts bookmeClearFix bbb">
                                                                             <span class="ts-time">
-                                                                                <input type="hidden"
-                                                                                       class="appoints<?php echo $k; ?>"
-                                                                                       value="<?php echo $apptstart; ?>">
-                                                                                <input type="hidden"
-                                                                                       class="appointe<?php echo $k; ?>"
-                                                                                       value="<?php echo $apptend; ?>">
-                                                                                <input type="hidden"
-                                                                                       class="faculty_<?php echo $k; ?>"
-                                                                                       value="<?php echo $employee; ?>">
-                                                                                <span><i class="fa fa-clock-o"
-                                                                                         aria-hidden="true"></i>&nbsp;&nbsp;<?php echo date_i18n( get_option( 'time_format' ), $l ); ?>
-                                                                                    – <?php echo date_i18n( get_option( 'time_format' ), $l + $duration ); ?></span>
+                                                                                <input type="hidden" class="appoints<?php echo $k; ?>" value="<?php echo $apptstart; ?>">
+                                                                                <input type="hidden" class="appointe<?php echo $k; ?>" value="<?php echo $apptend; ?>">
+                                                                                <input type="hidden" class="faculty_<?php echo $k; ?>" value="<?php echo $employee; ?>">
+                                                                                <span><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;&nbsp;
+                                                                                    <?php echo date_i18n( get_option( 'time_format' ), $l ); ?>
+                                                                                    – <?php echo date_i18n( get_option( 'time_format' ), $l + $duration ); ?>
+                                                                                </span>
                                                                                 <?php if ( $resultS[0]->capacity > 1 ) { ?>
-                                                                                    <span
-                                                                                        class="ts-available"><?php echo '(' . __( 'Seats available', 'bookme' ) . ' : ' . $available . ')'; ?></span>
+                                                                                    <span class="ts-available"><?php echo '(' . __( 'Seats available', 'bookme' ) . ' : ' . $available . ')'; ?></span>
                                                                                 <?php } ?>
                                                                             </span>
                                                                             <span class="ts-bookappo">
                                                                             	<?php if ( $available == 0 ) { ?>
                                                                                     <button <?php if ( $available == 0 ) { ?>  style="background: grey;"<?php } ?> class="<?php if ( $available == 0 ) { ?> notavailable <?php } ?> coffe button selectcolor ccc" type="submit"
-
                                                                                                                                                                    data-key="<?php echo $k; ?>">
-                                                                                    <span class="button-ts"><i
-                                                                                            class="fa fa-clock-o"
-                                                                                            aria-hidden="true"></i>&nbsp;&nbsp;<?php echo date_i18n( get_option( 'time_format' ), $l ) ?>
-                                                                                        – <?php echo date_i18n( get_option( 'time_format' ), $l + $duration ); ?></span><span
-                                                                                            class="button-text loading<?php echo $k; ?>"><?php _e( 'Enroll', 'bookme' ); ?></span>
+                                                                                    <span class="button-ts"><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;&nbsp;
+                                                                                        <?php echo date_i18n( get_option( 'time_format' ), $l ) ?>
+                                                                                        – <?php echo date_i18n( get_option( 'time_format' ), $l + $duration ); ?>
+                                                                                    </span>
+                                                                                        <span class="button-text loading<?php echo $k; ?>"><?php _e( 'Enroll', 'bookme' ); ?></span>
                                                                                 </button>
 	                                                                            <?php } else { ?>
-                                                                                    <button class=" coffe button selectcolor bookme_step2"
-                                                                                            type="submit"
-                                                                                            id="book_appointment"
-                                                                                            data-key="<?php echo $k; ?>">
-                                                                                    <span class="button-ts"><i
-                                                                                            class="fa fa-clock-o"
-                                                                                            aria-hidden="true"></i>&nbsp;&nbsp;<?php echo date_i18n( get_option( 'time_format' ), $l ); ?>
-                                                                                        – <?php echo date_i18n( get_option( 'time_format' ), $l + $duration ); ?></span><span
-                                                                                            class="button-text loading<?php echo $k; ?>"><?php _e( 'Enroll', 'bookme' ); ?></span>
+                                                                                    <button class=" coffe button selectcolor bookme_step2" type="submit" id="book_appointment" data-key="<?php echo $k; ?>">
+                                                                                    <span class="button-ts"><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;&nbsp;
+                                                                                        <?php echo date_i18n( get_option( 'time_format' ), $l ); ?>
+                                                                                        – <?php echo date_i18n( get_option( 'time_format' ), $l + $duration ); ?>
+                                                                                    </span>
+                                                                                        <span class="button-text loading<?php echo $k; ?>"><?php _e( 'Enroll', 'bookme' ); ?></span>
                                                                                 </button>
 	                                                                            <?php } ?>
                                                                             </span>
                                                                         </div>
 																		<?php
 																	}
-																	//}
 																	$k ++;
 																}
 															}
-
 														} else {
-															?>
-															<?php
-
 															$istart = 1;
 															for ( $j = $start; $j <= $end - $duration; $j = $j + $duration + $paddingTime ) {
 
@@ -1803,9 +1507,6 @@ function bookme_get_step_2() {
 																$ed->setTimestamp( $j + $duration );
 																$apptend = $ed->format( 'g:i A' );
 
-																//$apptstart = date('g:i A', $j);
-
-																//$apptend = date('g:i A', $j + $duration);
 																if ( $dates == current_time( 'Y-m-d' ) ) {
 																	if ( strtotime( current_time( 'g:i A' ) ) > strtotime( $apptstart ) ) {
 																		continue;
@@ -1836,7 +1537,6 @@ function bookme_get_step_2() {
 																		$book = 1;
 																	}
 																}
-
 																if ( $book == 0 ) {
 																	foreach ( $gc_events as $gc_event ) {
 																		$time  = strtotime( date( 'g:i A', strtotime( $gc_event['start_date'] ) ) );
@@ -1848,22 +1548,13 @@ function bookme_get_step_2() {
 																		}
 																	}
 																}
-
-																//if($istart>3 && $istart<10){
-																//			 $book=1;
-
-																//			 $j=$j+450;
-																//	 }
-
 																if ( $book == 0 ) {
-
 																	/* TODO:ANAND-time_conversion convert timezone to student for displaying count appointment  */
 																	$utc_date_time = get_utc_timezone( $dates . ' ' . $apptstart );
 																	$utc_dates     = $utc_date_time->format( 'Y-m-d' );
 																	$utc_appstart  = $utc_date_time->format( 'g:i a' );
 																	$utc_appst     = $utc_date_time->format( 'g:i A' );
-//echo "SELECT SUM(cb.no_of_person) as sump FROM $table_customer_booking cb LEFT JOIN $table_current_booking b ON b.id = cb.booking_id WHERE  b.ser_id='$service' and b.emp_id='$employee' and b.date='$utc_dates' and b.time = '$apptstart' and b.duration = '$duration'";
-																	$countAppoint = $wpdb->get_results( "SELECT SUM(cb.no_of_person) as sump FROM $table_customer_booking cb LEFT JOIN $table_current_booking b ON b.id = cb.booking_id WHERE  b.ser_id='$service' and b.emp_id='$employee' and b.date='$utc_dates' and b.time = '$utc_appstart'" );
+																	$countAppoint  = $wpdb->get_results( "SELECT SUM(cb.no_of_person) as sump FROM $table_customer_booking cb LEFT JOIN $table_current_booking b ON b.id = cb.booking_id WHERE  b.ser_id='$service' and b.emp_id='$employee' and b.date='$utc_dates' and b.time = '$utc_appstart'" );
 
 																	$all_bk     = $wpdb->get_results( "select $table_current_booking.time from $table_current_booking  inner join $table_customer_booking on $table_customer_booking.booking_id = $table_current_booking.id where $table_current_booking.date in ($dts) and $table_customer_booking.customer_id=$parent_id group by $table_current_booking.time" );
 																	$all_booked = array();
@@ -1900,9 +1591,7 @@ function bookme_get_step_2() {
 																		}
 																	}
 
-
 																	foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
-
 																		if ( '' . $_SESSION['bookme'][ $access_token ]['student'] . '' == '' . $cart_item['bookme']['student'] . '' ) {
 																			foreach ( $month_dates_f as $dt ) {
 																				if ( in_array( $dt, $cart_item['bookme']['month_date'] ) && $cart_item['bookme']['appointstart'] == $apptstart ) {
@@ -1910,81 +1599,56 @@ function bookme_get_step_2() {
 																				}
 																			}
 																		}
-
 																	}
 
-																	if ( $cart_book == 0 && ! in_array( $utc_appstart, $all_booked ) ) {
-
-																		?>
+																	if ( $cart_book == 0 && ! in_array( $utc_appstart, $all_booked ) ) { ?>
                                                                         <div class="ts bookmeClearFix ccc">
                                                                             <span class="ts-time">
-                                                                                <input type="hidden"
-                                                                                       class="appoints<?php echo $k; ?>"
-                                                                                       value="<?php echo $apptstart; ?>">
-                                                                                <input type="hidden"
-                                                                                       class="appointe<?php echo $k; ?>"
-                                                                                       value="<?php echo $apptend; ?>">
-                                                                                <input type="hidden"
-                                                                                       class="faculty_<?php echo $k; ?>"
-                                                                                       value="<?php echo $employee; ?>">
-                                                                                <span><i class="fa fa-clock-o"
-                                                                                         aria-hidden="true"></i>&nbsp;&nbsp;<?php echo date_i18n( get_option( 'time_format' ), $j ); ?>
-                                                                                    – <?php echo date_i18n( get_option( 'time_format' ), $j + $duration ); ?></span>
+                                                                                <input type="hidden" class="appoints<?php echo $k; ?>" value="<?php echo $apptstart; ?>">
+                                                                                <input type="hidden" class="appointe<?php echo $k; ?>" value="<?php echo $apptend; ?>">
+                                                                                <input type="hidden" class="faculty_<?php echo $k; ?>" value="<?php echo $employee; ?>">
+                                                                                <span><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;&nbsp;
+                                                                                    <?php echo date_i18n( get_option( 'time_format' ), $j ); ?>
+                                                                                    – <?php echo date_i18n( get_option( 'time_format' ), $j + $duration ); ?>
+                                                                                </span>
 
                                                                                 <?php if ( $resultS[0]->capacity > 1 ) { ?>
-                                                                                    <span
-                                                                                        class="ts-available"><?php echo '(' . __( 'Seats available', 'bookme' ) . ' : ' . $available . ')'; ?></span>
+                                                                                    <span class="ts-available"><?php echo '(' . __( 'Seats available', 'bookme' ) . ' : ' . $available . ')'; ?></span>
                                                                                 <?php } ?>
 
                                                                             </span>
                                                                             <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
                                                                             <span class="ts-bookappo">
                                                                             	<?php if ( $available == 0 ) { ?>
-                                                                                    <button <?php if ( $available == 0 ) { ?>  style="background: grey;"<?php } ?> class="<?php if ( $available == 0 ) { ?> notavailable <?php } ?> coffe button selectcolor ccc" type="submit"
-
-                                                                                                                                                                   data-key="<?php echo $k; ?>">
-                                                                                    <span class="button-ts"><i
-                                                                                            class="fa fa-clock-o"
-                                                                                            aria-hidden="true"></i>&nbsp;&nbsp;<?php echo date_i18n( get_option( 'time_format' ), $j ) ?>
-                                                                                        – <?php echo date_i18n( get_option( 'time_format' ), $j + $duration ); ?></span><span
-                                                                                            class="button-text loading<?php echo $k; ?>"><?php _e( 'Enroll', 'bookme' ); ?></span>
+                                                                                    <button <?php if ( $available == 0 ) { ?>  style="background: grey;"<?php } ?> class="<?php if ( $available == 0 ) { ?> notavailable <?php } ?> coffe button selectcolor ccc" type="submit" data-key="<?php echo $k; ?>">
+                                                                                    <span class="button-ts"><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;&nbsp;
+                                                                                        <?php echo date_i18n( get_option( 'time_format' ), $j ) ?>
+                                                                                        – <?php echo date_i18n( get_option( 'time_format' ), $j + $duration ); ?>
+                                                                                    </span>
+                                                                                        <span class="button-text loading<?php echo $k; ?>"><?php _e( 'Enroll', 'bookme' ); ?></span>
                                                                                 </button>
 	                                                                            <?php } else { ?>
-                                                                                    <button class="coffe button selectcolor bookme_step2 ccc" type="submit"
-                                                                                            id="book_appointment"
-                                                                                            data-key="<?php echo $k; ?>">
-                                                                                    <span class="button-ts"><i
-                                                                                            class="fa fa-clock-o"
-                                                                                            aria-hidden="true"></i>&nbsp;&nbsp;<?php echo date_i18n( get_option( 'time_format' ), $j ) ?>
-                                                                                        – <?php echo date_i18n( get_option( 'time_format' ), $j + $duration ); ?></span><span
-                                                                                            class="button-text loading<?php echo $k; ?>"><?php _e( 'Enroll', 'bookme' ); ?></span>
+                                                                                    <button class="coffe button selectcolor bookme_step2 ccc" type="submit" id="book_appointment" data-key="<?php echo $k; ?>">
+                                                                                    <span class="button-ts"><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;&nbsp;
+                                                                                        <?php echo date_i18n( get_option( 'time_format' ), $j ) ?>
+                                                                                        – <?php echo date_i18n( get_option( 'time_format' ), $j + $duration ); ?>
+                                                                                    </span>
+                                                                                        <span class="button-text loading<?php echo $k; ?>"><?php _e( 'Enroll', 'bookme' ); ?> </span>
                                                                                 </button>
 	                                                                            <?php } ?>
                                                                             </span>
 
                                                                         </div>
 																		<?php
-																		//}
 																	}
-																	//}
 																	$k ++;
-
 																}
-
 																$newstrarttime[] = $apptstart;
 																$newendtime[]    = $apptend;
-
 																++ $istart;
 															}
-
-															?>
-
-															<?php
 														}
-
-
 													}
-
 												} else {
 													_e( 'No record found.', 'bookme' );
 												}
@@ -1995,23 +1659,16 @@ function bookme_get_step_2() {
                                         </div>
                                     </div>
 									<?php
-
 								}
 								$ik ++;
 								if ( $ik == 1 ) {
 									break;
 								}
-								//echo '<br>';
-							}
-
-
-							?>
-
+							} ?>
                         </div>
                     </div>
                     <div class="bookme-back-steps">
-                        <button class="coffe button selectcolor textcolor bookme_backbtn"
-                                data-key="2"><?php _e( 'Back', 'bookme' ); ?></button>
+                        <button class="coffe button selectcolor textcolor bookme_backbtn" data-key="2"><?php _e( 'Back', 'bookme' ); ?></button>
 						<?php if ( $cart_enable && count( $_SESSION['bookme']['cart'] ) > 0 ) { ?>
                             <button class="bookme_cart_btn selectcolor" id="bookme_get_cart">
                                 <img src="<?php echo plugins_url( '../assets/images/cart.png', __FILE__ ) ?>" alt="">
@@ -2027,17 +1684,12 @@ function bookme_get_step_2() {
 }
 
 function bookme_get_step_3() {
-
-
 	$cart_enable = bookme_get_settings( 'bookme_enable_cart', 0 ) && ( ! bookme_get_settings( 'enable_woocommerce', 0 ) );
 	if ( $cart_enable && ! isset( $_POST['cart'] ) ) {
 		bookme_get_step_cart();
-	} else {
-		?>
+	} else { ?>
         <div class="bookme-header">
-
             <div class="bookme-container">
-
                 <div class="btn-group" role="group">
                     <a href="/live-courses/" class="btn btn-primary"><i class="fa fa-chevron-circle-left"></i> Back To Courses</a>
                     <a href="<?php echo $_SESSION['ref'] ?>" class="btn btn-primary"><i class="fa fa-chevron-circle-left"></i> Back To Packages</a>
@@ -2048,7 +1700,7 @@ function bookme_get_step_3() {
                     <div
                         class="<?php echo $cart_enable ? 'bookme-col-xs-2' : 'bookme-col-xs-3'; ?> bookme-bs-wizard-step bookme-complete">
                         <div class="text-center bookme-bs-wizard-stepnum">
-							<?php echo $b; ?>. Start Date<?php /*echo bookme_get_table_appearance('bullet1', 'bullet', __('Start Date', 'bookme'));*/ ?>
+							<?php echo $b; ?>. Start Date
                         </div>
                         <div class="bookme-progress selectcolor">
                             <div class="bookme-progress-bar selectcolor"></div>
@@ -2120,15 +1772,12 @@ function bookme_get_step_3() {
 					$_SESSION['bookme'][ $_POST['access_token'] ]['time_s'] = $appointstart;
 					$_SESSION['bookme'][ $_POST['access_token'] ]['time_e'] = $appointend;
 
-					$dates    = $_SESSION['bookme'][ $access_token ]['date'];
-					$person   = $_SESSION['bookme'][ $access_token ]['person'];
-					$service  = $_SESSION['bookme'][ $access_token ]['service'];
-					$employee = $_SESSION['bookme'][ $access_token ]['employee'];
-					$student  = $_SESSION['bookme'][ $access_token ]['student'];
-
-					$appointstart = $_SESSION['bookme'][ $access_token ]['time_s'];
-
-
+					$dates              = $_SESSION['bookme'][ $access_token ]['date'];
+					$person             = $_SESSION['bookme'][ $access_token ]['person'];
+					$service            = $_SESSION['bookme'][ $access_token ]['service'];
+					$employee           = $_SESSION['bookme'][ $access_token ]['employee'];
+					$student            = $_SESSION['bookme'][ $access_token ]['student'];
+					$appointstart       = $_SESSION['bookme'][ $access_token ]['time_s'];
 					$table_book_service = $wpdb->prefix . 'bookme_service';
 					$table_all_employee = $wpdb->prefix . 'bookme_employee';
 					$table_holidays     = $wpdb->prefix . 'bookme_holidays';
@@ -2145,42 +1794,32 @@ function bookme_get_step_3() {
 					$totalcommonholidaynew = array();
 					$totalcommonholiday    = array();
 					foreach ( $holidaycheck as $customdates ) {
-
 						$booking_date = date( "Y-m-d", strtotime( $customdates ) );
 						foreach ( $holidayresult as $holidaynew ) {
 							if ( $holidaynew->holi_date == $booking_date ) {
-
 								$totalholiday[] = $holidaynew->holi_date;
 								array_push( $totalcommonholidaynew, $holidaynew->holi_date );
-
 							}
 						}
 						foreach ( $commonholidays as $holidaycommon ) {
 							if ( $holidaycommon->date == $booking_date ) {
-
 								$totalcommonholiday[]  = $holidaycommon->date;
 								$commonholidayreason[] = $holidaycommon->name;
-
 								array_push( $totalcommonholidaynew, $holidaycommon->date );
-
 							}
 						}
 					}
 
-
 					if ( count( $totalcommonholidaynew ) > 0 ) {
 						for ( $i = 1; $i <= count( $totalcommonholidaynew ); $i ++ ) {
 							$customdates = date( "Y-m-d", strtotime( $customdates ) );
-
-							$pDate = strtotime( $customdates . '+ ' . $i . ' week' );
-
+							$pDate       = strtotime( $customdates . '+ ' . $i . ' week' );
 							array_push( $holidaycheck, date( 'd M Y', $pDate ) );
 						}
 					}
-					$date     = explode( '-', $dates );
-					$monthNum = $date[1];
-					$dateObj  = DateTime::createFromFormat( '!m', $monthNum );
-					//$monthName = $dateObj->format('M');
+					$date      = explode( '-', $dates );
+					$monthNum  = $date[1];
+					$dateObj   = DateTime::createFromFormat( '!m', $monthNum );
 					$monthName = date_i18n( 'M', strtotime( $dates ) );
 
 					$_SESSION['bookme'][ $access_token ]['price'] = $resultS[0]->price;
@@ -2189,13 +1828,9 @@ function bookme_get_step_3() {
 				$table_custom_fields = $wpdb->prefix . 'bookme_custom_field';
 				$resultField         = $wpdb->get_results( "SELECT * FROM $table_custom_fields order by position asc" );
 				?>
-                <!--<a href="<?php echo site_url(); ?>/live-courses/"><i class="fa fa-chevron-circle-left"></i>Back To Coursess</a>-->
                 <div class=="packagedetails">
                     <div class="subjectdetails"><strong>Subject: </strong><?php echo $resultS[0]->name; ?> <br>
-                        <!--<strong>Number of classes: <?php echo $person * $product->get_meta( 'custom_text_field_title' ); ?></strong>-->
-
-
-						<?php
+						<?php echo $person * $product->get_meta( 'custom_text_field_title' );
 						$rowcount = bookme_get_settings( 'enable_coupan', 'No' );
 						if ( isset( $_POST['cart'] ) ) {
 							$totalPrice         = 0;
@@ -2205,110 +1840,42 @@ function bookme_get_step_3() {
 								$resultS    = $wpdb->get_results( "SELECT price FROM $table_book_service WHERE id=$service" );
 								$product1   = wc_get_product( $resultS[0]->product_id );
 								$totalPrice += $product1->get_price() * $cart['person'];
-								//$totalPrice += $resultS[0]->price * $cart['person'];
 							}
-							if ( $rowcount == 'Yes' ) { ?>
-                                <div class="cart-subtotal">
-									<?php// _e('Subtotal', 'bookme'); ?>
-
-                                    <span><?php
-										if ( ! isset( $_POST['cart'] ) ) {
-											// echo bookme_formatPrice($resultS[0]->price * $person * $total_bookings);
-											//	echo bookme_formatPrice($product->get_price() * $person * $product->get_meta( 'custom_text_field_title'));
-										} else {
-											//  echo bookme_formatPrice($totalPrice * $product->get_meta( 'custom_text_field_title'));
-										}
-										?></span></div>
-
-							<?php }
-						} else { ?>
-                            <div class="cart-subtotal">
-								<?php // _e('Subtotal', 'bookme'); ?>
-                                <td>
-                                                    <span><?php
-	                                                    //echo bookme_formatPrice($resultS[0]->price * $person*$total_bookings);
-	                                                    // echo wc_price($product->get_price() * $person * $product->get_meta( 'custom_text_field_title'));
-	                                                    ?></span>
-                            </div>
-
-							<?php
 						}
-						if ( isset( $_SESSION['bookme'][ $access_token ]['discount']['for_show'] ) ) {
-							?>
-
-							<?php
+						if ( ! isset( $_POST['cart'] ) ) {
+							echo wc_price( $product->get_price() * $person * $product->get_meta( 'custom_text_field_title' ) );
 						} else {
-							?>
-							<?php
-
-							if ( $rowcount == 'Yes' ) {
-								?>
-
-
-							<?php }
+							echo bookme_formatPrice( $totalPrice );
+							foreach ( $_SESSION['bookme']['cart'] as $key => $cart ) {
+								if ( isset( $_SESSION['bookme']['cart'][ $key ]['off_price'] ) ) {
+									unset( $_SESSION['bookme']['cart'][ $key ]['dic_price'] );
+									unset( $_SESSION['bookme']['cart'][ $key ]['off_price'] );
+									unset( $_SESSION['bookme']['cart'][ $key ]['disc_code'] );
+								}
+							}
 						}
+
+						if ( bookme_get_settings( 'pmt_local', 'enabled' ) != 'disabled' || bookme_get_settings( 'pmt_paypal', 'disabled' ) != 'disabled' || bookme_get_settings( 'pmt_stripe', 'disabled' ) != 'disabled' || ( class_exists( 'WooCommerce' ) && ( bookme_get_settings( 'enable_woocommerce', 0 ) != 0 ) ) ) {
+						$table   = $wpdb->prefix . 'bwlive_students';
+						$stu_id  = $_SESSION['bookme'][ $access_token ]['student'];
+						$sql     = "SELECT student_id,student_fname,student_lname,student_email FROM $table where student_id='" . $stu_id . "' and parent_id=" . get_current_user_id();
+						$results = $wpdb->get_results( $sql );
+						echo $results[0]->student_fname;
+						echo " ";
+						echo $results[0]->student_lname;
+						echo "<br>";
+						echo $results[0]->student_email;
 						?>
-
-                        <strong><?php _e( 'Total Cost: ', 'bookme' ); ?></strong>
-                        <span
-                            id="bookme_payment_price">
-                                                                <?php
-                                                                if ( ! isset( $_POST['cart'] ) ) {
-	                                                                // echo bookme_formatPrice(isset($_SESSION['bookme'][$access_token]['discount']['price']) ? $_SESSION['bookme'][$access_token]['discount']['price'] : $resultS[0]->price*$total_bookings);
-	                                                                echo wc_price( $product->get_price() * $person * $product->get_meta( 'custom_text_field_title' ) );
-                                                                } else {
-	                                                                echo bookme_formatPrice( $totalPrice );
-	                                                                foreach ( $_SESSION['bookme']['cart'] as $key => $cart ) {
-		                                                                if ( isset( $_SESSION['bookme']['cart'][ $key ]['off_price'] ) ) {
-			                                                                unset( $_SESSION['bookme']['cart'][ $key ]['dic_price'] );
-			                                                                unset( $_SESSION['bookme']['cart'][ $key ]['off_price'] );
-			                                                                unset( $_SESSION['bookme']['cart'][ $key ]['disc_code'] );
-		                                                                }
-	                                                                }
-                                                                }
-                                                                ?>
-                                                                </span>
-
+                        <input type="hidden" readonly name="pname" id="pname" placeholder="<?php _e( 'Your Name', 'bookme' ); ?>" value="<?php if ( isset( $_POST['pname_s'] ) ) {
+							echo $_POST['pname_s'];
+						} ?>">
+                        <input type="hidden" readonly name="email" id="email" placeholder="<?php _e( 't', 'bookme' ); ?>" value="<?php if ( isset( $_POST['email_s'] ) ) {
+							echo $_POST['email_s'];
+						} ?>">
+                        <input type="hidden" readonly name="phones" id="phones" value="<?php if ( isset( $_POST['phone_s'] ) ) {
+							echo $_POST['phone_s'];
+						} ?>">
                     </div>
-
-
-					<?php if ( isset( $_POST['cart'] ) ) {
-					} else {
-
-
-					}
-					if ( bookme_get_settings( 'pmt_local', 'enabled' ) != 'disabled' || bookme_get_settings( 'pmt_paypal', 'disabled' ) != 'disabled' || bookme_get_settings( 'pmt_stripe', 'disabled' ) != 'disabled' || ( class_exists( 'WooCommerce' ) && ( bookme_get_settings( 'enable_woocommerce', 0 ) != 0 ) ) ) { ?>
-                        <div class="studentdetailsnew">
-
-							<?php
-							$table   = $wpdb->prefix . 'bwlive_students';
-							$stu_id  = $_SESSION['bookme'][ $access_token ]['student'];
-							$sql     = "SELECT student_id,student_fname,student_lname,student_email FROM $table where student_id='" . $stu_id . "' and parent_id=" . get_current_user_id();
-							$results = $wpdb->get_results( $sql );
-							echo $results[0]->student_fname;
-							echo " ";
-							echo $results[0]->student_lname;
-							echo "<br>";
-							echo $results[0]->student_email;
-							?>
-
-
-                            <input type="hidden" readonly name="pname" id="pname"
-                                   placeholder="<?php _e( 'Your Name', 'bookme' ); ?>"
-                                   value="<?php if ( isset( $_POST['pname_s'] ) ) {
-								       echo $_POST['pname_s'];
-							       } ?>">
-
-                            <input type="hidden" readonly name="email" id="email"
-                                   placeholder="<?php _e( 't', 'bookme' ); ?>"
-                                   value="<?php if ( isset( $_POST['email_s'] ) ) {
-								       echo $_POST['email_s'];
-							       } ?>">
-
-                            <input type="hidden" readonly name="phones" id="phones" value="<?php if ( isset( $_POST['phone_s'] ) ) {
-								echo $_POST['phone_s'];
-							} ?>">
-                        </div>
 					<?php } ?>
                 </div>
                 <div class="bookme-row">
@@ -2522,11 +2089,7 @@ function bookme_get_step_3() {
                                 <div class="row col-md-6 bookme-col-sm-12 bookme-col-xs-12"
                                      style="padding-left: 20px">
                                     <div class="bookme-aval-time order-review">
-
-
                                         <div>
-
-
 											<?php if ( bookme_get_settings( 'enable_woocommerce', 0 ) != 1 ) { ?>
                                                 <div class="bookme-aval-time">
                                                     <h2 class="payment-heading"><?php _e( 'Choose your payment method', 'bookme' ); ?></h2>
@@ -2930,15 +2493,11 @@ function bookme_check_coupan() {
 }
 
 function bookme_save_session_data() {
-
-
 	$name  = $_POST['name_a'];
 	$name  = isset( $_POST['name_a'] ) ? $_POST['name_a'] : '';
 	$email = $_POST['mail_a'];
 	$email = isset( $_POST['mail_a'] ) ? $_POST['mail_a'] : '';
-	// $phone = $_POST['phone_a'];
 	$phone = isset( $_POST['phone_a'] ) ? $_POST['phone_a'] : '';
-	// $notes = $_POST['note_a'];
 	$notes = isset( $_POST['note_a'] ) ? $_POST['note_a'] : '';
 
 	$custom_text     = isset( $_POST['text_a'] ) ? $_POST['text_a'] : array();
@@ -2967,7 +2526,6 @@ function bookme_save_session_data() {
 	} else {
 		echo 1;
 	}
-
 }
 
 function bookme_book_customer() {
@@ -3023,10 +2581,8 @@ function bookme_book_customer() {
 
 			$dt           = new DateTime( $dates );
 			$booking_date = $dt->format( 'Y-m-d' );
-
-			$hodiday = 0;
-
-			$result = $wpdb->get_results( "SELECT * FROM $table_holidays WHERE staff_id = $employee" );
+			$hodiday      = 0;
+			$result       = $wpdb->get_results( "SELECT * FROM $table_holidays WHERE staff_id = $employee" );
 			foreach ( $result as $holiday ) {
 				if ( $holiday->holi_date == $booking_date ) {
 					$hodiday = 1;
@@ -3488,11 +3044,9 @@ function bookme_book_customer() {
 											}
 										}
 									} catch ( Exception $e ) {
-
 									}
 								}
 							}
-
 						} else {
 							$error = '0';
 						}
@@ -3536,7 +3090,6 @@ function bookme_book_customer() {
 		$custom_select   = $_SESSION['bookme'][ $access_token ]['custom_select'];
 
 		add_filter( 'wp_mail_content_type', 'bookme_set_html_mail_content_type' );
-
 
 		$booking_date = date( "Y-m-d", strtotime( $dates ) );
 
@@ -3612,7 +3165,6 @@ function bookme_book_customer() {
 							$payment_id = 0;
 						}
 
-
 						$wpdb->insert( $table_customer_booking, array(
 							'customer_id'  => $customer_id,
 							'booking_id'   => $booking_id,
@@ -3628,7 +3180,6 @@ function bookme_book_customer() {
 								$limit = $resultOption[0]->coupon_used_limit + 1;
 								$wpdb->update( $table_coupans, array( 'coupon_used_limit' => $limit ), array( 'coupon_code' => $code, 'ser_id' => $service, ), array( '%s' ), array( '%s', '%d' ) );
 							}
-
 						}
 
 						$resultcompanyName    = $wpdb->get_results( "SELECT book_value FROM $table_settings WHERE book_key='companyName'" );
@@ -3924,7 +3475,6 @@ function bookme_book_customer() {
 							}
 						}
 
-
 						/* Google Calendar integration */
 						if ( bookme_get_settings( 'bookme_gc_client_id' ) != null ) {
 							if ( $google_data ) {
@@ -4122,4 +3672,3 @@ function bookme_get_step_5( $msg = null ) {
     </div>
 	<?php
 }
-
